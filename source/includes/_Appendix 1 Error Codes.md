@@ -206,7 +206,7 @@
 | OrderCancelled: | Order error|ORDDR_CANCELLED|																									
 | OrderClosed: | Order error|ORDER_CLOSED|																									
 | OrderIDDuplicate: | Order id duplicate|ORDER_ID_DUPLICATE|																									
-| OrderNotExist: | Order error|ORDER_NOT_EXIST|																									
+| OrderNotExist: | Order error|ORDER_NOT_EXIST|																								
 | OrderNotPaid: | Order not paid|ORDER_NOT_PAID|																									
 | OrderPaid: | Order is paid|ORDER_PAID|																									
 | OriginInvalid: | Invalid origin type|ORIGIN_INVALID|																									
