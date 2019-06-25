@@ -1,8 +1,8 @@
-#Loyalty Members 
+#Loyalty Members
 ##Get Loyalty Members
-**Method <span style="color:Green" , bold >`Get`</span>** 
+**Method <span style="color:Green" , bold >`Get`</span>**
 
->Example Request 
+> Example Request
 
 ```json
 curl --location --request GET "https://sb-open.revenuemonster.my/v3/loyalty/members" \
@@ -18,9 +18,7 @@ curl --location --request GET "https://sb-open.revenuemonster.my/v3/loyalty/memb
 
 `https://sb-open.revenuemonster.my/v3/loyalty/members`
 
-
-
->Example Respond 
+> Example Respond
 
 ```json
 {
@@ -112,8 +110,7 @@ Content-Type | application/json |
 Authorization | Bearer <br>eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1Nywi<br>aXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1<br>lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.<br>dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw |
 X-Signature |sha256 <br> Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==  |
 X-Nonce-Str | VYNknZohxwicZMaWbNdBKUrnrxDtaRhN | 
-X-Timestamp | 1528450585| 
-
+X-Timestamp | 1528450585|
 
 <h3>Body</h3>
 
@@ -127,15 +124,14 @@ X-Timestamp | 1528450585|
 </strong>
 </aside>
 
-
-
 <!--=============--->
 <!----Loyalty Member---->
 <!--=============---->
-##Get Loyalty Member
-**Method <span style="color:Green" , bold >`Get`</span>** 
 
->Example Request
+##Get Loyalty Member
+**Method <span style="color:Green" , bold >`Get`</span>**
+
+> Example Request
 
 ```json
 curl --location --request GET "https://sb-open.revenuemonster.my/v3/loyalty/member/2940921291529816182" \
@@ -151,7 +147,7 @@ curl --location --request GET "https://sb-open.revenuemonster.my/v3/loyalty/memb
 
 <code>https://sb-open.revenuemonster.my/v3/loyalty/member/2940921291529816182</code>
 
-> Example Respond 
+> Example Respond
 
 ```json
 {
@@ -190,7 +186,7 @@ Content-Type | application/json |
 Authorization | Bearer <br>eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1Nywi<br>aXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1<br>lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.<br>dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw |
 X-Signature |sha256 <br> Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==  |
 X-Nonce-Str | VYNknZohxwicZMaWbNdBKUrnrxDtaRhN | 
-X-Timestamp | 1528450585| 
+X-Timestamp | 1528450585|
 
 <h3>Body</h3>
 
@@ -204,17 +200,16 @@ X-Timestamp | 1528450585|
 </strong>
 </aside>
 
-
 <!--===============================--->
 <!----Loyalty Member Point History---->
 <!--===============================---->
+
 ##Get Loyalty Member Point History
-**Method <span style="color:Green" , bold >`Get`</span>** 
+**Method <span style="color:Green" , bold >`Get`</span>**
 
 <code>https://sb-open.revenuemonster.my/v3/loyalty/member/2940921291529816182/history</code>
 
-
->Example Request
+> Example Request
 
 ```json
 curl --location --request GET "https://sb-open.revenuemonster.my/v3/loyalty/member/2940921291529816182/history" \
@@ -228,7 +223,7 @@ curl --location --request GET "https://sb-open.revenuemonster.my/v3/loyalty/memb
 }"
 ```
 
->Example Respond 
+> Example Respond
 
 ```json
 {
@@ -284,7 +279,7 @@ Content-Type | application/json |
 Authorization | Bearer <br>eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1Nywi<br>aXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1<br>lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.<br>dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw |
 X-Signature |sha256 <br> Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==  |
 X-Nonce-Str | VYNknZohxwicZMaWbNdBKUrnrxDtaRhN | 
-X-Timestamp | 1528450585| 
+X-Timestamp | 1528450585|
 
 <h3>Body</h3>
 
@@ -301,6 +296,7 @@ X-Timestamp | 1528450585|
 <!--===============================--->
 <!----Bulk Create Members---->
 <!--===============================---->
+
 ##Post Bulk Create Members
 **Method <span style="color:Orange" , bold >`Post`</span>**
 
@@ -327,9 +323,9 @@ Content-Type | application/json |
 Authorization | Bearer <br>eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1Nywi<br>aXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1<br>lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.<br>dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw |
 X-Signature |sha256 <br> Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==  |
 X-Nonce-Str | VYNknZohxwicZMaWbNdBKUrnrxDtaRhN | 
-X-Timestamp | 1528450585| 
+X-Timestamp | 1528450585|
 
->Example Respond 
+> Example Respond
 
 ```json
 {
@@ -365,23 +361,55 @@ X-Timestamp | 1528450585|
 
 <aside> 
 <strong>
-{ 
-   <br>
-   <br>
-   <br> 
+{ <br/>
+   
+	"membrs": [{<br/>
+	    "name": "testing 1",<br/>
+	    "countryCode": "60",<br/>
+	    "phoneNumber": "162228888",<br/>
+	    "nric": "970503145887",<br/>
+	    "email": "test@email.com",<br/>
+	    "gender": "MALE",<br/>
+	    "state": "",<br/>
+	    "address": {<br/>
+	      "addressLine1": "",<br/>
+	      "addressLine2": "",<br/>
+	      "postcode": "52100",<br/>
+	      "city": "",<br/>
+	      "country": ""<br/>
+	     }<br/>
+	    },<br/>
+	    {<br/>
+	    "name": "testing 2",<br/>
+	    "countryCode": "60",<br/>
+	    "phoneNumber": "162228880",<br/>
+	    "nric": "970503145887",<br/>
+	    "email": "test@email.com",<br/>
+	    "gender": "MALE",<br/>
+	    "state": "",<br/>
+	    "address": {<br/>
+	      "addressLine1": "",<br/>
+	      "addressLine2": "",<br/>
+	      "postcode": "52100",<br/>
+	      "city": "",
+	      "country": ""
+	    }<br/>
+	}<br/>]<br/>
 }
+
 </strong>
 </aside>
 
 <!--===============================--->
 <!----Bulk register Loyalty Members --->
 <!--===============================---->
+
 ##Post Bulk register Loyalty Members
 **Method <span style="color:Orange" , bold >`Post`</span>**
 
 <code>https://sb-open.revenuemonster.my/v3/loyalty/members</code>
 
->Example Request
+> Example Request
 
 ```json
 curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/members" \
@@ -404,10 +432,11 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/mem
 	}
 ]"
 ```
+
 <h3>Headers</h3>
 | |  |
 --------- | ------- |
-Content-Type | application/json | 
+Content-Type | application/json |
 
 <h3>Body</h3>
 
