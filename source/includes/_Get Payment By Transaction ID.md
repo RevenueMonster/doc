@@ -1,11 +1,11 @@
 ##Get Payment By Transaction ID
-**Method <span style="color:Green" , bold >`GET`</span>** 
+**Method <span style="color:Green" , bold >`GET`</span>**
 
 `https://sb-open.revenuemonster.my/v3/payment/transaction/1805260552060011600267`
 
 To query for payment transaction using ID.
 
->Example Request
+> Example Request
 
 ```json
 curl --location --request GET "https://sb-open.revenuemonster.my/v3/payment/transactions" \
@@ -20,20 +20,20 @@ curl --location --request GET "https://sb-open.revenuemonster.my/v3/payment/tran
 }"
 ```
 
-***REQUEST***
+**_REQUEST_**
 
-- *Note: Pass in transaction ID in query parameter*
+- _Note: Pass in transaction ID in query parameter_
 
-***RESPONSE***
+**_RESPONSE_**
 
 <strong>Response Parameters:</strong>
 
-Parameter | Type | Description | Example
---------- | ------- | ----------- | ---
-<code>items</code> | Object | Transaction object | (Refer to explanation below)
-<code>code</code> | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"
+| Parameter          | Type   | Description                                                                                               | Example                      |
+| ------------------ | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>items</code> | Object | Transaction object                                                                                        | (Refer to explanation below) |
+| <code>code</code>  | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
 
->Example Respond
+> Example Respond
 
 ```json
 {
@@ -86,46 +86,46 @@ Parameter | Type | Description | Example
 
 <strong>Transaction object (`"item"`):</strong>
 
-Parameter | Type | Description | Example
---------- | ------- | ----------- | ---
-<code>store</code> | Object | Store object | (Refer to explanation below)
-<code>referenceId</code> | String | Transaction ID (from WeChat server) | ""
-<code>transactionId</code> | String | Transaction ID (from RM server) | "152161448229438994"
-<code>order</code> | Object | Order object | (Refer to explanation below)
-<code>payee</code> | Object | Object of userID made payment (payment sender) | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"}
-<code>platform</code> | String | Currently only support "OPEN_API" | "OPEN_API"
-<code>method</code> | String | Currently only support "WECHATPAY" | "WECHATPAY"
-<code>type</code> | String | Currently only support "QUICKPAY" | "QUICKPAY"
-<code>status</code> | String | Status returned from WeChat server, "SUCCESS" or "IN_PROCESS" or "FAILED". "IN_PROCESS" means user scanned and making payment. | "FAILED"
-<code>createdAt</code> | DateTime | Creation date time of transaction | "2018-03-21T06:41:22Z"
-<code>updatedAt</code> | DateTime | Last update date time of transaction | "2018-03-21T06:41:22Z"
+| Parameter                  | Type     | Description                                                                                                                    | Example                                    |
+| -------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| <code>store</code>         | Object   | Store object                                                                                                                   | (Refer to explanation below)               |
+| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                                            | ""                                         |
+| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                                                | "152161448229438994"                       |
+| <code>order</code>         | Object   | Order object                                                                                                                   | (Refer to explanation below)               |
+| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                                                 | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
+| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                                              | "OPEN_API"                                 |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "Alipay" and "Gradpay".                          | "ALL"                                      |
+| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                                              | "QUICKPAY"                                 |
+| <code>status</code>        | String   | Status returned from WeChat server, "SUCCESS" or "IN_PROCESS" or "FAILED". "IN_PROCESS" means user scanned and making payment. | "FAILED"                                   |
+| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                                              | "2018-03-21T06:41:22Z"                     |
+| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                                                           | "2018-03-21T06:41:22Z"                     |
 
 <strong>Store object (`"store"`):</strong>
 
-Parameter | Type | Description | Example
---------- | ------- | ----------- | ---
-<code>id</code> | String | Store ID | "6170506694335521334"
-<code>name</code> | String | Store Name | "REVENUE MONSTER"
-<code>addressLine1</code> | String | Store Address 1 | "B-5-30, 5th Floor, Block Bougainvillea,"
-<code>addressLine2</code> | String | Store Address 2 | "PJU 6A, Lebuhraya SPRINT, 10 Boulevard,"
-<code>postCode</code> | String | Postcode of store | "47400"
-<code>city</code> | String | City of store | "Petaling Jaya"
-<code>state</code> | String | State of store | "Selangor"
-<code>country</code> | String | Country of store | "Malaysia"
-<code>countryCode</code> | String | Country code of store contact number | "60"
-<code>phoneNumber</code> | String | Phone number of store | "377334080"
-<code>geoLocation</code> | Object of [String] | Geo Location (latitude and longtitude) of store | {"Lat": 3.1349857, "Lng": 101.6136659 }
-<code>status</code> | String | Current status of store | "ACTIVE"
-<code>createdAt</code> | DateTime | Creation date time of store | "2018-02-12T08:53:13Z"
-<code>updatedAt</code> | DateTime | Last update date time of store | "2018-02-12T08:53:13Z"
+| Parameter                 | Type               | Description                                     | Example                                   |
+| ------------------------- | ------------------ | ----------------------------------------------- | ----------------------------------------- |
+| <code>id</code>           | String             | Store ID                                        | "6170506694335521334"                     |
+| <code>name</code>         | String             | Store Name                                      | "REVENUE MONSTER"                         |
+| <code>addressLine1</code> | String             | Store Address 1                                 | "B-5-30, 5th Floor, Block Bougainvillea," |
+| <code>addressLine2</code> | String             | Store Address 2                                 | "PJU 6A, Lebuhraya SPRINT, 10 Boulevard," |
+| <code>postCode</code>     | String             | Postcode of store                               | "47400"                                   |
+| <code>city</code>         | String             | City of store                                   | "Petaling Jaya"                           |
+| <code>state</code>        | String             | State of store                                  | "Selangor"                                |
+| <code>country</code>      | String             | Country of store                                | "Malaysia"                                |
+| <code>countryCode</code>  | String             | Country code of store contact number            | "60"                                      |
+| <code>phoneNumber</code>  | String             | Phone number of store                           | "377334080"                               |
+| <code>geoLocation</code>  | Object of [String] | Geo Location (latitude and longtitude) of store | {"Lat": 3.1349857, "Lng": 101.6136659 }   |
+| <code>status</code>       | String             | Current status of store                         | "ACTIVE"                                  |
+| <code>createdAt</code>    | DateTime           | Creation date time of store                     | "2018-02-12T08:53:13Z"                    |
+| <code>updatedAt</code>    | DateTime           | Last update date time of store                  | "2018-02-12T08:53:13Z"                    |
 
 <strong>Order object (`"order"`):</strong>
 
-Parameter | Type | Description | Example
---------- | ------- | ----------- | ---
-<code>id</code> | String | Order ID (from Merchant) | "134850717797247290"
-<code>title</code> | String | Order title | "Sales"
-<code>details</code> | String | Order details | "1 x iPhone X; 2 x SAMSUNG S8"
-<code>additionalData</code> | String | For merchant's remark | ""
-<code>currencyType</code> | String | Currency notation (currently only support MYR) | "MYR"
-<code>amount</code> | Uint | Amount of order | 100
+| Parameter                   | Type   | Description                                    | Example                        |
+| --------------------------- | ------ | ---------------------------------------------- | ------------------------------ |
+| <code>id</code>             | String | Order ID (from Merchant)                       | "134850717797247290"           |
+| <code>title</code>          | String | Order title                                    | "Sales"                        |
+| <code>details</code>        | String | Order details                                  | "1 x iPhone X; 2 x SAMSUNG S8" |
+| <code>additionalData</code> | String | For merchant's remark                          | ""                             |
+| <code>currencyType</code>   | String | Currency notation (currently only support MYR) | "MYR"                          |
+| <code>amount</code>         | Uint   | Amount of order                                | 100                            |
