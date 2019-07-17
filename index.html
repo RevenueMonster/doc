@@ -216,6 +216,11 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#rm-open-api" class="toc-h1 toc-link" data-title="RM - Open API">RM - Open API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#scenario-business-use-case" class="toc-h2 toc-link" data-title="Scenario / Business Use Case">Scenario / Business Use Case</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#quick-start-amp-sdk" class="toc-h1 toc-link" data-title="Quick Start &amp; SDK">Quick Start &amp; SDK</a>
@@ -288,6 +293,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-transaction-web-or-mobile-payment" class="toc-h2 toc-link" data-title="Create Transaction Web or Mobile Payment">Create Transaction Web or Mobile Payment</a>
+                  </li>
+                  <li>
+                    <a href="#get-individual-qr-code" class="toc-h2 toc-link" data-title="Get Individual QR Code">Get Individual QR Code</a>
                   </li>
               </ul>
           </li>
@@ -410,6 +418,9 @@
             <a href="#appendix-1-error-codes" class="toc-h1 toc-link" data-title="Appendix 1: Error Codes">Appendix 1: Error Codes</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#error-codes" class="toc-h2 toc-link" data-title="Error Codes">Error Codes</a>
+                  </li>
+                  <li>
                     <a href="#appedix-version-control" class="toc-h2 toc-link" data-title="Appedix: Version Control">Appedix: Version Control</a>
                   </li>
               </ul>
@@ -454,11 +465,11 @@
 
 <p>There are two services for our API (OAuth and Open API),both for sandbox and production environment. OAuth server is for authentication, Open API server is for core functions. You may test with sandbox endpoints before going production. You could self-signup for sandbox access and contact <a href="mailto:sandbox@revenuemonster.my">sandbox@revenuemonster.my</a> to activate your sandbox account.</p>
 
-<p><strong>Sandbox Environment: -</strong> 
+<p><strong>Sandbox Environment: -</strong>
 <br /><a href="https://sb-oauth.revenuemonster.my">https://sb-oauth.revenuemonster.my</a><br /> <a href="https://sb-open.revenuemonster.my">https://sb-open.revenuemonster.my</a></p>
 
-<p><strong>Production Environment: -</strong> 
-<br /><a href="https://oauth.revenuemonster.my">https://oauth.revenuemonster.my</a><br /> <a href="https://open.revenuemonster.my">https://open.revenuemonster.my</a> </p>
+<p><strong>Production Environment: -</strong>
+<br /><a href="https://oauth.revenuemonster.my">https://oauth.revenuemonster.my</a><br /> <a href="https://open.revenuemonster.my">https://open.revenuemonster.my</a></p>
 
 <p><strong>Before You Start</strong></p>
 
@@ -466,7 +477,39 @@
 
 <p>Submit all required documents as shown in our merchant portal and get approval from our admin. Should you need more assistance, please contact us at <a href="mailto:bd@revenuemonster.my">bd@revenuemonster.my</a>.</p>
 
-<p>Kindly go through <code>Signature Algorithm</code> to see our signing mechanism before proceed to call payment API endpoint(s). Payment API have higher security requirements than the rest. </p>
+<p>Kindly go through <code>Signature Algorithm</code> to see our signing mechanism before proceed to call payment API endpoint(s). Payment API have higher security requirements than the rest.</p>
+<h2 id='scenario-business-use-case'>Scenario / Business Use Case</h2>
+<p>For Merchant that using RM API to intergrate their E-Commerce platform :-</p>
+
+<p>Web Payment
+Mobile Payment
+Mobile Browser</p>
+
+<p>For Merchant that using Shop / Cafe :-</p>
+
+<p>Transaction QR</p>
+
+<ul>
+<li>Redirect URL (URL to redirect after payment is made)</li>
+<li>Notify URL (This is a notify URL or callback URL to inform server on transaction status after payment made.)</li>
+</ul>
+
+<p>QuickPay</p>
+
+<p>Intergrate for Vending Machine :-</p>
+
+<p>Transaction QR</p>
+
+<p>Intergrate Supermarket</p>
+
+<p>QuickPay
+( To make payments with Quick Pay. Merchant to scan user&#39;s wallet.</p>
+
+<ul>
+<li>Scope: manage_payment</li>
+<li>Authentication: Access token obtained from Generate Access Token into Authorization header value as Bearer [access_token].</li>
+<li>If merchant has not entered Webhook URL and/or Client Public Key in Merchant Portal, system will throw error as below: )</li>
+</ul>
 <h1 id='quick-start-amp-sdk'>Quick Start &amp; SDK</h1>
 <p>*Note: The following steps document the RESTful API. For language specific SDK(s), please refer to the <a href="https://doc.revenuemonster.my/#0f854ba3-9051-4747-83d7-c532392e07f0">SDK section</a>. need to change URL</p>
 
@@ -1618,9 +1661,12 @@ Parameter | Type | Required | Description | Example
 </tr>
 </tbody></table>
 <h1 id='payment-quickpay-qr'>Payment-Quickpay QR</h1>
-<p>Scenarios:<br>
-1. EDC/Smart Payment Terminal <br>
-2. POS(point-of-sales) Payment Integration</p>
+<p>Scenarios:<br></p>
+
+<ol>
+<li>EDC/Smart Payment Terminal <br></li>
+<li>POS(point-of-sales) Payment Integration</li>
+</ol>
 
 <p>To make payments with <code>Quick Pay</code>. Merchant to scan user&#39;s wallet.</p>
 
@@ -1648,7 +1694,7 @@ Parameter | Type | Required | Description | Example
 
 <!--============--->
 <h2 id='quick-pay'>Quick Pay</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/quickpay</code></p>
 
@@ -1664,9 +1710,9 @@ Parameter | Type | Required | Description | Example
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{  
+  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
    </span><span class="se">\"</span><span class="s2">authCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">151261311797136005</span><span class="se">\"</span><span class="s2">,
-   </span><span class="se">\"</span><span class="s2">order</span><span class="se">\"</span><span class="s2">:{  
+   </span><span class="se">\"</span><span class="s2">order</span><span class="se">\"</span><span class="s2">:{
       </span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">:100,
       </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">MYR</span><span class="se">\"</span><span class="s2">,
       </span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">12344333233404</span><span class="se">\"</span><span class="s2">,
@@ -1675,7 +1721,6 @@ Parameter | Type | Required | Description | Example
       </span><span class="se">\"</span><span class="s2">additonalData</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">API Test</span><span class="se">\"</span><span class="s2">
    },
    </span><span class="se">\"</span><span class="s2">ipAddress</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">175.143.101.229</span><span class="se">\"</span><span class="s2">,
-   </span><span class="se">\"</span><span class="s2">terminalId</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">19382734937293</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">storeId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">10946114768247530</span><span class="se">\"</span><span class="s2">
 }"</span><span class="w">
 </span></code></pre>
@@ -1819,13 +1864,6 @@ Parameter | Type | Required | Description | Example
 <td>&quot;&quot;</td>
 </tr>
 <tr>
-<td><code>currencyType</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>Currency notation (currently only support <code>MYR</code>)</td>
-<td>&quot;MYR&quot;</td>
-</tr>
-<tr>
 <td><code>amount</code></td>
 <td>Uint</td>
 <td>Yes</td>
@@ -1901,6 +1939,12 @@ Parameter | Type | Required | Description | Example
 <td>{&quot;userId&quot;: &quot;o74f0wjjzv9eKRu1fccrZswVFnOQ&quot;}</td>
 </tr>
 <tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Currency notation (currently only support <code>MYR</code>)</td>
+<td>&quot;MYR&quot;</td>
+</tr>
+<tr>
 <td><code>platform</code></td>
 <td>String</td>
 <td>Currently only support &quot;OPEN_API&quot;</td>
@@ -1909,8 +1953,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; , &quot;Gradpay&quot;</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2069,18 +2113,6 @@ Parameter | Type | Required | Description | Example
 <td>&quot;1 x iPhone X; 2 x SAMSUNG S8&quot;</td>
 </tr>
 <tr>
-<td><code>additionalData</code></td>
-<td>String</td>
-<td>For merchant&#39;s remark, max 128</td>
-<td>&quot;&quot;</td>
-</tr>
-<tr>
-<td><code>currencyType</code></td>
-<td>String</td>
-<td>Currency notation (currently only support <code>MYR</code>)</td>
-<td>&quot;MYR&quot;</td>
-</tr>
-<tr>
 <td><code>amount</code></td>
 <td>Uint</td>
 <td>Amount of order in cent (min RM 0.10 or amount: 10)</td>
@@ -2094,11 +2126,11 @@ Parameter | Type | Required | Description | Example
 
 <!--============--->
 <h2 id='refund'>Refund</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/refund</code></p>
 
-<p>Refund is to get funds returned to customer after settlement. (After money is settled to merchant.)</p>
+<p>Refund is to get funds returned to the customer after settlement. (After the money is settled to the merchant.)</p>
 
 <blockquote>
 <p>Example Request</p>
@@ -2314,8 +2346,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; , &quot;Gradpay&quot;</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2499,7 +2531,7 @@ Parameter | Type | Required | Description | Example
 
 <!--============--->
 <h2 id='reverse'>Reverse</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/reverse</code></p>
 
@@ -2597,7 +2629,7 @@ Parameter | Type | Required | Description | Example
     </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-30T10:37:24.376379089Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Transaction object (<code>&quot;item&quot;</code>):</strong></p>
 
@@ -2648,8 +2680,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; , &quot;Gradpay&quot;</td>
+<td>ALL</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2827,7 +2859,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </tbody></table>
 <h2 id='get-all-payment-transaction'>Get All Payment Transaction</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/transactions?limit=1</code></p>
 
@@ -2978,8 +3010,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>&quot;ALL&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3151,7 +3183,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </tbody></table>
 <h2 id='get-payment-by-transaction-id'>Get Payment By Transaction ID</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/transaction/1805260552060011600267</code></p>
 
@@ -3302,8 +3334,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>&quot;ALL&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3475,7 +3507,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </tbody></table>
 <h2 id='get-payment-transaction-by-order-id'>Get Payment Transaction By Order ID</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/transaction/order/190423044930300434571311</code></p>
 
@@ -3577,7 +3609,7 @@ Parameter | Type | Required | Description | Example
     </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-15T12:42:30Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Transaction object (<code>&quot;item&quot;</code>):</strong></p>
 
@@ -3628,8 +3660,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>&quot;ALL&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3801,7 +3833,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </tbody></table>
 <h2 id='daily-settlement-report'>Daily Settlement Report</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/settlement/csv</code></p>
 
@@ -3854,8 +3886,8 @@ Parameter | Type | Required | Description | Example
 <td><code>method</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>&quot;ALL&quot;</td>
 </tr>
 <tr>
 <td><code>region</code></td>
@@ -3948,8 +3980,8 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>&quot;ALL&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -4121,10 +4153,13 @@ Parameter | Type | Required | Description | Example
 </tr>
 </tbody></table>
 <h1 id='payment-transaction-qr'>Payment-Transaction QR</h1>
-<p>Scenarios:
-1. Wechat Official Account (OA) Payment
-2. Website QR Code online payment. Example, E-commerce website shows QR Code with an amount for user to scan with their Mobile wallet.
-3. Vending Machines / Sales Kiosk</p>
+<p>Scenarios:</p>
+
+<ol>
+<li>Wechat Official Account (OA) Payment</li>
+<li>Website QR Code online payment. Example, E-commerce website shows QR Code with an amount for user to scan with their Mobile wallet.</li>
+<li>Vending Machines / Sales Kiosk</li>
+</ol>
 
 <p>To make payment when user scan merchant&#39;s displayed QR code with mobile wallet.</p>
 
@@ -4160,7 +4195,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <!---=================================--->
 <h2 id='create-transaction-qr-code-or-url'>Create Transaction QR Code or URL</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/transaction/qrcode</code></p>
 
@@ -4176,7 +4211,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <th>Type</th>
 <th>Required</th>
 <th>Description</th>
-<th>Example</th>
+<th style="text-align: center">Example</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -4184,63 +4219,63 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td>Uint</td>
 <td>Yes</td>
 <td>Amount of order in cent. Only required when &quot;isPrefillAmount&quot; = true. (min RM 0.10 or amount: 10)</td>
-<td>100</td>
+<td style="text-align: center">100</td>
 </tr>
 <tr>
 <td><code>currencyType</code></td>
 <td>String</td>
 <td>Yes</td>
 <td>Currency notation (currently only support <code>MYR</code>)</td>
-<td>&quot;MYR&quot;</td>
+<td style="text-align: center">&quot;MYR&quot;</td>
 </tr>
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
 <td>No</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY&quot; and &quot;PRESTO&quot;. Default is all supported wallets.</td>
-<td>[&quot;WECHATPAY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td style="text-align: center">[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
 <td>Object</td>
 <td>No</td>
 <td>Object of expiry</td>
-<td>(Refer to explanation below)</td>
+<td style="text-align: center">(Refer to explanation below)</td>
 </tr>
 <tr>
 <td><code>order</code></td>
 <td>Object</td>
 <td>Yes</td>
 <td>Object of order</td>
-<td>(Refer to explanation below)</td>
+<td style="text-align: center">(Refer to explanation below)</td>
 </tr>
 <tr>
 <td><code>redirectUrl</code></td>
 <td>String</td>
 <td>No</td>
 <td>URL to redirect after payment is made. Default is &quot;&quot;.</td>
-<td>&quot;https://www.apple.com/my/iphone/&quot;</td>
+<td style="text-align: center">&quot;https://www.apple.com/my/iphone/&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
 <td>&quot;STATIC&quot; (for permanent use) or &quot;DYNAMIC&quot; (for one-time use)</td>
-<td>&quot;STATIC&quot;</td>
+<td style="text-align: center">&quot;STATIC&quot;</td>
 </tr>
 <tr>
 <td><code>storeId</code></td>
 <td>String</td>
 <td>Yes</td>
 <td>ID of the store to create QR code</td>
-<td>&quot;10946114768247530&quot;</td>
+<td style="text-align: center">&quot;10946114768247530&quot;</td>
 </tr>
 <tr>
 <td><code>isPreFillAmount</code></td>
 <td>Bool</td>
 <td>No</td>
 <td>To indicate QR code has pre-fill amount. Default is false. (i.e. Amount will be shown directly on user&#39;s wallet without keying-in)</td>
-<td>true</td>
+<td style="text-align: center">true</td>
 </tr>
 </tbody></table>
 
@@ -4318,9 +4353,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
     </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN_API"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"WECHATPAY"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WECHATPAY"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMANENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4449,8 +4482,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Currently only support &quot;WECHATPAY&quot; and &quot;PRESTO&quot;</td>
-<td>[&quot;WECHATPAY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -4664,7 +4697,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <!---=================================--->
 <h2 id='get-transaction-qr-code-url'>Get Transaction QR Code URL</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/transaction/qrcodes?order[]=-createdAt&amp;limit=1&amp;filter={&quot;type&quot;:&quot;STATIC&quot;, &quot;expiry.type&quot;: &quot;PERMANENT&quot;}</code></p>
 
@@ -4736,9 +4769,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
       </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORTAL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"WECHATPAY"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WECHATPAY"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMANENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4757,9 +4788,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
       </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORTAL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"WECHATPAY"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WECHATPAY"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMANENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4778,9 +4807,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
       </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
       </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORTAL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"WECHATPAY"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WECHATPAY"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMANENT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4848,8 +4875,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>[&quot;WECHATPAY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -4949,7 +4976,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <!---==================================--->
 <h2 id='get-transaction-qrcode-url-by-code'>Get Transaction QRCode URL By Code</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/transaction/qrcode/5413b4583a9440dd351b2dde0c0ea166</code></p>
 
@@ -5020,9 +5047,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
     </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORTAL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"WECHATPAY"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WECHATPAY"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMANENT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5086,8 +5111,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>[&quot;WECHATPAY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -5346,8 +5371,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot;</td>
-<td>&quot;WECHATPAY&quot;</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>error</code></td>
@@ -5507,10 +5532,11 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 </tr>
 </tbody></table>
 <h1 id='payment-checkout'>Payment-Checkout</h1>
-<p>*This feature is in Beta mode. Developers will be able to start development in sandbox environment. Please contact us at dev@revenuemonster.my if you would like to be a beta tester.</p>
+<p>Scenarios:</p>
 
-<p>Scenarios:
-1. E-commerce website payment checkout.</p>
+<ol>
+<li>E-commerce website payment checkout.</li>
+</ol>
 
 <p>To make payment with a unified payment checkout page.</p>
 
@@ -5529,7 +5555,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <p><code>https://sb-open.revenuemonster.my/v3/payment/online</code></p>
 
-<p>To create a unified payment checkout page for your website.</p>
+<p>To create a unified payment checkout page for your website and Mobile</p>
 
 <p><strong><em>REQUEST</em></strong></p>
 
@@ -5555,15 +5581,15 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>Yes</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY&quot;</td>
-<td>[&quot;WECHATPAY_MY&quot;]</td>
+<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY&quot;, &quot;WECHATPAY CN&quot;, &quot;Presto&quot;, &quot;Boost&quot;,&quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>[&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>&quot;STATIC&quot; (for permanent use) or &quot;DYNAMIC&quot; (for one-time use)</td>
-<td>&quot;STATIC&quot;</td>
+<td>Obejct of type</td>
+<td>(Refer to explanation below)</td>
 </tr>
 <tr>
 <td><code>storeId</code></td>
@@ -5588,6 +5614,31 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"{{open_base_path}}/v3/payment/online"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer {{clientToken}}"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: XAYZRZNLGCKSTURRFKBIGYALUKLCLJOG"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 YTTV0p1XJUllLNwAC/m430ZbteZhdBmUm3aVnKH4XEZU2yfl7liCPzEI40VqTwFcmMLByJ0mRyzc97gzVn1XZVIr1DaPpW3LUv/on82hIDhLue4uJzKg+vS8/CKJC4+SJ1NpL4rDQEg/hdq4mrNIckTN5+UCFbM4tLCDN8FanSoI3SxcfmvfBwuOc5ro4WWStJlr/LxLJWHRdI8ZpTc1gmNkzRKA9YXJI6iACrkg4cUtMkQ0nii9dHu+brKtK2gCtZ6kdPxgiykDlJuPcpHBGsG+wjNGXLxNeeZjbIl6m40dtdwwyiDbdsk/ZelN0J8Xw1rti7a7dHY/vNnN4W+tUA=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1547643342"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
+    </span><span class="se">\"</span><span class="s2">order</span><span class="se">\"</span><span class="s2">: {
+        </span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">hello</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">detail</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">hello</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">additionalData</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">world</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">: 100,
+        </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">13234353336</span><span class="se">\"</span><span class="s2">
+    },
+    </span><span class="se">\"</span><span class="s2">method</span><span class="se">\"</span><span class="s2">: [],
+    </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">WEB_PAYMENT</span><span class="se">\"</span><span class="s2">,
+    </span><span class="se">\"</span><span class="s2">storeId</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">977596145540933417</span><span class="se">\"</span><span class="s2">,
+    </span><span class="se">\"</span><span class="s2">redirectUrl</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">https://google.com</span><span class="se">\"</span><span class="s2">,
+    </span><span class="se">\"</span><span class="s2">notifyUrl</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">https://google.com</span><span class="se">\"</span><span class="s2">
+}"</span><span class="w">
+</span></code></pre>
 <p><strong>Order object (<code>&quot;order&quot;</code>):</strong></p>
 
 <table><thead>
@@ -5643,6 +5694,44 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 </tr>
 </tbody></table>
 
+<p><strong>Type Object (<code>&quot;type&quot;</code>):</strong> <br/></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>&quot;WEB_PAYMENT&quot; (Currenty for Web payment only support <strong>&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;</strong>)</td>
+<td>&quot;WEB_PAYMENT&quot;</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>&quot;MOBILE_PAYMENT&quot; (Currenty for Mobile payment only support <strong><br/>&quot;WECHATPAY_MY&quot;,&quot;BOOST_MY&quot;</strong>)</td>
+<td>&quot;MOBILE_PAYMENT&quot;</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"checkoutId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1548316308361173347"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sb-pg.revenuemonster.my/checkout?checkoutId=1548316308361173347"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong><em>RESPONSE</em></strong></p>
 
 <p><strong>Response Parameters:</strong></p>
@@ -5752,6 +5841,76 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <p><img src="images/webpayment.png" alt="images" />
 <img src="images/webpayment-1.png" alt="images" /></p>
+
+<!--======================--->
+
+<!--Get Individual QR Code --->
+
+<!--======================--->
+<h2 id='get-individual-qr-code'>Get Individual QR Code</h2>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
+
+<p><code>https://sb-open.revenuemonster.my/v3/payment/online/qrcode?checkoutId=1561390635417535731&amp;method=WECHATPAY_MY</code></p>
+
+<p><strong><em>REQUEST</em></strong></p>
+
+<p><strong>Request Parameters:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>checkoutId</code></td>
+<td>String</td>
+<td>Code to identify web payment url</td>
+<td>&quot;1547775958720585401&quot;</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>String</td>
+<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY &quot;,&quot;WECHATPAY CN&quot;,&quot;Presto&quot;, &quot;Boost&quot;,&quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>[&quot;WECHATPAY_MY&quot;]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"{{open_base_path}}/v3/payment/online/qrcode?checkoutId=1559485554334807004&amp;method=BOOST_MY"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer {{clientToken}}"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: XAYZRZNLGCKSTURRFKBIGYALUKLCLJOG"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 RLHmhe9pvCnM6wbp2UcQcyyjBXKbVhlbshaZqUBdgxqdnbM6WsmQuQL1PwhsF6/uOxoXtoXaLIi18zN0IQp5MdxNSiq+6MPLZqmPpiWyJSXpzZsUVst43tKp+JZDF8AWXesrol5vj1RVbxOvCfnkmfghA83mlKc4scXIJkqXpFdyKcRmjT6Bsu9nlMh5IdyBSKv3goatgso/4IsEi8R220ZSHp2Ai//g9iKrKG3cgspM2Uj74ZXIrzt8IB+660btXyoanMuqgqirl1ulj59KciqLKqQMYoHfRywJTH0XLDtV1fQHO1FAECwmMd91Y63acnH3BOxo023tF7AXwNASsg=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1547643342"</span><span class="w">
+</span></code></pre>
+<p><strong><em>RESPONSE</em></strong></p>
+
+<p><strong>Response Parameters:</strong></p>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"qrCodeImageBase64"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAABlBMVEX///8AAABVwtN+AAADOUlEQVR42uzdwW7bOhAF0Pj/f/ot3yZm7iWHaWCdu2oRC5BOAGo8Q7ZfIiIiIiIiIiIiIiIi8vo5b6/4/6/rj7y97LuPfHdXm3cKAAAAABlA+tP1Q7xFWX8ufYiTnwIAAADAjxe+XXnTxX79OJtvgf5OAQAAAOAWQMXz9rLgDt7+FAAAAAD+BMD6svX396DSPvllAAAAAMCFfkD6tT+lTV8U6SMCAAAAwNXJ0B/5078bjQEAAOAzAU5K5qAUTgdA1+8fAAAAALp+wPEeoaqx2fdXp9Z+AAAAPBsgXefTBwu+51cNhaBAn1IAAADAEwHS3Y3BR04q3uq9sX4tAQAAAMCF5fBEK91B2c/cR3sJAAAAeCJA0OzsewnpkL06WhO0BwAAAADgcCU86Wn299Cv5JdGSwAAAADwqp4uWNjTfd7BO+dmFwAAAADPBqjalNUpwHQRT5+kP7QIAAAAABeq4H5drg4jpj2CqYYwAAAAALz644H9JKcvhYNrR88MAQAA4IkAa5Sq9q0m2X2lPb8hAAAAAAC6LYn9hDp9nKrE3WwoAAAAAEDbGejvq9pLWQ3Ag18aAAAAAExMhtJpeXWqJt2Mno7b53eKAgAA4IkAfYmb7lU82fsYtEJ/uyECAACAzwQYPN237psGa3oqc7MhAgAAgIcBpEXs9JpeDY/mz8gAAAAAwNfmSp7ibXpM/0YAAAAAYKserorYqu0ZNDZvbg8HAAAAgKEOZdWw3NwoXp3SBgAAAIDZerjatd0X1OkpmOowIgAAAADsV8EVVFDnpn3O484AAAAAAMxulDx54mqZTrcbXdoeCQAAAADxN/l+iT8psn9ntyQAAAAAxP+/QHBfad0c1MPpBGl+pygAAACeA7BZMvenCk8G70EPFwAAAABeU0OhapLdt0zTidRmHwIAAAAADpui625BOqtO69x+0j6/XR4AAAAANorToBqtJuObu8rnGyIAAAAA0G0ASmWCWroaKI2WwgAAAAAQf51PnySoudMl/lIbGAAAAAB2/yX/dACU7umphuxTu4UAAAAAYGi6Hbwjqg7C+nZH5/4AAAB4LICIiIiIiIiIiIiIiIh8Vv4LAAD//+flU07X8QYtAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mywallet.wechatpay.com.my/app/pay/myw_order_idx.cgi?prepay_id=415613907510f1b0e0920320010983"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Example of the Indvidual QR Code</strong></p>
+
+<p>Decoder Base64 to Image <br/></p>
+
+<p><code>iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAABlBMVEX///8AAABVwtN+AAADOUlEQVR42uzdwW7bOhAF0Pj/f/ot3yZm7iWHaWCdu2oRC5BOAGo8Q7ZfIiIiIiIiIiIiIiIi8vo5b6/4/6/rj7y97LuPfHdXm3cKAAAAABlA+tP1Q7xFWX8ufYiTnwIAAADAjxe+XXnTxX79OJtvgf5OAQAAAOAWQMXz9rLgDt7+FAAAAAD+BMD6svX396DSPvllAAAAAMCFfkD6tT+lTV8U6SMCAAAAwNXJ0B/5078bjQEAAOAzAU5K5qAUTgdA1+8fAAAAALp+wPEeoaqx2fdXp9Z+AAAAPBsgXefTBwu+51cNhaBAn1IAAADAEwHS3Y3BR04q3uq9sX4tAQAAAMCF5fBEK91B2c/cR3sJAAAAeCJA0OzsewnpkL06WhO0BwAAAADgcCU86Wn299Cv5JdGSwAAAADwqp4uWNjTfd7BO+dmFwAAAADPBqjalNUpwHQRT5+kP7QIAAAAABeq4H5drg4jpj2CqYYwAAAAALz644H9JKcvhYNrR88MAQAA4IkAa5Sq9q0m2X2lPb8hAAAAAAC6LYn9hDp9nKrE3WwoAAAAAEDbGejvq9pLWQ3Ag18aAAAAAExMhtJpeXWqJt2Mno7b53eKAgAA4IkAfYmb7lU82fsYtEJ/uyECAACAzwQYPN237psGa3oqc7MhAgAAgIcBpEXs9JpeDY/mz8gAAAAAwNfmSp7ibXpM/0YAAAAAYKserorYqu0ZNDZvbg8HAAAAgKEOZdWw3NwoXp3SBgAAAIDZerjatd0X1OkpmOowIgAAAADsV8EVVFDnpn3O484AAAAAAMxulDx54mqZTrcbXdoeCQAAAADxN/l+iT8psn9ntyQAAAAAxP+/QHBfad0c1MPpBGl+pygAAACeA7BZMvenCk8G70EPFwAAAABeU0OhapLdt0zTidRmHwIAAAAADpui625BOqtO69x+0j6/XR4AAAAANorToBqtJuObu8rnGyIAAAAA0G0ASmWCWroaKI2WwgAAAAAQf51PnySoudMl/lIbGAAAAAB2/yX/dACU7umphuxTu4UAAAAAYGi6Hbwjqg7C+nZH5/4AAAB4LICIiIiIiIiIiIiIiIh8Vv4LAAD//+flU07X8QYtAAAAAElFTkSuQmCC</code></p>
+
+<p><img src="images/individualQRcode.png" alt="images" /> <br/> <br/>
+<img src="images/paymentCheckOut.png" alt="images" /></p>
 <h1 id='merchant'>Merchant</h1>
 <p>This is the section describing how to query merchant details.</p>
 
@@ -6384,14 +6543,14 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <!--==================--->
 <h2 id='get-store'>Get Store</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/stores</code></p>
 
 <p>To query for ALL stores under this merchant.</p>
 
 <blockquote>
-<p>Exxample Request </p>
+<p>Exxample Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/stores"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -6414,7 +6573,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <p><code>method=get&amp;nonceStr=VYNknZohxwicZMaWbNdBKUrnrxDtaRhN&amp;requestUrl=https://sb-open.revenuemonster.my/v3/stores&amp;signType=sha256&amp;timestamp=1527407052</code></p>
 
 <blockquote>
-<p>Example Respond </p>
+<p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -6657,6 +6816,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 
 <!--==================--->
 <h2 id='get-store-by-id'>Get Store By ID</h2>
+<p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
+
 <p><code>https://sb-open.revenuemonster.my/v3/store/10946114768247530</code></p>
 
 <h3>REQUEST</h3>
@@ -6689,27 +6850,27 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1553067214325776225"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Starbucks"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-prod-asset/img/store.png"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Berjaya Times Square,  Imbi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55100"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W.P. Kuala Lumpur"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malaysia"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.1421984</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.71055120000005</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-20T07:33:34Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-20T07:33:34Z"</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1553067214325776225"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Starbucks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-prod-asset/img/store.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Berjaya Times Square,  Imbi"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuala Lumpur"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"W.P. Kuala Lumpur"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malaysia"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.1421984</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">101.71055120000005</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-20T07:33:34Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-20T07:33:34Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -6842,7 +7003,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!--=============--->
 <h2 id='create-store'>Create Store</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/store</code></p>
 
@@ -7113,7 +7274,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!--==================--->
 <h2 id='update-store'>Update Store</h2>
-<p><strong>Method <span style="color:Gray" , bold ><code>PATC</code></span></strong> </p>
+<p><strong>Method <span style="color:Gray" , bold ><code>PATC</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/store/1662168764176583360</code></p>
 
@@ -7758,10 +7919,10 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </strong>
 </aside>
 <h1 id='loyalty-members'>Loyalty Members</h1><h2 id='get-loyalty-members'>Get Loyalty Members</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <blockquote>
-<p>Example Request </p>
+<p>Example Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/loyalty/members"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -7776,7 +7937,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p><code>https://sb-open.revenuemonster.my/v3/loyalty/members</code></p>
 
 <blockquote>
-<p>Example Respond </p>
+<p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -7907,7 +8068,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!--=============---->
 <h2 id='get-loyalty-member'>Get Loyalty Member</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <blockquote>
 <p>Example Request</p>
@@ -7925,7 +8086,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p><code>https://sb-open.revenuemonster.my/v3/loyalty/member/2940921291529816182</code></p>
 
 <blockquote>
-<p>Example Respond </p>
+<p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8003,7 +8164,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!--===============================---->
 <h2 id='get-loyalty-member-point-history'>Get Loyalty Member Point History</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/loyalty/member/2940921291529816182/history</code></p>
 
@@ -8021,7 +8182,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 }"</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Example Respond </p>
+<p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -8164,7 +8325,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tbody></table>
 
 <blockquote>
-<p>Example Respond </p>
+<p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -8198,11 +8359,42 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <aside> 
 <strong>
-{ 
-   <br>
-   <br>
-   <br> 
+{ <br/>
+   
+    "membrs": [{<br/>
+        "name": "testing 1",<br/>
+        "countryCode": "60",<br/>
+        "phoneNumber": "162228888",<br/>
+        "nric": "970503145887",<br/>
+        "email": "test@email.com",<br/>
+        "gender": "MALE",<br/>
+        "state": "",<br/>
+        "address": {<br/>
+          "addressLine1": "",<br/>
+          "addressLine2": "",<br/>
+          "postcode": "52100",<br/>
+          "city": "",<br/>
+          "country": ""<br/>
+         }<br/>
+        },<br/>
+        {<br/>
+        "name": "testing 2",<br/>
+        "countryCode": "60",<br/>
+        "phoneNumber": "162228880",<br/>
+        "nric": "970503145887",<br/>
+        "email": "test@email.com",<br/>
+        "gender": "MALE",<br/>
+        "state": "",<br/>
+        "address": {<br/>
+          "addressLine1": "",<br/>
+          "addressLine2": "",<br/>
+          "postcode": "52100",<br/>
+          "city": "",
+          "country": ""
+        }<br/>
+    }<br/>]<br/>
 }
+
 </strong>
 </aside>
 
@@ -10362,6 +10554,1855 @@ FYoXnrBAfH6awPTwVtECQC2LIuer+rYpCb8hYsWFksYQOV2rWrwQTXgDhmdRra7L</span><span cla
 <td>TemporaryUnAvailable:</td>
 <td>The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server</td>
 <td>Should this condition presists, please contact our customer support.</td>
+</tr>
+</tbody></table>
+<h2 id='error-codes'>Error Codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+<th>Error Message</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AlipayChinaNotActive:</td>
+<td>Alipay China is not active. Please contact Revenue Monster to activate merchant for alipay</td>
+<td>ALIPAY_CHINA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td></td>
+<td>AccessTokenReadFail:</td>
+<td>Cannot read access token file</td>
+</tr>
+<tr>
+<td>AccountFrozen:</td>
+<td>Your account has been frozen. Please contact support.</td>
+<td>ACCOUNT_FROZEN</td>
+</tr>
+<tr>
+<td>AccountInactive:</td>
+<td>User account is inactive</td>
+<td>ACCOUNT_INACTIVE</td>
+</tr>
+<tr>
+<td>AccountNotFound:</td>
+<td>Account does not exist</td>
+<td>ACCOUNT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>AccountSuspended:</td>
+<td>This account is temporarily locked</td>
+<td>ACCOUNT_SUSPENDED</td>
+</tr>
+<tr>
+<td>AgreementAlreadySigned:</td>
+<td>Agreement already signed</td>
+<td>AGREEMENT_ALREADY_SIGNED</td>
+</tr>
+<tr>
+<td>AgreementNotFound:</td>
+<td>Agreement not found</td>
+<td>AGREEMENT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>AgreementNotSigned:</td>
+<td>Agreement not signed</td>
+<td>AGREMENT_NOT_SIGNED</td>
+</tr>
+<tr>
+<td>AccessTokenFail:</td>
+<td>Fail to request access token</td>
+<td>ACCESS_TOKEN_FAIL</td>
+</tr>
+<tr>
+<td>AliPayClientDuplicate:</td>
+<td>Alipay client duplicate</td>
+<td>ALIPAY_CLIENT_DUPLICATE</td>
+</tr>
+<tr>
+<td>AlreadyMasterMerchant:</td>
+<td>Already master merchant</td>
+<td>ALREADY_MASTER_MERCHANT</td>
+</tr>
+<tr>
+<td>APIEndpointNotFound:</td>
+<td>The api endpoint does not exist</td>
+<td>API_ENDPOINT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>APIInactive:</td>
+<td>This API version is no longer active. Please migrate to API v3</td>
+<td>API_INACTIVE</td>
+</tr>
+<tr>
+<td>AuthCodeExpired:</td>
+<td>Customer code expired. Please scan again.</td>
+<td>AUTH_CODE_EXPIRED</td>
+</tr>
+<tr>
+<td>AuthCodeInvalid:</td>
+<td>Customer code expired. Please scan again.</td>
+<td>AUTH_CODE_INVALID</td>
+</tr>
+<tr>
+<td>AuthCodeMisMatch:</td>
+<td>Invalid Customer Code</td>
+<td>AUTH_CODE_MIS_MATCH</td>
+</tr>
+<tr>
+<td>AuthCodeUsed:</td>
+<td>Customer code already been used. Please refresh for another transaction.</td>
+<td>AUTH_CODE_USED</td>
+</tr>
+<tr>
+<td>AuthorizationHeaderNotAllowed:</td>
+<td>Authorization header is not allowed</td>
+<td>AUTHORIZATION_HEADER_NOT_ALLOWED</td>
+</tr>
+<tr>
+<td>BankError:</td>
+<td>Bank system error</td>
+<td>BANK_ERROR</td>
+</tr>
+<tr>
+<td>BoostMalaysiaNotActive:</td>
+<td>Boost Malaysia is not active. Please contact Revenue Monster to activate merchant for boost</td>
+<td>BOOST_MALAYSIA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>BusinessCategoryNotFound:</td>
+<td>Business category not found</td>
+<td>BUSINESS_CATEGORY_NOT_FOUND</td>
+</tr>
+<tr>
+<td>BuyerAccountError:</td>
+<td>Customer account error</td>
+<td>BUYER_ACCOUNT_ERROR</td>
+</tr>
+<tr>
+<td>BuyerAccountInActive:</td>
+<td>Customer account is inactive</td>
+<td>BUYER_ACCOUNT_IN_ACTIVE</td>
+</tr>
+<tr>
+<td>CampaignNotFound:</td>
+<td>Campaign not found</td>
+<td>CAMPAIGN_NOT_FOUND</td>
+</tr>
+<tr>
+<td>CannotUpdateSamePhoneNumber:</td>
+<td>Cannot update the same phone number</td>
+<td>CANNOT_UPDATE_SAME_PHONE_NUMBER</td>
+</tr>
+<tr>
+<td>ChopStampNotActive:</td>
+<td>Chop stamp not active</td>
+<td>CHOP_STAMP_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>ChopStampNotFound:</td>
+<td>Chop stamp not found</td>
+<td>CHOP_STAMP_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ChopStampQuantityExceed:</td>
+<td>Reached exceed number of chop stamp card</td>
+<td>CHOP_STAMP_QUANTITY_EXCEED</td>
+</tr>
+<tr>
+<td>ClientInvalid:</td>
+<td>Invalid client</td>
+<td>CLIENT_INVALID</td>
+</tr>
+<tr>
+<td>ClientNoPermission:</td>
+<td>Developer application does not have permission to access</td>
+<td>CLIENT_NO_PERMISSION</td>
+</tr>
+<tr>
+<td>ClientNotAuthorizeStore:</td>
+<td>Developer application not authorize user store</td>
+<td>CLIENT_NOT_AUTHORIZE_STORE</td>
+</tr>
+<tr>
+<td>ClientNotFound:</td>
+<td>Developer application client not found</td>
+<td>CLIENT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ClientNotSetPublicKey:</td>
+<td>Developer application does not set public key</td>
+<td>CLIENT_NOT_SET_PUBLIC_KEY</td>
+</tr>
+<tr>
+<td>ClientProductNotSetup:</td>
+<td>Developer application product not setup</td>
+<td>CLIENT_PRODUCT_NOT_SETUP</td>
+</tr>
+<tr>
+<td>ClientProductSubscribed:</td>
+<td>Developer application already subscribed to product</td>
+<td>CLIENT_PRODUCT_SUBSCRIBED</td>
+</tr>
+<tr>
+<td>CompanyTypeNotFound:</td>
+<td>Company type not found</td>
+<td>COMPANY_TYPE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>CustomerReachedTransactionLimit:</td>
+<td>Customer reached transaction limit</td>
+<td>CUSTOMER_REACHED_TRANSACTION_LIMIT</td>
+</tr>
+<tr>
+<td>DailyPaymentExceeded:</td>
+<td>Daily payment limit exceeded</td>
+<td>DAILY_PAYMENT_EXCEEDED</td>
+</tr>
+<tr>
+<td>DailyReceiveExceeded:</td>
+<td>Daily payment limit exceeded</td>
+<td>DAILY_RECEIVED_EXCEEDED</td>
+</tr>
+<tr>
+<td>DefaultStoreDeleteNotAllowed:</td>
+<td>Default store not allowed to delete</td>
+<td>DEFAULT_STORE_DELETE_NOT_ALLOWED</td>
+</tr>
+<tr>
+<td>DoesNotAllowMultipleBatchProcessing:</td>
+<td>Does not allow multiple batch processing</td>
+<td>DOES_NOT_ALLOW_MULTIPLE_BATCH_PROCESSING</td>
+</tr>
+<tr>
+<td>DoesNotHaveActiveWallet:</td>
+<td>Does not have active wallet. Please contact Revenue Monster to activate wallet</td>
+<td>DOES_NOT_HAVE_ACTIVE_WALLET</td>
+</tr>
+<tr>
+<td>EmailDuplicate:</td>
+<td>Email address already exists</td>
+<td>EMAIL_DUPLICATE</td>
+</tr>
+<tr>
+<td>EmailNotFound:</td>
+<td>Email address not found</td>
+<td>EMAIL_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ExceededLimit:</td>
+<td>Rate limit exceeded</td>
+<td>EXCEEDED_LIMIT</td>
+</tr>
+<tr>
+<td>ExceedTimeForReverseTransaction:</td>
+<td>Exceed time for transaction to reverse</td>
+<td>EXCEED_TIME_FOR_REVERSE_TRANSACTION</td>
+</tr>
+<tr>
+<td>ExpiryInvalid:</td>
+<td>Invalid expiry type</td>
+<td>EXPIRY_INVALID</td>
+</tr>
+<tr>
+<td>ExpiryMin:</td>
+<td>Min expiry day</td>
+<td>EXPIRY_MIN</td>
+</tr>
+<tr>
+<td>FailedToReverseOrder:</td>
+<td>Failed to reverse order</td>
+<td>FAILED_TO_REVERSE_ORDER</td>
+</tr>
+<tr>
+<td>FileNotFound:</td>
+<td>File not found</td>
+<td>FILE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>GenericTemplateInvalid:</td>
+<td>Invalid generic template</td>
+<td>GENERIC_TEMPLATE_INVALID</td>
+</tr>
+<tr>
+<td>GrabPayMalaysiaMerchantIDNotSet:</td>
+<td>GrabPay Malaysia is not active. Please contact Revenue Monster to activate merchant for GrabPay</td>
+<td>GRABPAY_MALAYSIA_MERCHANT_ID_NOT_SET</td>
+</tr>
+<tr>
+<td>GrabPayMalaysiaNotActive:</td>
+<td>GrabPay Malaysia is not active. Please contact Revenue Monster to activate merchant for GrabPay</td>
+<td>GRABPAY_MALAYSIA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>GrantTypeInvalid:</td>
+<td>Invalid grant type</td>
+<td>GRANT_TYPE_INVALID</td>
+</tr>
+<tr>
+<td>InSufficientCardBalance:</td>
+<td>Insuﬃcient customer balance</td>
+<td>INSUFFICIENT_CARD_BALANCE</td>
+</tr>
+<tr>
+<td>InSufficientLoyaltyBalance:</td>
+<td>Insuffience loyalty balance</td>
+<td>INSUFFICIENT_LOYALTY_BALANCE</td>
+</tr>
+<tr>
+<td>InSufficientMerchantBalance:</td>
+<td>Insuﬃcient merchant balance</td>
+<td>INSUFFICIENT_MERCHANT_BALANCE</td>
+</tr>
+<tr>
+<td>InSufficientPermissionLevel:</td>
+<td>Insufficient Permission</td>
+<td>INSUFFICIENT_PERMISSION_LEVEL</td>
+</tr>
+<tr>
+<td>InSufficientRefundAmount:</td>
+<td>Insufficient refund amount</td>
+<td>INSUFFICIENT_REFUND_AMOUNT</td>
+</tr>
+<tr>
+<td>InternalError:</td>
+<td>Internal error</td>
+<td>INTERNAL_ERROR</td>
+</tr>
+<tr>
+<td>InvalidAgreementVersion:</td>
+<td>Invalid Agreement Version</td>
+<td>INVALID_AGREEMENT_VERSION</td>
+</tr>
+<tr>
+<td>InvalidAppID:</td>
+<td>Invalid parameters</td>
+<td>INVALID_APP_ID</td>
+</tr>
+<tr>
+<td>InvalidCharset:</td>
+<td>Invalid format</td>
+<td>INVALID_CHARSET</td>
+</tr>
+<tr>
+<td>InvalidClient:</td>
+<td>Invalid client</td>
+<td>INVALID_CLIENT</td>
+</tr>
+<tr>
+<td>InvalidEncryption:</td>
+<td>Invalid encryption</td>
+<td>INVALID_ENCRYPTION</td>
+</tr>
+<tr>
+<td>InvalidFile:</td>
+<td>Invalid file</td>
+<td>INVALID_FILE</td>
+</tr>
+<tr>
+<td>InvalidFormat:</td>
+<td>Invalid format</td>
+<td>INVALID_FORMAT</td>
+</tr>
+<tr>
+<td>InvalidHTTPMethod:</td>
+<td>Invalid HTTP Method</td>
+<td>INVALID_HTTP_METHOD</td>
+</tr>
+<tr>
+<td>InvalidID:</td>
+<td>Invalid id</td>
+<td>INVALID_ID</td>
+</tr>
+<tr>
+<td>InvalidImageDimension:</td>
+<td>Invalid Image Dimension</td>
+<td>INVALID_IMAGE_DIMENSION</td>
+</tr>
+<tr>
+<td>InvalidLoyaltyCreditCode:</td>
+<td>Invalid loyalty credit code</td>
+<td>INVALID_LOYALTY_CREDIT_CODE</td>
+</tr>
+<tr>
+<td>InvalidOTPCode:</td>
+<td>Invalid otp code</td>
+<td>INVALID_OTP_CODE</td>
+</tr>
+<tr>
+<td>InvalidParameter:</td>
+<td>Invalid parameters</td>
+<td>INVALID_PARAMETER</td>
+</tr>
+<tr>
+<td>InvalidParameterID:</td>
+<td>Invalid parameter id</td>
+<td>INVALID_PARAMETER_ID</td>
+</tr>
+<tr>
+<td>InvalidPaymentSubscriptionMethod:</td>
+<td>Invalid payment subscription method</td>
+<td>INVALID_PAYMENT_SUBSCRIPTION_METHOD</td>
+</tr>
+<tr>
+<td>InvalidPrivateKey:</td>
+<td>Invalid private key</td>
+<td>INVALID_PRIVATE_KEY</td>
+</tr>
+<tr>
+<td>InvalidPublicKey:</td>
+<td>Invalid public key</td>
+<td>INVALID_PUBLIC_KEY</td>
+</tr>
+<tr>
+<td>InvalidRequest:</td>
+<td>Invalid request</td>
+<td>INVALID_REQUEST</td>
+</tr>
+<tr>
+<td>InvalidRequestSignature:</td>
+<td>The request signature is invalid</td>
+<td>INVALID_REQUEST_SIGNATURE</td>
+</tr>
+<tr>
+<td>InvalidScope:</td>
+<td>Invalid scope</td>
+<td>INVALID_SCOPE</td>
+</tr>
+<tr>
+<td>InvalidSignature:</td>
+<td>Invalid signature</td>
+<td>INVALID_SIGNATURE</td>
+</tr>
+<tr>
+<td>InvalidTerminalToken:</td>
+<td>Invalid terminal token</td>
+<td></td>
+</tr>
+<tr>
+<td>InvalidTimestamp:</td>
+<td>Could not authenticate - Timestamp</td>
+<td>INVALID_TIMESTAMP</td>
+</tr>
+<tr>
+<td>KeywordDuplicate:</td>
+<td>Duplicate keyword</td>
+<td>KEYWORD_DUPLICATE</td>
+</tr>
+<tr>
+<td>KeywordKeyInvalid:</td>
+<td>Invalid keyword key</td>
+<td>KEYWORD_KEY_INVALID</td>
+</tr>
+<tr>
+<td>KeywordNotFound:</td>
+<td>Keyword not found</td>
+<td>KEYWORD_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ListTemplateInvalid:</td>
+<td>Invalid list template</td>
+<td>LIST_TEMPLATE_INVALID</td>
+</tr>
+<tr>
+<td>LoyaltyBatchAlreadyGenerateCSV:</td>
+<td>Loyalty batch already generate csv</td>
+<td>LOYALTY_BATCH_ALREADY_GENERATE_CSV</td>
+</tr>
+<tr>
+<td>LoyaltyBatchAlreadyZip:</td>
+<td>Loyalty batch already zip</td>
+<td>LOYALTY_BATCH_ALREADY_ZIP</td>
+</tr>
+<tr>
+<td>LoyaltyBirthdayFieldNotRequired:</td>
+<td>Birth date field not required</td>
+<td>LOYALTY_BIRTHDAY_FIELD_NOT_REQUIRED</td>
+</tr>
+<tr>
+<td>LoyaltyCreditNotEnabled:</td>
+<td>Loyalty credit not enable</td>
+<td>LOYALTY_CREDIT_NOT_ENABLED</td>
+</tr>
+<tr>
+<td>LoyaltyExpired:</td>
+<td>Loyalty point expired</td>
+<td>LOYALTY_EXPIRED</td>
+</tr>
+<tr>
+<td>LoyaltyGenerateError:</td>
+<td>Error in generating loyalty point</td>
+<td>LOYALTY_GENERATE_ERROR</td>
+</tr>
+<tr>
+<td>LoyaltyInsufficient:</td>
+<td>Insufficient point</td>
+<td>LOYALTY_INSUFFICIENT</td>
+</tr>
+<tr>
+<td>LoyaltyMemberRegistrationTooMany:</td>
+<td>length of entity too large</td>
+<td>LOYALTY_MEMBER_REGISTRATION_TOO_MANY</td>
+</tr>
+<tr>
+<td>LoyaltyNotCorrectFormat:</td>
+<td>Loyalty not correct format</td>
+<td>LOYALTY_NOT_CORRECT_FORMAT</td>
+</tr>
+<tr>
+<td>LoyaltyNotFound:</td>
+<td>Loyalty not found</td>
+<td>LOYALTY_NOT_FOUND</td>
+</tr>
+<tr>
+<td>LoyaltyNotMerchant:</td>
+<td>Loyalty not belongs to merchant</td>
+<td>LOYALTY_NOT_MERCHANT</td>
+</tr>
+<tr>
+<td>LoyaltyNotSubscribed:</td>
+<td>Not subscribed to loyalty</td>
+<td>LOYALTY_NOT_SUBSCRIBED</td>
+</tr>
+<tr>
+<td>LoyaltyPointAlreadyRedeemed:</td>
+<td>Loyalty point already redeemed</td>
+<td>LOYALTY_POINT_ALREADY_REDEEMED</td>
+</tr>
+<tr>
+<td>LoyaltyPointIsProcessing:</td>
+<td>Loyalty point is proccessing</td>
+<td>LOYALTY_POINT_IS_PROCESSING</td>
+</tr>
+<tr>
+<td>LoyaltyPointMissing:</td>
+<td>Loyalty point missing for certain custom id</td>
+<td>LOYALTY_POINT_MISSING</td>
+</tr>
+<tr>
+<td>LoyaltyQuantityMax:</td>
+<td>Exceeded maximum quantity</td>
+<td>LOYALTY_QUANTITY_MAX</td>
+</tr>
+<tr>
+<td>LoyaltySpendingNotAllowed:</td>
+<td>Loyalty spending not allowed</td>
+<td>LOYALTY_SPENDING_NOT_ALLOWED</td>
+</tr>
+<tr>
+<td>LoyaltySpendingNotFound:</td>
+<td>Loyalty spending not found</td>
+<td>LOYALTY_SPENDING_NOT_FOUND</td>
+</tr>
+<tr>
+<td>LoyaltySseError:</td>
+<td>Error in SSE</td>
+<td>LOYALTY_SSE_ERROR</td>
+</tr>
+<tr>
+<td>LoyaltyStatusError:</td>
+<td>Error in updating status</td>
+<td>LOYALTY_STATUS_ERROR</td>
+</tr>
+<tr>
+<td>MarketPlaceVoucherAlreadyRequested:</td>
+<td>Marketplace voucher already requested</td>
+<td>MARKET_PLACE_VOUCHER_ALREADY_REQUESTED</td>
+</tr>
+<tr>
+<td>MarketPlaceVoucherExceedQuantity:</td>
+<td>Marketplace voucher exceed quantity</td>
+<td>MARKET_PLACE_VOUCHER_EXCEED_QUANTITY</td>
+</tr>
+<tr>
+<td>MarketPlaceVoucherNotFound:</td>
+<td>Marketplace voucher not found</td>
+<td>MARKET_PLACE_VOUCHER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MasterMerchantCannotSameMerchant:</td>
+<td>Master merchant cannot be your own</td>
+<td>MASTER_MERCHANT_CANNOT_SAME_MERCHANT</td>
+</tr>
+<tr>
+<td>MasterMerchantNotSubscribe:</td>
+<td>Master Merchant not subscribed to this product</td>
+<td>MASTER_MERCHANT_NOT_SUBSCRIBE</td>
+</tr>
+<tr>
+<td>MasterMerchantSubscriptionExpired:</td>
+<td>Master Merchant subscription expired</td>
+<td>MASTER_MERCHANT_SUBSCRIPTION_EXPIRED</td>
+</tr>
+<tr>
+<td>MasterMerchantSubscriptionNotActive:</td>
+<td>Master merchant subscription not active</td>
+<td>MASTER_MERCHANT_SUBSCRIPTION_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>MaxValue:</td>
+<td>Account update failed: value is too long (maximum is n characters)</td>
+<td>MAX_VALUE</td>
+</tr>
+<tr>
+<td>MaxValueMemberTier:</td>
+<td>Reach maximum limit for member tier</td>
+<td>MAX_VALUE_MEMBER_TIER</td>
+</tr>
+<tr>
+<td>MaxValueRole:</td>
+<td>Reach maximum limit for creating Role</td>
+<td>MAX_VALUE_ROLE</td>
+</tr>
+<tr>
+<td>MaybankFailToCancelled:</td>
+<td>Maybank fail to cancelled</td>
+<td>MAYBANK_FAIL_TO_CANCELLED</td>
+</tr>
+<tr>
+<td>MaybankKeyExpired:</td>
+<td>Maybank key expired</td>
+<td>MAYBANK_KEY_EXPIRED</td>
+</tr>
+<tr>
+<td>MaybankKeyNotFound:</td>
+<td>Maybank key not found</td>
+<td>MAYBANK_KEY_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MaybankMalaysiaMerchantIDNotSet:</td>
+<td>Maybank Malaysia is not active. Please contact Revenue Monster to activate merchant for maybank</td>
+<td>MAYBANKA_MALAYSIA_MERCHANT_ID_NOT_SET</td>
+</tr>
+<tr>
+<td>MaybankMalaysiaNotActive:</td>
+<td>Maybank Malaysia is not active. Please contact Revenue Monster to activate merchant for maybank</td>
+<td>MAYBANK_MALAYSIA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>MemberNotFound:</td>
+<td>Member not found</td>
+<td>MEMBER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MemberNotMerchant:</td>
+<td>Member not belongs to merchant</td>
+<td>MEMBER_NOT_MERCHANT</td>
+</tr>
+<tr>
+<td>MemberParentInvalid:</td>
+<td>Invalid member parent</td>
+<td>MEMBER_PARENT_INVALID</td>
+</tr>
+<tr>
+<td>MemberRegistered:</td>
+<td>Member already registered</td>
+<td>MEMBER_REGISTERED</td>
+</tr>
+<tr>
+<td>MemberTierMax:</td>
+<td>Reached max member tier</td>
+<td>MEMBER_TIER_MAX</td>
+</tr>
+<tr>
+<td>MemberTierNotFound:</td>
+<td>Member Tier not found</td>
+<td>MEMBER_TIER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MenuInvalid:</td>
+<td>Invalid Menu</td>
+<td>MENU_INVALID</td>
+</tr>
+<tr>
+<td>MerchantChopStampExpired:</td>
+<td>Merchant chop stamp event is expired</td>
+<td>MERCHANT_CHOP_STAMP_EXPIRED</td>
+</tr>
+<tr>
+<td>MerchantChopStampNotFound:</td>
+<td>Merchant chop stamp event not found</td>
+<td>MERCHANT_CHOP_STAMP_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MerchantChopStampNotStarted:</td>
+<td>Merchant chop stamp event not started</td>
+<td>MERCHANT_CHOP_STAMP_NOT_STARTED</td>
+</tr>
+<tr>
+<td>MerchantGalleryNotFound:</td>
+<td>Merchant gallery not found</td>
+<td>MERCHANT_GALLERY_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MerchantIDInvalid:</td>
+<td>Invalid merchant id</td>
+<td>MERCHANT_ID_INVALID</td>
+</tr>
+<tr>
+<td>MerchantInactive:</td>
+<td>Merchant account is inactive</td>
+<td>MERCHANT_INACTIVE</td>
+</tr>
+<tr>
+<td>MerchantKeyInvalid:</td>
+<td>Invalid merchant key</td>
+<td>MERCHANT_KEY_INVALID</td>
+</tr>
+<tr>
+<td>MerchantMDRNotSet:</td>
+<td>Merchant mdr not set. Please contact Revenue Monster to set.</td>
+<td>MERCHANT_MDR_NOT_SET</td>
+</tr>
+<tr>
+<td>MerchantNotActive:</td>
+<td>Merchant not active</td>
+<td>MERCHANT_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>MerchantNotFound:</td>
+<td>Merchant not found</td>
+<td>MERCHANT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MerchantNotHaveMasterMerchant:</td>
+<td>Merchant not have master merchant</td>
+<td>MERCHANT_NOT_HAVE_MASTER_MERCHANT</td>
+</tr>
+<tr>
+<td>MerchantNotHavePartner:</td>
+<td>Merchant does not have partner</td>
+<td>MERCHANT_NOT_HAVE_PARTNER</td>
+</tr>
+<tr>
+<td>MerchantNotSame:</td>
+<td>Merchant not same</td>
+<td>MERCHANT_NOT_SAME</td>
+</tr>
+<tr>
+<td>MerchantNotSetup:</td>
+<td>Merchant not setup</td>
+<td>MERCHANT_NOT_SETUP</td>
+</tr>
+<tr>
+<td>MerchantRequestedJoin:</td>
+<td>Merchant already requested for join as sub merchant</td>
+<td>MERCHANT_REQUESTED_JOIN</td>
+</tr>
+<tr>
+<td>MerchantRequestedJoinNotFound:</td>
+<td>Merchant join request not found</td>
+<td>MERCHANT_REQUESTED_JOIN_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MerchantSuspended:</td>
+<td>Merchant suspended</td>
+<td>MERCHANT_SUSPENDED</td>
+</tr>
+<tr>
+<td>MerchantVerified:</td>
+<td>Merchant profile is verified</td>
+<td>MERCHANT_VERIFIED</td>
+</tr>
+<tr>
+<td>MessageTypeNotFound:</td>
+<td>Message type not found</td>
+<td>MESSAGE_TYPE_NOT_FUND</td>
+</tr>
+<tr>
+<td>MessengerAccountExists:</td>
+<td>Messenger account already exist</td>
+<td>MESSENGER_ACCOUNT_EXISTS</td>
+</tr>
+<tr>
+<td>MessengerCodeExpired:</td>
+<td>Messenger code expired</td>
+<td>MESSENGER_CODE_EXPIRED</td>
+</tr>
+<tr>
+<td>MessengerInvalidToken:</td>
+<td>Invalid messenger token</td>
+<td>MESSENGER_INVALID_TOKEN</td>
+</tr>
+<tr>
+<td>MessengerMemberDuplicate:</td>
+<td>Messenger member registered</td>
+<td>MESSENGER_MEMBER_DUPLICATE</td>
+</tr>
+<tr>
+<td>MessengerOwnerAllowConnect:</td>
+<td>Only messenger owner allowed to connect</td>
+<td>MESSENGER_OWNER_ALLOW_CONNECT</td>
+</tr>
+<tr>
+<td>MessengerOwnerInvalid:</td>
+<td>Invalid messenger owner</td>
+<td>MESSENGER_OWNER_INVALID</td>
+</tr>
+<tr>
+<td>MessengerPageDuplicate:</td>
+<td>Duplicate messenger page</td>
+<td>MESSENGER_PAGE_DUPLICATE</td>
+</tr>
+<tr>
+<td>MessengerPageNotFound:</td>
+<td>Messenger page not found</td>
+<td>MESSENGER_PAGE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MethodNotAllowed:</td>
+<td>Method not allowed</td>
+<td>METHOD_NOT_ALLOWED</td>
+</tr>
+<tr>
+<td>MinimumAmountRequired:</td>
+<td>Minimum amount should be 10sen</td>
+<td>MINIMUM_AMOUNT_REQUIRED</td>
+</tr>
+<tr>
+<td>MinPtsDuplicate:</td>
+<td>Min point exists in member tier</td>
+<td>Min_PTS_DUPLICATE</td>
+</tr>
+<tr>
+<td>MoneyPacketExpired:</td>
+<td>Money packet is expired</td>
+<td>MONEY_PACKET_EXPIRED</td>
+</tr>
+<tr>
+<td>MoneyPacketNotFound:</td>
+<td>Money packet not found</td>
+<td>MONEY_PACKET_NOT_FOUND</td>
+</tr>
+<tr>
+<td>MoneyPacketRedeemed:</td>
+<td>Money packet redeemed</td>
+<td>MONEY_PACKET_NOT_REDEEMED</td>
+</tr>
+<tr>
+<td>NineGridMerchantNotAllowPayment:</td>
+<td>Nine grid not allow to make payment</td>
+<td>NINE_GRID_MERCHANT_NOT_ALLOW_PAYMENT</td>
+</tr>
+<tr>
+<td>NoAccess:</td>
+<td>This application is not allowed to access</td>
+<td>NO_ACCESS</td>
+</tr>
+<tr>
+<td>NoAppID:</td>
+<td>Missing parameter</td>
+<td>NO_APP_ID</td>
+</tr>
+<tr>
+<td>NoMerchantID:</td>
+<td>Missing parameter</td>
+<td>NO_MERCHANT_ID</td>
+</tr>
+<tr>
+<td>NoMethod:</td>
+<td>Missing parameter</td>
+<td>NO_METHOD</td>
+</tr>
+<tr>
+<td>NotAllowDeleteApprovedJoinRequest:</td>
+<td>Not allow delete join request</td>
+<td>NOT_ALLOW_DELETE_APPROVED_JOIN_REQUEST</td>
+</tr>
+<tr>
+<td>NotAllowLinkProduction:</td>
+<td>Not allow link for production</td>
+<td>NOT_ALLOW_LINK_PRODUCTION</td>
+</tr>
+<tr>
+<td>NotAllowRefund:</td>
+<td>Refunded not allowed</td>
+<td>NOT_ALLOW_REFUND</td>
+</tr>
+<tr>
+<td>NotAuth:</td>
+<td>Could not authenticate</td>
+<td>NOT_AUTH</td>
+</tr>
+<tr>
+<td>NotAuthorizeUserStore:</td>
+<td>Not authorize user store</td>
+<td>NOT_AUTHORIZE_USER_STORE</td>
+</tr>
+<tr>
+<td>NotMasterMerchant:</td>
+<td>Not a master merchant</td>
+<td>NOT_MASTER_MERCHANT</td>
+</tr>
+<tr>
+<td>NotMasterMerchantAccount:</td>
+<td>Not a master merchant account</td>
+<td>NOT_MASTER_MERCHANT_ACCOUNT</td>
+</tr>
+<tr>
+<td>NotNineGridMerchant:</td>
+<td>Not a nine grid merchant</td>
+<td>NOT_NINER_GRID_MERCHANT</td>
+</tr>
+<tr>
+<td>NotPartnerAccount:</td>
+<td>Not a partner account</td>
+<td>NOT_PARTNER_ACCOUNT</td>
+</tr>
+<tr>
+<td>NotPermitted:</td>
+<td>Not permitted to perform this action.</td>
+<td>NOT_PERMITTED</td>
+</tr>
+<tr>
+<td>NotSubscribe:</td>
+<td>Merchant not subscribed to this product</td>
+<td>NOT_SUBSCRIBE</td>
+</tr>
+<tr>
+<td>NotTerminalTransaction:</td>
+<td>Transaction not allowed for different using different terminal</td>
+<td>NOT_TERMNAL_TRANSACTION</td>
+</tr>
+<tr>
+<td>NotUserStore:</td>
+<td>Not user store</td>
+<td>NOT_USER_STORE</td>
+</tr>
+<tr>
+<td>OldPwInvalid:</td>
+<td>Invalid old password</td>
+<td>OLD_PW_INVALID</td>
+</tr>
+<tr>
+<td>OnlyFreeTierPlugin:</td>
+<td>Only free tier plugin</td>
+<td>ONLY_FREE_TIER_PLUGIN</td>
+</tr>
+<tr>
+<td>OnlyOwnerAllowForEAgreement:</td>
+<td>Only owner allow see e agreement</td>
+<td>ONLY_OWNER_ALLOW_FOR_E_AGREEMENT</td>
+</tr>
+<tr>
+<td>OpenIDFail:</td>
+<td>Fail to request open ID</td>
+<td>OPEN_FAIL</td>
+</tr>
+<tr>
+<td>OrderCancelled:</td>
+<td>Order error</td>
+<td>ORDDR_CANCELLED</td>
+</tr>
+<tr>
+<td>OrderClosed:</td>
+<td>Order error</td>
+<td>ORDER_CLOSED</td>
+</tr>
+<tr>
+<td>OrderIDDuplicate:</td>
+<td>Order id duplicate</td>
+<td>ORDER_ID_DUPLICATE</td>
+</tr>
+<tr>
+<td>OrderNotExist:</td>
+<td>Order error</td>
+<td>ORDER_NOT_EXIST</td>
+</tr>
+<tr>
+<td>OrderNotPaid:</td>
+<td>Order not paid</td>
+<td>ORDER_NOT_PAID</td>
+</tr>
+<tr>
+<td>OrderPaid:</td>
+<td>Order is paid</td>
+<td>ORDER_PAID</td>
+</tr>
+<tr>
+<td>OriginInvalid:</td>
+<td>Invalid origin type</td>
+<td>ORIGIN_INVALID</td>
+</tr>
+<tr>
+<td>Overload:</td>
+<td>Over capacity</td>
+<td>OVERLOAD</td>
+</tr>
+<tr>
+<td>OwnerNotAllowedCreate:</td>
+<td>Create owner not allowed</td>
+<td>OWNER_NOT_ALLOWED_CREATE</td>
+</tr>
+<tr>
+<td>OwnerNotAllowedDelete:</td>
+<td>Delete owner is not allowed</td>
+<td>OWNER_NOT_ALLOWED_DELETE</td>
+</tr>
+<tr>
+<td>OwnerNotAllowedUpdate:</td>
+<td>Update owner is not allowed</td>
+<td>OWNER_NOT_ALLOWED_UPDATE</td>
+</tr>
+<tr>
+<td>PageNotFound:</td>
+<td>Sorry</td>
+<td></td>
+</tr>
+<tr>
+<td>PartnerMDRNotSet:</td>
+<td>Partner mdr is not set. Please contact Revenue Monster to set the partner mdr</td>
+<td>PARTNER_MDR_NOT_SET</td>
+</tr>
+<tr>
+<td>PartnerNotFound:</td>
+<td>Partner not found</td>
+<td>PARTNER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>PartnerNotSame:</td>
+<td>Partner not same</td>
+<td>PARTNER_NOT_SAME</td>
+</tr>
+<tr>
+<td>PasswordInvalid:</td>
+<td>Email address or password is wrong</td>
+<td>PASSWORD_IVALID</td>
+</tr>
+<tr>
+<td>PasswordNotStrength:</td>
+<td>Password not strength</td>
+<td>PASSWORD_NOT_STRENGTH</td>
+</tr>
+<tr>
+<td>PasswordRequired:</td>
+<td>Pending customer password</td>
+<td>PASSWORD_REQUIRED</td>
+</tr>
+<tr>
+<td>PaymentAmtInvalid:</td>
+<td>Invalid amount format</td>
+<td>PAYMENT_AMT_INVALID</td>
+</tr>
+<tr>
+<td>PaymentCurrencyInvalid:</td>
+<td>Payment currency is invalid</td>
+<td>PAYMENT_CURRENCY_INVALID</td>
+</tr>
+<tr>
+<td>PaymentDecimalInvalid:</td>
+<td>Invalid decimal</td>
+<td>PAYMENT_DECIMAL_INVALID</td>
+</tr>
+<tr>
+<td>PaymentExceedAmountLimitPerTransaction:</td>
+<td>Transaction amount is over the limit</td>
+<td>PAYMENT_EXCEED_AMOUNT_LIMIT_PER_TRANSACTION</td>
+</tr>
+<tr>
+<td>PaymentExceedAmountPerDay:</td>
+<td>Payment exceed amount for per day</td>
+<td>PAYMENT_EXCEED_AMOUNT_PER_DAY</td>
+</tr>
+<tr>
+<td>PaymentExceedAmountPerMonth:</td>
+<td>Payment exceed amount for per month</td>
+<td>PAYMENT_EXCEED_AMOUNT_PER_MONTH</td>
+</tr>
+<tr>
+<td>PaymentExceedNoTransactionPerDay:</td>
+<td>Reached exceed number of daily transaction</td>
+<td>PAYMENT_EXCEED_NO_TRANSACTION_PER_DAY</td>
+</tr>
+<tr>
+<td>PaymentExceedNoTransactionPerMonth:</td>
+<td>Reached exceed number of monthly transaction</td>
+<td>PAYMENT_EXCEED_AMOUNT_LIMIT_PER_MONTH</td>
+</tr>
+<tr>
+<td>PaymentFullyRefunded:</td>
+<td>Payment already refunded</td>
+<td>PAYMENT_FULLY_REFUNDED</td>
+</tr>
+<tr>
+<td>PaymentLimitNotSet:</td>
+<td>Payment limit not set. Please contact Revenue Monster to set the limit</td>
+<td>PAYMENT_LIMIT_NOT_SET</td>
+</tr>
+<tr>
+<td>PaymentParamInvalid:</td>
+<td>Invalid payment params</td>
+<td>PAYMENT_PARAM_INVALID</td>
+</tr>
+<tr>
+<td>PaymentRedirect:</td>
+<td>Merchant ID and redirect URL not found</td>
+<td>PAYMENT_REDIRECT</td>
+</tr>
+<tr>
+<td>PaymentRefundAmountExceedPerDay:</td>
+<td>Refund amount transaction exceed then sales amount of the day</td>
+<td>PAYMENT_REFUND_AMOUNT_EXCEED_PER_DAY</td>
+</tr>
+<tr>
+<td>PaymentRefunding:</td>
+<td>Payment still refunding process</td>
+<td>PAYMENT_REFUNDING</td>
+</tr>
+<tr>
+<td>PaymentScanInvalid:</td>
+<td>Invalid platform scan</td>
+<td>PAYMENT_SCAN_INVALID</td>
+</tr>
+<tr>
+<td>PaymentSubscriptionMethodActive:</td>
+<td>Payment method is active</td>
+<td>PAYMENT_SUBSCRIPTION_METHOD_ACTIVE</td>
+</tr>
+<tr>
+<td>PaymentTimeout:</td>
+<td>Payment timeout</td>
+<td>PAYMENT_TIMEOUT</td>
+</tr>
+<tr>
+<td>PaymentUnsupportedCurrencyType:</td>
+<td>Unsupported currency type</td>
+<td>PAYMENT_UNSUPPORTED_CURRENCY_TYPE</td>
+</tr>
+<tr>
+<td>PhoneDuplicate:</td>
+<td>Phone number already exists</td>
+<td>PHONE_DUPLICATE</td>
+</tr>
+<tr>
+<td>PinInvalid:</td>
+<td>Pin is invalid</td>
+<td>PIN_INVALID</td>
+</tr>
+<tr>
+<td>PlatformNotFound:</td>
+<td>Platform not found</td>
+<td>PLATFORM_NOT_FOUND</td>
+</tr>
+<tr>
+<td>PluginAlreadyInstalled:</td>
+<td>Plugin already installed</td>
+<td>PLUGIN_ALREADY_INSTALLED</td>
+</tr>
+<tr>
+<td>PluginNotAllowToUpdatePricing:</td>
+<td>Plugin not allow to update pricing</td>
+<td>PLUGIN_NOT_ALLOW_TO_UPDATE_PRICING</td>
+</tr>
+<tr>
+<td>PluginNotFound:</td>
+<td>Plugin not found</td>
+<td>PLUGIN_NOT_FOUND</td>
+</tr>
+<tr>
+<td>PluginNotInstalled:</td>
+<td>Plugin not installed</td>
+<td>PLUGIN_NOT_INSTALLED</td>
+</tr>
+<tr>
+<td>PluginNotVerified:</td>
+<td>Plugin not verified</td>
+<td>PLUGIN_NOT_VERIFIED</td>
+</tr>
+<tr>
+<td>PluginShouldGreaterThanPreviousVersion:</td>
+<td>Plugin version should greater than previous version</td>
+<td>PLUGIN_SHOULD_GREATE_THAN_PREVIOUS_VERSION</td>
+</tr>
+<tr>
+<td>PrestoMalaysiaNotActive:</td>
+<td>Presto Malaysia is not active. Please contact Revenue Monster to activate merchant for presto</td>
+<td>PRESTRO_MALAYSIA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>PrestoMDRNotSet:</td>
+<td>Presto mdr not set. Please contact Revenue Monster to set.</td>
+<td>PRESTO_MDR_NOT_SET</td>
+</tr>
+<tr>
+<td>PrestoMerchantIDNotSet:</td>
+<td>Presto merchant id not set. Please contact Revenue Monster to set the merchant id</td>
+<td>PRESTO_MERCHANT_ID_NOT_SET</td>
+</tr>
+<tr>
+<td>PrivateKeyReadFile:</td>
+<td>Cannot read private key</td>
+<td>PRIVATE_KEY_READ_FILE</td>
+</tr>
+<tr>
+<td>ProductSubscriptionActive:</td>
+<td>Product subscription is active</td>
+<td>PRODUCT_SUBSCRIPTION_ACTIVE</td>
+</tr>
+<tr>
+<td>QRInvalid:</td>
+<td>Invalid QR code</td>
+<td>QR_INVALID</td>
+</tr>
+<tr>
+<td>QRRedeemed:</td>
+<td>QR code redeemed</td>
+<td>QR_REDEEMED</td>
+</tr>
+<tr>
+<td>QuickPayNotRegistered:</td>
+<td>User is not registered with Quick Pay</td>
+<td>QUICK_PAY_NOT_REGISTERED</td>
+</tr>
+<tr>
+<td>ReconciliationNotFound:</td>
+<td>Reconciliation record not found</td>
+<td>RECONCILIATION_NOT_FOUND</td>
+</tr>
+<tr>
+<td>RedemptionMerchantInvalid:</td>
+<td>Invalid redemption rule merchant</td>
+<td>REDEMPTION_MERCHANT_INVALID</td>
+</tr>
+<tr>
+<td>RedemptionParentInvalid:</td>
+<td>Invalid redemption rule parent key</td>
+<td>REDEMTION_PARENT_INVALID</td>
+</tr>
+<tr>
+<td>RedemptionRuleKeyInvalid:</td>
+<td>Invalid redemption rule key</td>
+<td>REDEMPTION_RULE_KEY_FOUND</td>
+</tr>
+<tr>
+<td>RedemptionRuleLimitReached:</td>
+<td>Reached the voucher limit per member</td>
+<td>REDEMPTION_RULE_LIMIT_REACHED</td>
+</tr>
+<tr>
+<td>RedemptionRuleNotFound:</td>
+<td>Redemption rule not found</td>
+<td>REDEMPTION_RULE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>RefundAmtNotSameAsTotalAmount:</td>
+<td>Refund amount not same as total amount</td>
+<td>REFUND_AMT_NOT_SAME_AS_TOTAL_AMOUNT</td>
+</tr>
+<tr>
+<td>RefundAmtNotSameAsTransaction:</td>
+<td>Refund amount not same as transaction amount</td>
+<td>REFUND_AMT_NOT_SAME_AS_TRANSACTION</td>
+</tr>
+<tr>
+<td>RefundPaymentNotFound:</td>
+<td>Refund payment not found</td>
+<td>REFUND_PAYMENT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>RefundPinInvalid:</td>
+<td>Wrong pin number</td>
+<td>REFUND_PIN_INVALID</td>
+</tr>
+<tr>
+<td>RefundUserNotFound:</td>
+<td>Refund user not found</td>
+<td>REFUND_USER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ReportNotFound:</td>
+<td>Report does not exist</td>
+<td>REPORT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ResetKeyInvalid:</td>
+<td>Invalid password reset key</td>
+<td>RESET_KEY_INVALID</td>
+</tr>
+<tr>
+<td>ResetLinkExpired:</td>
+<td>Password reset link expired</td>
+<td>RESET_LINK_EXPIRED</td>
+</tr>
+<tr>
+<td>ResourceGone:</td>
+<td>Resource no longer exists</td>
+<td>RESOURCE_GONE</td>
+</tr>
+<tr>
+<td>RoleKeyInvalid:</td>
+<td>Invalid role key</td>
+<td>ROLE_KEY_INVALID</td>
+</tr>
+<tr>
+<td>RoleNotFound:</td>
+<td>Role not found</td>
+<td>ROLE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ScopeNotFound:</td>
+<td>Scope not found</td>
+<td>SCOPE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>ShouldHaveIndexFile:</td>
+<td>Should have index.html file</td>
+<td>SHOULD_HAVE_INDEX_FILE</td>
+</tr>
+<tr>
+<td>SignatureInvalid:</td>
+<td>Invalid signature</td>
+<td>SIGNATURE_INVALID</td>
+</tr>
+<tr>
+<td>SmsFail:</td>
+<td>Failed to send SMS</td>
+<td>SMS_FAIL</td>
+</tr>
+<tr>
+<td>SPAM:</td>
+<td>Suspicious activity</td>
+<td>SPAM</td>
+</tr>
+<tr>
+<td>SpendingDuplicate:</td>
+<td>Spending loyalty set</td>
+<td>SPENDING_DUPLICATE</td>
+</tr>
+<tr>
+<td>SpendingNotFound:</td>
+<td>No spending loyalty</td>
+<td>SPENDING_NOT_FOUND</td>
+</tr>
+<tr>
+<td>SSLRequired:</td>
+<td>SSL is required</td>
+<td>SSL_REQUIRED</td>
+</tr>
+<tr>
+<td>StoreHasUser:</td>
+<td>The store has user</td>
+<td>STORE_NOT_USER</td>
+</tr>
+<tr>
+<td>StoreIDInvalid:</td>
+<td>Invalid store ID</td>
+<td>STORE_ID_INVALID</td>
+</tr>
+<tr>
+<td>StoreInvalidFormat:</td>
+<td>Store format invalid</td>
+<td>STORE_INVALID_FORMAT</td>
+</tr>
+<tr>
+<td>StoreKeyInvalid:</td>
+<td>Invalid store key</td>
+<td>STORE_KEY_INVALID</td>
+</tr>
+<tr>
+<td>StoreMaximum:</td>
+<td>Maximum store allowed to create is 10</td>
+<td>STORE_MAXIMUM</td>
+</tr>
+<tr>
+<td>StoreNotFound:</td>
+<td>Store not found</td>
+<td>STORE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>StoreNotSet:</td>
+<td>Store not set</td>
+<td>STORE_NOT_SET</td>
+</tr>
+<tr>
+<td>SubMerchantDoesNotAllowedLoyalty:</td>
+<td>Sub merchant not allowed to access loyalty</td>
+<td>SUB_MERCHANT_DOES_NOT_ALLOWED_LOYALTY</td>
+</tr>
+<tr>
+<td>SubscriptionExists:</td>
+<td>Merchant already subscribed to this product.</td>
+<td>SUBSCRIPTION_EXISTS</td>
+</tr>
+<tr>
+<td>SubscriptionExpired:</td>
+<td>Merchant subscription expired</td>
+<td>SUBSCRIPTION_EXPIRED</td>
+</tr>
+<tr>
+<td>SubscriptionNotActive:</td>
+<td>You have not subscribed to this product</td>
+<td>SUBSCRIPTION_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>SubscriptionNotFound:</td>
+<td>Subscription not found</td>
+<td>SUBSCRIPTION_NOT_FOUND</td>
+</tr>
+<tr>
+<td>SystemError:</td>
+<td>System timed out</td>
+<td>SYSTEM_ERROR</td>
+</tr>
+<tr>
+<td>TacInvalid:</td>
+<td>Invalid TAC code</td>
+<td>TAC_INVALID</td>
+</tr>
+<tr>
+<td>TacLimit:</td>
+<td>TAC code limit has reached</td>
+<td>TAC_LIMIT</td>
+</tr>
+<tr>
+<td>TacRequired:</td>
+<td>User TAC code is required</td>
+<td>TAC_REQUIRED</td>
+</tr>
+<tr>
+<td>TacSent:</td>
+<td>TAC code has sent</td>
+<td>TAC_SENT</td>
+</tr>
+<tr>
+<td>TemplateBodyInvalid:</td>
+<td>Invalid template body</td>
+<td>TEMPLATE_BODY_INVALID</td>
+</tr>
+<tr>
+<td>TemplateKeyInvalid:</td>
+<td>Invalid template key</td>
+<td>TEMPLATE_KEY_INVALID</td>
+</tr>
+<tr>
+<td>TemplateKeywordDuplicate:</td>
+<td>Invalid template keyword</td>
+<td>TEMPLATE_KEYWORD_DUPLICATE</td>
+</tr>
+<tr>
+<td>TemplateMessageDraft:</td>
+<td>Draft template message</td>
+<td>TEMPLATE_MESSAGE_DRAFT</td>
+</tr>
+<tr>
+<td>TemplateMessageDuplicate:</td>
+<td>Invalid template message</td>
+<td>TEMPLATE_MESSAGE_DUPLICATE</td>
+</tr>
+<tr>
+<td>TemplateNotFound:</td>
+<td>Template not found</td>
+<td>TEMPLATE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>TerminalAlreadyRegistered:</td>
+<td>Terminal already registered</td>
+<td>TERMINAL_ALREADY_REGISTERED</td>
+</tr>
+<tr>
+<td>TerminalInActive:</td>
+<td>Terminal is not active</td>
+<td>TERMINAL_INACTIVE</td>
+</tr>
+<tr>
+<td>TerminalNoPermission:</td>
+<td>Terminal does not have permission to access</td>
+<td>TERMINAL_NO_PERMISSION</td>
+</tr>
+<tr>
+<td>TerminalNotFound:</td>
+<td>Terminal not found</td>
+<td>TERMINAL_NOT_FOUND</td>
+</tr>
+<tr>
+<td>TerminalRefundTokenInvalid:</td>
+<td>Terminal refund token invalid</td>
+<td>TERMINAL_REFUND_TOKEN_INVALID</td>
+</tr>
+<tr>
+<td>TerminalSerialAlreadyExist:</td>
+<td>Terminal serial already exist</td>
+<td>TERMINAL_SERIAL_ALREADY_EXIST</td>
+</tr>
+<tr>
+<td>TerminalSerialNotFound:</td>
+<td>Terminal serial not found</td>
+<td>TERMINAL_SERIAL_NOT_FOUND</td>
+</tr>
+<tr>
+<td>TNGMalaysiaNotActive:</td>
+<td>TNG Malaysia is not active. Please contact Revenue Monster to activate merchant for tng</td>
+<td>TNG_MALAYSIA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>TokenExpired:</td>
+<td>Invalid or expired token</td>
+<td>TOKEN_EXPIRED</td>
+</tr>
+<tr>
+<td>TokenInvalid:</td>
+<td>Unable to verify your credentials</td>
+<td>TOKEN_INVALID</td>
+</tr>
+<tr>
+<td>TokenSuspended:</td>
+<td>Access token suspended</td>
+<td>TOKEN_SUSPENDED</td>
+</tr>
+<tr>
+<td>TransactionDuplicate:</td>
+<td>Duplicate order number</td>
+<td>TRANSACTION_DUPLICATE</td>
+</tr>
+<tr>
+<td>TransactionExpired:</td>
+<td>Transaction is expired</td>
+<td>TRANSACTION_EXPIRED</td>
+</tr>
+<tr>
+<td>TransactionNotFound:</td>
+<td>No payment transaction</td>
+<td>TRANSACTION_NOT_FOUND</td>
+</tr>
+<tr>
+<td>TransactionPaid:</td>
+<td>Transaction already paid</td>
+<td>TRANSACTION_PAID</td>
+</tr>
+<tr>
+<td>TransactionQRCodeNotFound:</td>
+<td>Transaction qr code not found</td>
+<td>TRANSACTION_QR_CODE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>TransactionStatusFailed:</td>
+<td>Payment transaction status failed</td>
+<td>TRANSACTION_STATUS_FAILED</td>
+</tr>
+<tr>
+<td>TransactionStatusNotInProccess:</td>
+<td>Transaction status not in process</td>
+<td>TRANSACTION_STATUS_NOT_IN_PROCCESS</td>
+</tr>
+<tr>
+<td>TransactionStatusNotSuccess:</td>
+<td>Transaction status not success</td>
+<td>TRANSACTIN_STATUS_NOT_SUCCESS</td>
+</tr>
+<tr>
+<td>Unauthorized:</td>
+<td>Unauthorized</td>
+<td>UNAUTHORIZED</td>
+</tr>
+<tr>
+<td>UniqueCodeDuplicate:</td>
+<td>Duplicate unique code</td>
+<td>UNIQUE_CODE_DUPLICATE</td>
+</tr>
+<tr>
+<td>UniqueCodeEmpty:</td>
+<td>Empty unique code</td>
+<td>UNIQUE_CODE_EMPTY</td>
+</tr>
+<tr>
+<td>UniqueCodeInvalid:</td>
+<td>Invalid unique code</td>
+<td>UNIQUE_CODE_INVALID</td>
+</tr>
+<tr>
+<td>UnSupportedJSAPIMethod:</td>
+<td>Unsupported method for jsapi</td>
+<td>UNSUPPORTED_JSAPI_METHOD</td>
+</tr>
+<tr>
+<td>UnSupportedJSAPIRegion:</td>
+<td>Unsupported region for jsapi</td>
+<td>UNSUPPORTED_JSAPI_REGION</td>
+</tr>
+<tr>
+<td>UnSupportedMethodPaymentRefund:</td>
+<td>Unsupported method payment refund</td>
+<td>UNSUPPORTED_METHOD_PAYMENT_REFUND</td>
+</tr>
+<tr>
+<td>UnSupportedMethodReverse:</td>
+<td>Unsupported method for reverse</td>
+<td>UNSUPPORTED_METHOD_REVERSE</td>
+</tr>
+<tr>
+<td>UserAlreadyRegistered:</td>
+<td>User already registered</td>
+<td>USER_ALREADY_REGISTERED</td>
+</tr>
+<tr>
+<td>UserCannotUpdateOwnAccount:</td>
+<td>User cannot update own account</td>
+<td>USER_CANNOT_UPDATE_OWN_ACCOUNT</td>
+</tr>
+<tr>
+<td>UserCreateFail:</td>
+<td>Unauthorized to create user</td>
+<td>USER_CREATE_FAIL</td>
+</tr>
+<tr>
+<td>UserDeleteFail:</td>
+<td>Unauthorized to delete user</td>
+<td>USER_DELETE_FAIL</td>
+</tr>
+<tr>
+<td>UserDeviceNotFound:</td>
+<td>User device not found</td>
+<td>USER_DEVICE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>UserDuplicate:</td>
+<td>User account already exist</td>
+<td>USER_DUPLICATE</td>
+</tr>
+<tr>
+<td>UserKeyInvalid:</td>
+<td>Invalid user key</td>
+<td>USER_KEY_INVALID</td>
+</tr>
+<tr>
+<td>UserNoPermission:</td>
+<td>User does not have permission to access</td>
+<td>USER_NO_PERMISSION</td>
+</tr>
+<tr>
+<td>UserNotActive:</td>
+<td>User not active</td>
+<td>USR_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>UserNotCreateAccount:</td>
+<td>User not create account</td>
+<td>USER_NOT_CREATE_ACCOUNT</td>
+</tr>
+<tr>
+<td>UserNotFound:</td>
+<td>User not found</td>
+<td>USER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>UserPinCodeInvalid:</td>
+<td>Invalid user pin code</td>
+<td>USER_PIN_CODE_INVALID</td>
+</tr>
+<tr>
+<td>UserProfileNotFound:</td>
+<td>User login profile not found</td>
+<td>USER_PROFILE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>UserSuspended:</td>
+<td>User has been suspended</td>
+<td>USER_SUSPENDED</td>
+</tr>
+<tr>
+<td>ValidationError:</td>
+<td>Validations error</td>
+<td>VALIDATION_ERROR</td>
+</tr>
+<tr>
+<td>VEmailNotFound:</td>
+<td>User verification email not found</td>
+<td>V_EMAIL_NOT_FOUND</td>
+</tr>
+<tr>
+<td>VerificationCodeAlreadyRequested:</td>
+<td>Verification code already requested</td>
+<td>VERIFICATION_CODE_ALREADY_REQUESTED</td>
+</tr>
+<tr>
+<td>VerificationCodeInvalid:</td>
+<td>Verification code invalid</td>
+<td>VERIFICATION_CODE_INVALID</td>
+</tr>
+<tr>
+<td>VerificationCodeReachDailyLimit:</td>
+<td>Verification code request reach daily limit</td>
+<td>VERIFICATION_CODE_REACH_DAILY_LIMIT</td>
+</tr>
+<tr>
+<td>VerificationTokenInvalid:</td>
+<td>Invalid verification token</td>
+<td>VERIFICATION_TOKEN_INVALID</td>
+</tr>
+<tr>
+<td>VerificationTypeNotFound:</td>
+<td>Verification code type not found</td>
+<td>VERIFICATION_TYPE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>VLinkExpired:</td>
+<td>Verification link is expired</td>
+<td>V_LINK_EXPIRED</td>
+</tr>
+<tr>
+<td>VoucherBatchExpired:</td>
+<td>Voucher batch expired</td>
+<td>VOUCHER_BATCH_EXPIRED</td>
+</tr>
+<tr>
+<td>VoucherBatchKeyInvalid:</td>
+<td>Voucher batch key is invalid</td>
+<td>VOUCHER_BATCH_KEY_INVALID</td>
+</tr>
+<tr>
+<td>VoucherBatchNotEnoughQuantity:</td>
+<td>Voucher batch not enough quantity</td>
+<td>VOUCHER_BATCH_NOT_ENOUGH_QUANTITY</td>
+</tr>
+<tr>
+<td>VoucherBatchNotFound:</td>
+<td>Voucher batch not found</td>
+<td>VOUCHER_BATCH_NOT_FOUND</td>
+</tr>
+<tr>
+<td>VoucherComboExpired:</td>
+<td>Voucher combo expired</td>
+<td>VOUCHER_COMBO_EXPIRED</td>
+</tr>
+<tr>
+<td>VoucherComboNotEnoughQuantity:</td>
+<td>Voucher combo not enough quantity</td>
+<td>VOUCHER_COMBO_NOT_ENOUGH_QUANTITY</td>
+</tr>
+<tr>
+<td>VoucherComboNotFound:</td>
+<td>Voucher combo not found</td>
+<td>VOUCHER_COMBO_NOT_FOUND</td>
+</tr>
+<tr>
+<td>VoucherInsufficient:</td>
+<td>Insufficient voucher batch</td>
+<td>VOUCHER_INSUFFICIENT</td>
+</tr>
+<tr>
+<td>VoucherNotAllowVoid:</td>
+<td>Voucher not allow to void</td>
+<td>VOUCHER_NOT_ALLOW_VOID</td>
+</tr>
+<tr>
+<td>VoucherNotFound:</td>
+<td>Voucher not found</td>
+<td>VOUCHER_NOT_FOUND</td>
+</tr>
+<tr>
+<td>VoucherNotMerchant:</td>
+<td>Voucher is not belongs to merchant</td>
+<td>VOUCHER__NOT_MERCHANT</td>
+</tr>
+<tr>
+<td>VoucherNotMinimumAmount:</td>
+<td>Voucher does not meet minimum amount</td>
+<td>VOUCHER__NOT_MINIMUM_AMOUNT</td>
+</tr>
+<tr>
+<td>VoucherNotRedeemed:</td>
+<td>Voucher is not redeemed</td>
+<td>VOUCHER_NOT_REDEMMED</td>
+</tr>
+<tr>
+<td>VoucherOwnerInvalid:</td>
+<td>Voucher not owned</td>
+<td>VOUCHER_OWNER_INVALID</td>
+</tr>
+<tr>
+<td>VoucherRedeemed:</td>
+<td>Voucher redeemed</td>
+<td>VOUCHER_REDEEMED</td>
+</tr>
+<tr>
+<td>VoucherRedeemedInvalid:</td>
+<td>Invalid direct redeem</td>
+<td>VOUCHER_REDEEMED_INVALID</td>
+</tr>
+<tr>
+<td>VoucherRedeemMax:</td>
+<td>Max redeem voucher</td>
+<td>VOUCHER_REDEEM_MAX</td>
+</tr>
+<tr>
+<td>VoucherSoldOut:</td>
+<td>Voucher sold out</td>
+<td>VOUCHER_SOLD_OUT</td>
+</tr>
+<tr>
+<td>WeChatAccountDuplicate:</td>
+<td>WeChat account already exists</td>
+<td>WECHAT_ACCOUNT_DUPLICATE</td>
+</tr>
+<tr>
+<td>WeChatPageDuplicate:</td>
+<td>Duplicate wechat page</td>
+<td>WECHAT_PAGE_DUPLICATE</td>
+</tr>
+<tr>
+<td>WeChatPageInvalid:</td>
+<td>Invalid wechat page</td>
+<td>WECHAT_PAGE_INVALID</td>
+</tr>
+<tr>
+<td>WeChatPageNotFound:</td>
+<td>Wechat page not found</td>
+<td>WECHAT_PAGE_NOT_FOUND</td>
+</tr>
+<tr>
+<td>WeChatPayChinaMDRNotSet:</td>
+<td>WeChatPay China mdr not set. Please contact Revenue Monster to set.</td>
+<td>WECHATPAY_CHINA_MDR_NOT_SET</td>
+</tr>
+<tr>
+<td>WeChatPayChinaMerchantIDNotSet:</td>
+<td>WeChatPay China merchant id not set. Please contact Revenue Monster to set the merchant id</td>
+<td>WECHATPAY_CHINA_MERCHANT_ID_NOT_SET</td>
+</tr>
+<tr>
+<td>WeChatPayChinaNotActive:</td>
+<td>WeChatPay China is not active. Please contact Revenue Monster to activate merchant for wechat pay</td>
+<td>WECHATPAY_CHINA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>WeChatPayClientDuplicate:</td>
+<td>Wechat pay client duplicate</td>
+<td>WECHATPAY_CLIENT_DUPLICATE</td>
+</tr>
+<tr>
+<td>WeChatPayClientNotFound:</td>
+<td>Wechat pay client not found</td>
+<td>WECHATPAY_CLIENT_NOT_FOUND</td>
+</tr>
+<tr>
+<td>WeChatPayMalaysiaMDRNotSet:</td>
+<td>WeChatPay Malaysia mdr not set. Please contact Revenue Monster to set.</td>
+<td>WECHATPAY_MALAYSIA_MDR_NOT_SET</td>
+</tr>
+<tr>
+<td>WeChatPayMalaysiaMerchantIDNotSet:</td>
+<td>WeChatPay Malaysia merchant id not set. Please contact Revenue Monster to set the merchant id</td>
+<td>WECHATPAY_MALAYSIA_MERCHANT_ID_NOT_SET</td>
+</tr>
+<tr>
+<td>WeChatPayMalaysiaNotActive:</td>
+<td>WeChatPay Malaysia is not active. Please contact Revenue Monster to activate merchant for wechat pay</td>
+<td>WECHATPAY_MALAYSIA_NOT_ACTIVE</td>
+</tr>
+<tr>
+<td>WeChatPhoneInvalid:</td>
+<td>Invalid wechat phone number</td>
+<td>WECHAT_PHONE_INVALID</td>
+</tr>
+<tr>
+<td>WeChatTemplateMessageFailed:</td>
+<td>WeChat template message failed</td>
+<td>WECHAT_TEMPLATE_MESSAGE_FAILED</td>
+</tr>
+<tr>
+<td>TooManyRequestPerSecond:</td>
+<td>Reached maximum request limit per second</td>
+<td>TOO_MANY_REQUEST_PER_SECOND</td>
 </tr>
 </tbody></table>
 <h2 id='appedix-version-control'>Appedix: Version Control</h2>
