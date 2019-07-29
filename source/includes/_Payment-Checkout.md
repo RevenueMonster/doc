@@ -24,14 +24,14 @@ To create a unified payment checkout page for your website and Mobile
 
 <strong>Request Parameters:</strong>
 
-| Parameter                | Type     | Required | Description                                                                                                               | Example                                                      |
-| ------------------------ | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| <code>order</code>       | Object   | Yes      | Object of order                                                                                                           | (Refer to explanation below)                                 |
-| <code>method</code>      | []String | Yes      | Wallet provider for payment, currently supports "WECHATPAY MY", "WECHATPAY CN", "Presto", "Boost","Alipay" and "Gradpay". | ["WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY"] |
-| <code>type</code>        | String   | Yes      | Obejct of type                                                                                                            | (Refer to explanation below)                                 |
-| <code>storeId</code>     | String   | Yes      | ID of the store to create QR code                                                                                         | "10946114768247530"                                          |
-| <code>redirectUrl</code> | String   | Yes      | URL to redirect after payment is made                                                                                     | "https://google.com"                                         |
-| <code>notifyUrl</code>   | String   | Yes      | This is a notify URL or callback URL to inform server on transaction status after payment made.                           | "https://google.com"                                         |
+| Parameter                | Type     | Required | Description                                                                                                                   | Example                                                      |
+| ------------------------ | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| <code>order</code>       | Object   | Yes      | Object of order                                                                                                               | (Refer to explanation below)                                 |
+| <code>method</code>      | []String | Yes      | Wallet provider for payment, currently supports "WECHATPAY MY", "WECHATPAY CN", "Presto", "Boost","ALIPAY_CN" , "GRABPAY_MY". | ["WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY"] |
+| <code>type</code>        | String   | Yes      | Obejct of type                                                                                                                | (Refer to explanation below)                                 |
+| <code>storeId</code>     | String   | Yes      | ID of the store to create QR code                                                                                             | "10946114768247530"                                          |
+| <code>redirectUrl</code> | String   | Yes      | URL to redirect after payment is made                                                                                         | "https://google.com"                                         |
+| <code>notifyUrl</code>   | String   | Yes      | This is a notify URL or callback URL to inform server on transaction status after payment made.                               | "https://google.com"                                         |
 
 > Example Request
 
@@ -178,10 +178,10 @@ curl --location --request POST "{{open_base_path}}/v3/payment/online" \
 
 <strong>Request Parameters:</strong>
 
-| Parameter               | Type   | Description                                                                                                              | Example               |
-| ----------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------ | --------------------- |
-| <code>checkoutId</code> | String | Code to identify web payment url                                                                                         | "1547775958720585401" |
-| <code>method</code>     | String | Wallet provider for payment, currently supports "WECHATPAY MY ","WECHATPAY CN","Presto", "Boost","Alipay" and "Gradpay". | ["WECHATPAY_MY"]      |
+| Parameter               | Type   | Description                                                                                                                  | Example               |
+| ----------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| <code>checkoutId</code> | String | Code to identify web payment url                                                                                             | "1547775958720585401" |
+| <code>method</code>     | String | Wallet provider for payment, currently supports "WECHATPAY MY ","WECHATPAY CN","Presto", "Boost","ALIPAY_CN" , "GRABPAY_MY". | ["WECHATPAY_MY"]      |
 
 > Example Request
 

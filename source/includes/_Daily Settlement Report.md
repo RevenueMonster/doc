@@ -26,12 +26,12 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/set
 
 <strong>Request Parameters:</strong>
 
-| Parameter             | Type   | Required | Description                                                                                           | Example      |
-| --------------------- | ------ | -------- | ----------------------------------------------------------------------------------------------------- | ------------ |
-| <code>sequence</code> | UInt   | Yes      | Sequence of the report                                                                                | 1            |
-| <code>date</code>     | String | Yes      | Date of the report                                                                                    | "2018-08-05" |
-| <code>method</code>   | String | Yes      | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "Alipay" and "Gradpay". | "ALL"        |
-| <code>region</code>   | String | Yes      | Region of wallet, "MALAYSIA" or "CHINA"                                                               | "MALAYSIA"   |
+| Parameter             | Type   | Required | Description                                                                                               | Example      |
+| --------------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------- | ------------ |
+| <code>sequence</code> | UInt   | Yes      | Sequence of the report                                                                                    | 1            |
+| <code>date</code>     | String | Yes      | Date of the report                                                                                        | "2018-08-05" |
+| <code>method</code>   | String | Yes      | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY". | "ALL"        |
+| <code>region</code>   | String | Yes      | Region of wallet, "MALAYSIA" or "CHINA"                                                                   | "MALAYSIA"   |
 
 > Example Respond
 
@@ -60,7 +60,7 @@ S,0,0.00,0.00,0.00,0.00,0.00,
 | <code>order</code>         | Object   | Order object                                                                                                                   | (Refer to explanation below)               |
 | <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                                                 | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
 | <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                                              | "OPEN_API"                                 |
-| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "Alipay" and "Gradpay".                          | "ALL"                                      |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY".                      | "ALL"                                      |
 | <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                                              | "QUICKPAY"                                 |
 | <code>status</code>        | String   | Status returned from WeChat server, "SUCCESS" or "IN_PROCESS" or "FAILED". "IN_PROCESS" means user scanned and making payment. | "FAILED"                                   |
 | <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                                              | "2018-03-21T06:41:22Z"                     |
