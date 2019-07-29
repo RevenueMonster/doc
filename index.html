@@ -382,9 +382,6 @@
                     <a href="#get-voucher-by-batches" class="toc-h2 toc-link" data-title="Get Voucher By Batches">Get Voucher By Batches</a>
                   </li>
                   <li>
-                    <a href="#get-voucher-batch-by-key" class="toc-h2 toc-link" data-title="Get Voucher Batch By Key">Get Voucher Batch By Key</a>
-                  </li>
-                  <li>
                     <a href="#get-vouchers-by-batch-key" class="toc-h2 toc-link" data-title="Get Vouchers By Batch Key">Get Vouchers By Batch Key</a>
                   </li>
               </ul>
@@ -520,11 +517,11 @@ in RM merchant portal for your developer project. The application settings help 
 
 <p>-<strong>Step 2: Authentication</strong></p>
 
-<p>Once you have your API credentials, follow our [Authentication]<a href="https://doc.revenuemonster.my/#e5932cfa-836e-4eee-b915-2ca8f517689b">https://doc.revenuemonster.my/#e5932cfa-836e-4eee-b915-2ca8f517689b</a> &lt;!--need to change URL--&gt; process to exchange access token and refresh token for subsequent API calls.</p>
+<p>Once you have your API credentials, follow our <a href="https://doc.revenuemonster.my/#create-developer-application">Authentication</a> &lt;!--need to change URL--&gt; process to exchange access token and refresh token for subsequent API calls.</p>
 
 <p>-<strong>Step 3: Signature (Payment endpoints only)</strong></p>
 
-<p>Payment operations require higher security with [Signature]<a href="https://doc.revenuemonster.my/#303aae71-5d80-45c5-8fb3-6081c4969baf">https://doc.revenuemonster.my/#303aae71-5d80-45c5-8fb3-6081c4969baf</a>, &lt;!-- need to change URL --&gt;  all payment endpoints require the requests to be signed.</p>
+<p>Payment operations require higher security with <a href="https://doc.revenuemonster.my/#signature-algorithm">Signature</a>, &lt;!-- need to change URL --&gt; all payment endpoints require the requests to be signed.</p>
 
 <p>-<strong>Step 4: Call API</strong></p>
 
@@ -549,7 +546,7 @@ in RM merchant portal for your developer project. The application settings help 
 <p>-<strong>Step 2 : Obtain <code>clientID</code> and <code>cilientSecret</code></strong></p>
 
 <ul>
-<li>Click on the application created in Step 1 , you may edit and update relevant information here : 
+<li>Click on the application created in Step 1 , you may edit and update relevant information here :
 
 <ul>
 <li>Note : If you would like to disable the application , simple toggle <strong>&quot;ON/OFF&quot;</strong> switch button at <strong>RHS</strong>.</li>
@@ -567,7 +564,7 @@ in RM merchant portal for your developer project. The application settings help 
 <p>-<strong>Step 3 : Product Settings</strong></p>
 
 <ul>
-<li>Go to <code>Products</code> tab in sub-menu and choose desired product to set up : </li>
+<li>Go to <code>Products</code> tab in sub-menu and choose desired product to set up :</li>
 </ul>
 
 <p><img src="images/CDA6.png" alt="image" /></p>
@@ -584,13 +581,13 @@ in RM merchant portal for your developer project. The application settings help 
 
 <p><img src="images/CDA8.png" alt="image" /></p>
 
-<p><strong>NOTES ON RSA KEYS</strong> <br />
-* <code>Public Keys</code> needs to have be wrap as following : 
-<img src="images/CDA9.1.png" alt="image" />
-* If you need help to generate key, please visit (Online RSA Key Generator)<a href="http://travistidwell.com/jsencrypt/demo/">http://travistidwell.com/jsencrypt/demo/</a>. Suggested key size: 512 Bit. Keep your private keys in safe place! Or use our <strong>Generate RSA key</strong> tool.</p>
+<p><strong>NOTES ON RSA KEYS</strong> <br /></p>
 
 <ul>
-<li><code>Private Keys</code> are required to sign API request(s) contents. <code>Public Keys</code> are used to verify content received.</li>
+<li><code>Public Keys</code> needs to have be wrap as following :
+<img src="images/CDA9.1.png" alt="image" /></li>
+<li><p>If you need help to generate key, please visit <a href="https://merchant.revenuemonster.my/developer/apps/5781149902293289753/rsa-generator">Generator RSA Key</a>.<strong>Merchant portal =&gt; Developer =&gt; Application =&gt; Generator RSA Key</strong> Suggested key size: 2048 Bit. Keep your private keys in safe place! Or use our <strong>Generate RSA key</strong> tool.</p></li>
+<li><p><code>Private Keys</code> are required to sign API request(s) contents. <code>Public Keys</code> are used to verify content received.</p></li>
 </ul>
 
 <p><strong>Optional Tool: Signature Debugger</strong><br /></p>
@@ -1953,7 +1950,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; , &quot;Gradpay&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2202,7 +2199,7 @@ Parameter | Type | Required | Description | Example
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>Fully or partial refund. &quot;FULL&quot;/&quot;PARTIAL&quot;</td>
+<td>Fully or partial refund. &quot;FULL&quot;/&quot;PARTIAL&quot; (<strong>currenty for sandbox can partial refund</strong>)</td>
 <td>&quot;FULL&quot;</td>
 </tr>
 <tr>
@@ -2346,7 +2343,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; , &quot;Gradpay&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2680,7 +2677,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; , &quot;Gradpay&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -3010,7 +3007,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3334,7 +3331,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3660,7 +3657,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3886,7 +3883,7 @@ Parameter | Type | Required | Description | Example
 <td><code>method</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3980,7 +3977,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -4232,8 +4229,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>No</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
-<td style="text-align: center">[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td style="text-align: center">[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -4482,8 +4479,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -4875,8 +4872,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -5111,8 +5108,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -5371,8 +5368,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>error</code></td>
@@ -5581,7 +5578,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>Yes</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY&quot;, &quot;WECHATPAY CN&quot;, &quot;Presto&quot;, &quot;Boost&quot;,&quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY&quot;, &quot;WECHATPAY CN&quot;, &quot;Presto&quot;, &quot;Boost&quot;,&quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>[&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;]</td>
 </tr>
 <tr>
@@ -5873,7 +5870,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY &quot;,&quot;WECHATPAY CN&quot;,&quot;Presto&quot;, &quot;Boost&quot;,&quot;Alipay&quot; and &quot;Gradpay&quot;.</td>
+<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY &quot;,&quot;WECHATPAY CN&quot;,&quot;Presto&quot;, &quot;Boost&quot;,&quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
 <td>[&quot;WECHATPAY_MY&quot;]</td>
 </tr>
 </tbody></table>
@@ -8480,10 +8477,10 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!---===================--->
 <h2 id='post-issue-voucher'>Post Issue Voucher</h2>
-<p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong> </p>
+<p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong></p>
 
 <blockquote>
-<p>Example Request </p>
+<p>Example Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQkvnGweaB2uQg/issue"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -8933,7 +8930,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!---===================--->
 <h2 id='get-voucher-by-code'>Get Voucher By Code</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/voucher/NAklEfbVdV</code></p>
 
@@ -9242,7 +9239,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <!---===================--->
 <h2 id='get-voucher-by-batches'>Get Voucher By Batches</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/voucher-batches</code></p>
 
@@ -9280,6 +9277,265 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"{{open_base_path}}/v3/voucher-batches"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer {{clientToken}}"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{}"</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6544507929221794245"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shell Voucher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/1d2721426e06da4b2b459446135da29e.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-21T07:12:31Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-26T07:15:54Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8223209398981211509"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQ9eq2n5SsrY9y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wedding"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GIFT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/1d2721426e06da4b2b459446135da29e.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-19T03:41:54Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-19T03:41:54Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2304781924451151306"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQytubna_ejv4f"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Discount for Apple Product"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GIFT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/9561650c763a67150e3323e2ce79aa2c.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-18T03:43:39Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-18T03:43:39Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4458755374738958227"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQk8-33bzMq_A9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New join memebr"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISCOUNT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSpendAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/10d2d9972237261337ac5e57a2286f72.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-13T09:33:44Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-13T09:33:44Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2941118409651104156"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQnNP2jMbzvOgo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testing abcd 20% discount voucher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISCOUNT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSpendAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/98c5478340ef87e9719e63396fb6ef38.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-13T04:26:14Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-13T04:26:14Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5497342184860260682"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQyrL2yvTynqVM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/e263abbbfb389d9611fcaa2dd418efd9.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-16T04:53:45Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-16T04:53:45Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5754046140813404401"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQ8dGPo6nPnu1P"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voucher 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/e263abbbfb389d9611fcaa2dd418efd9.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-03T09:34:48Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-03T09:34:48Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2362533890619456658"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQkvnGweaB2uQg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oijfge"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GIFT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/4be4a06bff04ae3656c409ecb54382fe.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">76</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-21T11:08:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-21T11:08:00Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1152161190116426684"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQvIeG5_eP0_4P"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IONIC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GIFT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/4be4a06bff04ae3656c409ecb54382fe.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-20T06:58:12Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-20T06:58:12Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6277564721218867340"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQjKGZ9qn7mI9X"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insurance"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISCOUNT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSpendAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/e263abbbfb389d9611fcaa2dd418efd9.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-11T03:57:04Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-11T03:57:04Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong>Voucher object (<code>&quot;items&quot;</code>):</strong></p>
 
 <table><thead>
@@ -9471,308 +9727,113 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <!---Get Voucher Batch By Key --->
 
 <!---===================--->
-<h2 id='get-voucher-batch-by-key'>Get Voucher Batch By Key</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
 
-<p><code>https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla</code></p>
+<!-- ##Get Voucher Batch By Key
+**Method <span style="color:Green" , bold >`Get`</span>**
 
-<p>To initiate Quick Pay by scanning QR code using WeChat Pay.</p>
+`https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla`
 
-<blockquote>
-<p>Example Request </p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{}"</span><span class="w">
-</span></code></pre>
-<p><strong><em>REQUEST</em></strong></p>
+**_REQUEST_**
 
-<p><strong>Request Parameters:</strong></p>
+<strong>Request Parameters:</strong>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>authCode</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>Auth code of QR code/barcode being scanned. Length: 18</td>
-<td>&quot;134850717797247290&quot;</td>
-</tr>
-<tr>
-<td><code>order</code></td>
-<td>Object</td>
-<td>Yes</td>
-<td>Object of order</td>
-<td>(Refer to explanation below)</td>
-</tr>
-<tr>
-<td><code>ipAddress</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>IP address of terminal/application for payment</td>
-<td>&quot;8.8.8.8&quot;</td>
-</tr>
-<tr>
-<td><code>terminalId</code></td>
-<td>String</td>
-<td>No</td>
-<td>ID of terminal for payment</td>
-<td>&quot;19382734937293&quot;</td>
-</tr>
-<tr>
-<td><code>storeId</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>ID of the store</td>
-<td>&quot;6170506694335521334&quot;</td>
-</tr>
-</tbody></table>
+No parameter required.
 
-<blockquote>
-<p>Example Respond</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6544507929221794245"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shell Voucher"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/1d2721426e06da4b2b459446135da29e.jpeg"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balanceQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usedQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DYNAMIC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"day"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2050-12-31T23:59:59Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SYSTEM"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isShipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isDeviceRedeem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-21T07:12:31Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-26T07:15:54Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong><em>RESPONSE</em></strong></p>
+> Example Request
 
-<p><strong>Response Parameters: </strong></p>
+```json
+curl --location --request GET "https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw" \
+  --header "X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==" \
+  --header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
+  --header "X-Timestamp: 1528450585" \
+  --data "{}"
+```
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>items</code></td>
-<td>Object</td>
-<td>Transaction object</td>
-<td>(Refer to explanation below)</td>
-</tr>
-<tr>
-<td><code>code</code></td>
-<td>String</td>
-<td>Successfully call this endpoint. If fail, will return error code object (Refer <code>Appendix 1: Error Codes</code>)</td>
-<td>&quot;SUCCESS&quot;</td>
-</tr>
-</tbody></table>
+> Example Respond
 
-<p><strong>Voucher object (<code>&quot;item&quot;</code>):</strong></p>
+```json
+{
+  "item": {
+    "id": "6544507929221794245",
+    "key": "EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQxZP495jpsOla",
+    "label": "Shell Voucher",
+    "type": "CASH",
+    "amount": 10000,
+    "discountRate": 0,
+    "imageUrl": "https://storage.googleapis.com/rm-sandbox-merchant/4118165203679668885/gallery/1d2721426e06da4b2b459446135da29e.jpeg",
+    "quantity": 1,
+    "balanceQuantity": 0,
+    "usedQuantity": 1,
+    "status": "COMPLETED",
+    "expiry": {
+      "type": "DYNAMIC",
+      "day": 1,
+      "expiredAt": "2050-12-31T23:59:59Z"
+    },
+    "origin": "SYSTEM",
+    "isShipping": false,
+    "reason": "",
+    "isDeviceRedeem": true,
+    "createdAt": "2018-09-21T07:12:31Z",
+    "updatedAt": "2018-09-26T07:15:54Z"
+  },
+  "code": "SUCCESS"
+}
+```
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th style="text-align: center">Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>String</td>
-<td>Voucher ID</td>
-<td style="text-align: center">“6544507929221794245&quot;</td>
-</tr>
-<tr>
-<td><code>key</code></td>
-<td>String</td>
-<td>Voucher key</td>
-<td style="text-align: center">&quot;EhQKCE1lcmNoYW50EJXVzd3wraqTORIV<br>CgdWb3VjaGVyGgpOQWtsRWZiVmRW&quot;</td>
-</tr>
-<tr>
-<td><code>label</code></td>
-<td>String</td>
-<td>label of voucher for merchant remarks</td>
-<td style="text-align: center">&quot;Free Breakfast”</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>String</td>
-<td>Define type of vouchers: “DISCOUNT”, “GIFT”, “CASH&quot;</td>
-<td style="text-align: center">“GIFT&quot;</td>
-</tr>
-<tr>
-<td><code>amount</code></td>
-<td>UInt</td>
-<td>Required if type = “CASH&quot;, notation in cents, eg. RM 1.00 = 100</td>
-<td style="text-align: center">10000</td>
-</tr>
-<tr>
-<td><code>discountRate</code></td>
-<td>UInt</td>
-<td>Required if type = “DISCOUNT&quot;, notation without decimals, eg. 1% = 100</td>
-<td style="text-align: center">0</td>
-</tr>
-<tr>
-<td><code>imageUrl</code></td>
-<td>String</td>
-<td>Image URL of current voucher, optional</td>
-<td style="text-align: center">&quot;https://storage.googleapis.com/rm-sandbox-merchant<br>/4118165203679668885/gallery/1d2721426e06da4b2b459446135da29e.jpeg”</td>
-</tr>
-<tr>
-<td><code>quantity</code></td>
-<td>UInt</td>
-<td>Total quantity of voucher(s) in this batch</td>
-<td style="text-align: center">1</td>
-</tr>
-<tr>
-<td><code>balanceQuantity</code></td>
-<td>UInt</td>
-<td>Total quantity of voucher(s) remaining in this batch</td>
-<td style="text-align: center">0</td>
-</tr>
-<tr>
-<td><code>usedQuantity</code></td>
-<td>UInt</td>
-<td>Total quantity of voucher(s) used/assigned/redeemed in this batch</td>
-<td style="text-align: center">1</td>
-</tr>
-<tr>
-<td><code>expiry</code></td>
-<td>Object of Expiry</td>
-<td>Expiry date time of current voucher</td>
-<td style="text-align: center">(Refer below)</td>
-</tr>
-<tr>
-<td><code>origin</code></td>
-<td>String</td>
-<td>“SYSTEM” (voucher code generated from RM server), “SELF” (voucher code uploaded from merchant csv file)</td>
-<td style="text-align: center">“SYSTEM”</td>
-</tr>
-<tr>
-<td><code>isShipping</code></td>
-<td>Boolean</td>
-<td>&quot;True&quot; if items/goods to be delivered physically to customers</td>
-<td style="text-align: center">false</td>
-</tr>
-<tr>
-<td><code>reason</code></td>
-<td>String</td>
-<td>Will show if voucher batch is fail during creation. Optional.</td>
-<td style="text-align: center">”&quot;</td>
-</tr>
-<tr>
-<td><code>isDeviceRedeem</code></td>
-<td>Boolean</td>
-<td>“TRUE” means only can be redeemed through merchant app. “FALSE” means customer can do redemption from own loyalty app.</td>
-<td style="text-align: center">false</td>
-</tr>
-<tr>
-<td><code>createdAt</code></td>
-<td>DateTime</td>
-<td>Date time of voucher being created (UTC)</td>
-<td style="text-align: center">&quot;2018-06-21T11:08:00Z&quot;</td>
-</tr>
-<tr>
-<td><code>updatedAt</code></td>
-<td>DateTime</td>
-<td>Date time of voucher being updated (UTC)</td>
-<td style="text-align: center">&quot;2018-09-28T17:19:44.686549977Z&quot;</td>
-</tr>
-</tbody></table>
+**_RESPONSE_**
 
-<p><strong>Expiry object (<code>&quot;expiry&quot;</code>):</strong></p>
+<strong>Response Parameters: </strong>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>type</code></td>
-<td>String</td>
-<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date) or &quot;PERMANENT&quot; (never expire)</td>
-<td>&quot;PERMANENT&quot;</td>
-</tr>
-<tr>
-<td><code>day</code></td>
-<td>Uint</td>
-<td>Only required by &quot;DYNAMIC&quot; expiry type. To indicate number of days from now until expiry.</td>
-<td>3</td>
-</tr>
-<tr>
-<td><code>expiryAt</code></td>
-<td>DateTime</td>
-<td>Only required by &quot;FIXED&quot;. To indicate specific expiry date.</td>
-<td>&quot;2020-10-07T17:44:26.679908+08:00&quot;</td>
-</tr>
-</tbody></table>
+| Parameter          | Type   | Description                                                                                               | Example                      |
+| ------------------ | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>items</code> | Object | Transaction object                                                                                        | (Refer to explanation below) |
+| <code>code</code>  | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+
+<strong>Voucher object (`"item"`):</strong>
+
+| Parameter                    | Type             | Description                                                                                                            |                                                          Example                                                           |
+| ---------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------: |
+| <code>id</code>              | String           | Voucher ID                                                                                                             |                                                   “6544507929221794245"                                                    |
+| <code>key</code>             | String           | Voucher key                                                                                                            |                             "EhQKCE1lcmNoYW50EJXVzd3wraqTORIV<br>CgdWb3VjaGVyGgpOQWtsRWZiVmRW"                             |
+| <code>label</code>           | String           | label of voucher for merchant remarks                                                                                  |                                                      "Free Breakfast”                                                      |
+| <code>type</code>            | String           | Define type of vouchers: “DISCOUNT”, “GIFT”, “CASH"                                                                    |                                                           “GIFT"                                                           |
+| <code>amount</code>          | UInt             | Required if type = “CASH", notation in cents, eg. RM 1.00 = 100                                                        |                                                           10000                                                            |
+| <code>discountRate</code>    | UInt             | Required if type = “DISCOUNT", notation without decimals, eg. 1% = 100                                                 |                                                             0                                                              |
+| <code>imageUrl</code>        | String           | Image URL of current voucher, optional                                                                                 | "https://storage.googleapis.com/rm-sandbox-merchant<br>/4118165203679668885/gallery/1d2721426e06da4b2b459446135da29e.jpeg” |
+| <code>quantity</code>        | UInt             | Total quantity of voucher(s) in this batch                                                                             |                                                             1                                                              |
+| <code>balanceQuantity</code> | UInt             | Total quantity of voucher(s) remaining in this batch                                                                   |                                                             0                                                              |
+| <code>usedQuantity</code>    | UInt             | Total quantity of voucher(s) used/assigned/redeemed in this batch                                                      |                                                             1                                                              |
+| <code>expiry</code>          | Object of Expiry | Expiry date time of current voucher                                                                                    |                                                       (Refer below)                                                        |
+| <code>origin</code>          | String           | “SYSTEM” (voucher code generated from RM server), “SELF” (voucher code uploaded from merchant csv file)                |                                                          “SYSTEM”                                                          |
+| <code>isShipping</code>      | Boolean          | "True" if items/goods to be delivered physically to customers                                                          |                                                           false                                                            |
+| <code>reason</code>          | String           | Will show if voucher batch is fail during creation. Optional.                                                          |                                                             ”"                                                             |
+| <code>isDeviceRedeem</code>  | Boolean          | “TRUE” means only can be redeemed through merchant app. “FALSE” means customer can do redemption from own loyalty app. |                                                           false                                                            |
+| <code>createdAt</code>       | DateTime         | Date time of voucher being created (UTC)                                                                               |                                                   "2018-06-21T11:08:00Z"                                                   |
+| <code>updatedAt</code>       | DateTime         | Date time of voucher being updated (UTC)                                                                               |                                              "2018-09-28T17:19:44.686549977Z"                                              |
+
+<strong>Expiry object (`"expiry"`):</strong>
+
+| Parameter             | Type     | Description                                                                               | Example                            |
+| --------------------- | -------- | ----------------------------------------------------------------------------------------- | ---------------------------------- |
+| <code>type</code>     | String   | "DYNAMIC" (days from now), "FIXED" (specific fixed date) or "PERMANENT" (never expire)    | "PERMANENT"                        |
+| <code>day</code>      | Uint     | Only required by "DYNAMIC" expiry type. To indicate number of days from now until expiry. | 3                                  |
+| <code>expiryAt</code> | DateTime | Only required by "FIXED". To indicate specific expiry date.                               | "2020-10-07T17:44:26.679908+08:00" |
 
 <h3>Headers</h3>
-
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Content-Type</td>
-<td>application/json</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>Bearer <br>eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1Nywi<br>aXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1<br>lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.<br>dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw</td>
-</tr>
-<tr>
-<td>X-Signature</td>
-<td>sha256 <br> Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==</td>
-</tr>
-<tr>
-<td>X-Nonce-Str</td>
-<td>VYNknZohxwicZMaWbNdBKUrnrxDtaRhN</td>
-</tr>
-<tr>
-<td>X-Timestamp</td>
-<td>1528450585</td>
-</tr>
-</tbody></table>
+ | |
+--------- | ------- |
+Content-Type | application/json |
+Authorization | Bearer <br>eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1Nywi<br>aXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1<br>lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.<br>dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw |
+X-Signature |sha256 <br> Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==  |
+X-Nonce-Str | VYNknZohxwicZMaWbNdBKUrnrxDtaRhN |
+X-Timestamp | 1528450585|
 
 <h3>Body</h3>
 
-<aside> 
+<aside>
 <strong>
 {  <br>
    <br>
@@ -9780,22 +9841,28 @@ signType=sha256&amp;timestamp=1527407052</code></p>
    <br>
 }
 </strong>
-</aside>
+</aside> -->
 
 <!---===================--->
 
-<!---Get Voucher By Batch Key --->
+<!---Get Vouchers By Batch Key --->
 
 <!---===================--->
 <h2 id='get-vouchers-by-batch-key'>Get Vouchers By Batch Key</h2>
-<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong> </p>
+<p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQi5rUhcrdx78V/vouchers</code></p>
 
-<p>To initiate Quick Pay by scanning QR code using WeChat Pay.</p>
+<p>To get Multiple voucher batches by Key .</p>
+
+<p><strong><em>REQUEST</em></strong></p>
+
+<p><strong>Request Parameters:</strong></p>
+
+<p>No parameter required.</p>
 
 <blockquote>
-<p>Example Request </p>
+<p>Example Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/voucher-batch/EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQi5rUhcrdx78V/vouchers"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -9804,56 +9871,6 @@ signType=sha256&amp;timestamp=1527407052</code></p>
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w">
 </span></code></pre>
-<p><strong><em>REQUEST</em></strong></p>
-
-<p><strong>Request Parameters:</strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>authCode</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>Auth code of QR code/barcode being scanned. Length: 18</td>
-<td>&quot;134850717797247290&quot;</td>
-</tr>
-<tr>
-<td><code>order</code></td>
-<td>Object</td>
-<td>Yes</td>
-<td>Object of order</td>
-<td>(Refer to explanation below)</td>
-</tr>
-<tr>
-<td><code>ipAddress</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>IP address of terminal/application for payment</td>
-<td>&quot;8.8.8.8&quot;</td>
-</tr>
-<tr>
-<td><code>terminalId</code></td>
-<td>String</td>
-<td>No</td>
-<td>ID of terminal for payment</td>
-<td>&quot;19382734937293&quot;</td>
-</tr>
-<tr>
-<td><code>storeId</code></td>
-<td>String</td>
-<td>Yes</td>
-<td>ID of the store</td>
-<td>&quot;6170506694335521334&quot;</td>
-</tr>
-</tbody></table>
-
 <blockquote>
 <p>Example Respond</p>
 </blockquote>
