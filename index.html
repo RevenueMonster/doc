@@ -8498,13 +8498,14 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <p>[base_URL] is the base URL depending on your environment (Sandbox or production)</p>
 
-<p>[batchkey] can be retrieved by viewing at merchant portal or using endpoint <code>Get voucher Batches</code></p>
+<p>[batchkey] can be retrieved by viewing at merchant portal or using endpoint <a href="https://doc.revenuemonster.my/#get-voucher-by-batches"><code>Get voucher By Batches</code></a></p>
 
 <p><strong><em>REQUEST</em></strong></p>
 
 <p><strong>Request Parameters:</strong></p>
 
-<p>Just pass in an empty JSON object</p>
+<p>Just pass in an empty JSON object, <br />
+<strong>Example:</strong> <code>{}</code></p>
 
 <blockquote>
 <p>Example Respond</p>
@@ -8636,13 +8637,14 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <p>[base_URL] is the base URL depending on your environment (Sandbox or production)</p>
 
-<p>[code] is the <code>code</code> generated from <code>Issue Voucher</code> endpoint.</p>
+<p>[code] is the <code>code</code> generated from <a href="https://doc.revenuemonster.my/#post-issue-voucher"><code>Issue Voucher</code></a> endpoint.</p>
 
 <p><strong><em>REQUEST</em></strong></p>
 
 <p><strong>Request Parameters:</strong></p>
 
-<p>Just pass in an empty JSON object</p>
+<p>Just pass in an empty JSON object, <br />
+<strong>Example:</strong> <code>{}</code></p>
 
 <blockquote>
 <p>Example Respond</p>
@@ -8835,7 +8837,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <tr>
 <td><code>status</code></td>
 <td>String</td>
-<td>Status of current voucher: “VALID”, “ISSUE”, “REDEEMED”, “VOID”, “EXPIRED”</td>
+<td>Status of current voucher: 1. Merchant <strong>created voucher batch</strong> <code>(status=valid)</code><br/>2. Merchant <strong>issued</strong> or going to <strong>transferred to customers</strong> <code>(status=issued)</code><br/>3. Merchant <strong>shows voucher to customer and customer scan to get it</strong> <code>(status=redeemed)</code><br/>4. Customers go back to shop and <strong>use the voucher</strong> <code>(status=void)</code></td>
 <td style="text-align: center">&quot;VALID&quot;</td>
 </tr>
 <tr>
@@ -8865,14 +8867,14 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date) or &quot;PERMANENT&quot; (never expire)</td>
-<td>&quot;PERMANENT&quot;</td>
+<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date)</td>
+<td>&quot;DYNAMIC&quot;</td>
 </tr>
 <tr>
 <td><code>day</code></td>
 <td>Uint</td>
 <td>Only required by &quot;DYNAMIC&quot; expiry type. To indicate number of days from now until expiry.</td>
-<td>3</td>
+<td>30</td>
 </tr>
 <tr>
 <td><code>expiryAt</code></td>
@@ -8939,7 +8941,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/voucher/NAklEfbVdV/void"</span><span class="w"> </span><span class="err">\</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/voucher/NAklEfbVdV"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -8950,6 +8952,9 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p><strong><em>REQUEST</em></strong></p>
 
 <p><strong>Request Parameters:</strong></p>
+
+<p>Just pass in an empty JSON object, <br />
+<strong>Example:</strong> <code>{}</code></p>
 
 <p>Specify <code>code</code> in query string (/v3/voucher/<code>code</code>)</p>
 
@@ -9144,7 +9149,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <tr>
 <td><code>status</code></td>
 <td>String</td>
-<td>Status of current voucher: “VALID”, “ISSUE”, “REDEEMED”, “VOID”, “EXPIRED”</td>
+<td>Status of current voucher: 1. Merchant <strong>created voucher batch</strong> <code>(status=valid)</code><br/>2. Merchant <strong>issued</strong> or going to <strong>transferred to customers</strong> <code>(status=issued)</code><br/>3. Merchant <strong>shows voucher to customer and customer scan to get it</strong> <code>(status=redeemed)</code><br/>4. Customers go back to shop and <strong>use the voucher</strong> <code>(status=void)</code></td>
 <td style="text-align: center">&quot;VALID&quot;</td>
 </tr>
 <tr>
@@ -9174,14 +9179,14 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date) or &quot;PERMANENT&quot; (never expire)</td>
-<td>&quot;PERMANENT&quot;</td>
+<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date)</td>
+<td>&quot;DYNAMIC&quot;</td>
 </tr>
 <tr>
 <td><code>day</code></td>
 <td>Uint</td>
 <td>Only required by &quot;DYNAMIC&quot; expiry type. To indicate number of days from now until expiry.</td>
-<td>3</td>
+<td>30</td>
 </tr>
 <tr>
 <td><code>expiryAt</code></td>
@@ -9249,7 +9254,8 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 
 <p><strong>Request Parameters:</strong></p>
 
-<p>No parameter required.</p>
+<p>Just pass in an empty JSON object, <br />
+<strong>Example:</strong> <code>{}</code></p>
 
 <p><strong><em>RESPONSE</em></strong></p>
 
@@ -9663,14 +9669,14 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date) or &quot;PERMANENT&quot; (never expire)</td>
-<td>&quot;PERMANENT&quot;</td>
+<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date)</td>
+<td>&quot;DYNAMIC&quot;</td>
 </tr>
 <tr>
 <td><code>day</code></td>
 <td>Uint</td>
 <td>Only required by &quot;DYNAMIC&quot; expiry type. To indicate number of days from now until expiry.</td>
-<td>3</td>
+<td>30</td>
 </tr>
 <tr>
 <td><code>expiryAt</code></td>
@@ -9859,7 +9865,8 @@ X-Timestamp | 1528450585|
 
 <p><strong>Request Parameters:</strong></p>
 
-<p>No parameter required.</p>
+<p>Just pass in an empty JSON object, <br />
+<strong>Example:</strong> <code>{}</code></p>
 
 <blockquote>
 <p>Example Request</p>
@@ -9974,12 +9981,6 @@ X-Timestamp | 1528450585|
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code></td>
-<td>String</td>
-<td>Voucher ID</td>
-<td>“6544507929221794245&quot;</td>
-</tr>
-<tr>
 <td><code>key</code></td>
 <td>String</td>
 <td>Voucher key</td>
@@ -9990,6 +9991,12 @@ X-Timestamp | 1528450585|
 <td>String</td>
 <td>label of voucher for merchant remarks</td>
 <td>&quot;Free Breakfast”</td>
+</tr>
+<tr>
+<td><code>voucherBathKey</code></td>
+<td>String</td>
+<td>Parent key of current voucher</td>
+<td>&quot;EhQKCE1lcmNoYW50EJXVzd3wraqTORIYCgxWb3VjaGVyQmF0Y2gQkvnGweaB2uQg&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -10090,14 +10097,14 @@ X-Timestamp | 1528450585|
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date) or &quot;PERMANENT&quot; (never expire)</td>
-<td>&quot;PERMANENT&quot;</td>
+<td>&quot;DYNAMIC&quot; (days from now), &quot;FIXED&quot; (specific fixed date)</td>
+<td>&quot;DYNAMIC&quot;</td>
 </tr>
 <tr>
 <td><code>day</code></td>
 <td>Uint</td>
 <td>Only required by &quot;DYNAMIC&quot; expiry type. To indicate number of days from now until expiry.</td>
-<td>3</td>
+<td>30</td>
 </tr>
 <tr>
 <td><code>expiryAt</code></td>
