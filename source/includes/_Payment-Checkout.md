@@ -24,14 +24,15 @@ To create a unified payment checkout page for your website and Mobile
 
 <strong>Request Parameters:</strong>
 
-| Parameter                | Type     | Required | Description                                                                                                                   | Example                                                      |
-| ------------------------ | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| <code>order</code>       | Object   | Yes      | Object of order                                                                                                               | (Refer to explanation below)                                 |
-| <code>method</code>      | []String | Yes      | Wallet provider for payment, currently supports "WECHATPAY MY", "WECHATPAY CN", "Presto", "Boost","ALIPAY_CN" , "GRABPAY_MY". | ["WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY"] |
-| <code>type</code>        | String   | Yes      | Obejct of type                                                                                                                | (Refer to explanation below)                                 |
-| <code>storeId</code>     | String   | Yes      | ID of the store to create QR code                                                                                             | "10946114768247530"                                          |
-| <code>redirectUrl</code> | String   | Yes      | URL to redirect after payment is made                                                                                         | "https://google.com"                                         |
-| <code>notifyUrl</code>   | String   | Yes      | This is a notify URL or callback URL to inform server on transaction status after payment made.                               | "https://google.com"                                         |
+| Parameter                 | Type     | Required | Description                                                                                                                   | Example                                                      |
+| ------------------------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| <code>order</code>        | Object   | Yes      | Object of order                                                                                                               | (Refer to explanation below)                                 |
+| <code>method</code>       | []String | Yes      | Wallet provider for payment, currently supports "WECHATPAY MY", "WECHATPAY CN", "Presto", "Boost","ALIPAY_CN" , "GRABPAY_MY". | ["WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY"] |
+| <code>type</code>         | String   | Yes      | Obejct of type                                                                                                                | (Refer to explanation below)                                 |
+| <code>storeId</code>      | String   | Yes      | ID of the store to create QR code                                                                                             | "10946114768247530"                                          |
+| <code>redirectUrl</code>  | String   | Yes      | URL to redirect after payment is made                                                                                         | "https://google.com"                                         |
+| <code>notifyUrl</code>    | String   | Yes      | This is a notify URL or callback URL to inform server on transaction status after payment made.                               | "https://google.com"                                         |
+| <code>layoutersion</code> | String   | Optional | New layout for Web paymnet                                                                                                    | v1                                                           |
 
 > Example Request
 
@@ -55,7 +56,8 @@ curl --location --request POST "{{open_base_path}}/v3/payment/online" \
     \"type\": \"WEB_PAYMENT\",
     \"storeId\": \"977596145540933417\",
     \"redirectUrl\": \"https://google.com\",
-    \"notifyUrl\": \"https://google.com\"
+    \"notifyUrl\": \"https://google.com\",
+    \"layoutVersion\": \"v1\"
 }"
 ```
 
