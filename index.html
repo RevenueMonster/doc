@@ -342,7 +342,10 @@
             <a href="#loyalty-point" class="toc-h1 toc-link" data-title="Loyalty Point">Loyalty Point</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#post-give-loyalty-point" class="toc-h2 toc-link" data-title="Post Give Loyalty Point">Post Give Loyalty Point</a>
+                    <a href="#give-loyalty-point" class="toc-h2 toc-link" data-title="Give Loyalty Point">Give Loyalty Point</a>
+                  </li>
+                  <li>
+                    <a href="#give-spending-loyalty-point" class="toc-h2 toc-link" data-title="Give Spending Loyalty Point">Give Spending Loyalty Point</a>
                   </li>
                   <li>
                     <a href="#calculate-spending-reward" class="toc-h2 toc-link" data-title="Calculate Spending Reward">Calculate Spending Reward</a>
@@ -7785,7 +7788,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <li>Scope: <code>manage_loyalty</code></li>
 <li>Authentication: Access token obtained from <a href="https://doc.revenuemonster.my/#66368026-71ee-4640-8ad7-208f843c6d6c">Generate Access Token</a> into <code>Authorization</code> header value as <code>Bearer [access_token]</code>.</li>
 </ul>
-<h2 id='post-give-loyalty-point'>Post Give Loyalty Point</h2>
+<h2 id='give-loyalty-point'>Give Loyalty Point</h2>
 <p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/loyalty/reward</code></p>
@@ -7927,6 +7930,128 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </strong>
 </aside>
 
+<!-- Give Spending Loyalty Point -->
+<h2 id='give-spending-loyalty-point'>Give Spending Loyalty Point</h2>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong> <br/></p>
+
+<p><code>https://sb-open.revenuemonster.my/v3/loyalty/spending-reward</code></p>
+
+<p>To give loyalty points to customers using phone number or member ID.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"{{open_base_path}}/v3/loyalty/reward"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer {{clientToken}}"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
+   </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR</span><span class="se">\"</span><span class="s2">,
+   </span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">: 100,
+   </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">PHONENUMBER</span><span class="se">\"</span><span class="s2">,
+   </span><span class="se">\"</span><span class="s2">countryCode</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">60</span><span class="se">\"</span><span class="s2">,
+   </span><span class="se">\"</span><span class="s2">phoneNumber</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">176473298</span><span class="se">\"</span><span class="s2">
+}"</span><span class="w">
+</span></code></pre>
+<p><strong><em>REQUEST</em></strong></p>
+
+<p><strong>Request Parameters:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Currently <code>MYR</code> only</td>
+<td>MYR</td>
+</tr>
+<tr>
+<td><code>point</code></td>
+<td>Integer</td>
+<td>Yes</td>
+<td>Loyalty point given to customers.</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>&quot;ID&quot; or &quot;PHONENUMBER&quot;</td>
+<td>Use phone number or ID to give loyalty points.</td>
+</tr>
+<tr>
+<td><code>memberId</code></td>
+<td>String</td>
+<td>No</td>
+<td>Member ID if type &quot;ID&quot; being provided.</td>
+<td>&quot;2777058682717858418&quot;</td>
+</tr>
+<tr>
+<td><code>countryCode</code></td>
+<td>String</td>
+<td>No</td>
+<td>Country code if type &quot;PHONENUMBER&quot; being provided.</td>
+<td>&quot;60&quot;</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td>String</td>
+<td>No</td>
+<td>Phone number if type &quot;PHONENUMBER&quot; being provided.</td>
+<td>&quot;172826990&quot;</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><em>RESPONSE</em></strong></p>
+
+<p><strong>Response Parameters: </strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th style="text-align: center">Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>code</code></td>
+<td>String</td>
+<td style="text-align: center">Successfully call this endpoint. If fail, will return error code object (Refer <a href="https://doc.revenuemonster.my/#appendix-1-error-codes">Appendix 1: Error Codes</a>)</td>
+<td>&quot;SUCCESS&quot;</td>
+</tr>
+</tbody></table>
+
+<h3>Body</h3>
+
+<aside> 
+<strong>
+{  <br/>
+   "currencyType": "MYR",<br/>
+   "amount": 100,<br/>
+   "type": "ID",<br/>
+   "memberId": "2777058682717858418"<br/>
+}
+</strong>
+</aside>
+
 <!-- Calculate Spending Reward  -->
 <h2 id='calculate-spending-reward'>Calculate Spending Reward</h2>
 <p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
@@ -7962,7 +8087,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <tr>
 <td><code>currencyType</code></td>
 <td>String</td>
-<td>Currenty <code>MYR</code> only</td>
+<td>Currently <code>MYR</code> only</td>
 <td>MYR</td>
 </tr>
 <tr>
