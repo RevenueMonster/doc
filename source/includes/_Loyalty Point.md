@@ -4,7 +4,7 @@ To give loyalty points to customers via phone number or member ID
 - Scope: `manage_loyalty`
 - Authentication: Access token obtained from [Generate Access Token](https://doc.revenuemonster.my/#66368026-71ee-4640-8ad7-208f843c6d6c) into `Authorization` header value as `Bearer [access_token]`.
 
-##Post Give Loyalty Point
+##Give Loyalty Point
 **Method <span style="color:Orange" , bold >`Post`</span>**
 
 `https://sb-open.revenuemonster.my/v3/loyalty/reward`
@@ -77,6 +77,75 @@ X-Timestamp | 1528450585|
 </strong>
 </aside>
 
+<!-- Give Spending Loyalty Point -->
+
+##Give Spending Loyalty Point
+**Method <span style="color:Orange" , bold >`POST`</span>** <br/>
+
+`https://sb-open.revenuemonster.my/v3/loyalty/spending-reward`
+
+To give loyalty points to customers using phone number or member ID.
+
+> Example Request
+
+```json
+curl --location --request POST "{{open_base_path}}/v3/loyalty/reward" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer {{clientToken}}" \
+  --header "X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==" \
+  --header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
+  --header "X-Timestamp: 1528450585" \
+  --data "{
+   \"currencyType\": \"MYR\",
+   \"amount\": 100,
+   \"type\": \"PHONENUMBER\",
+   \"countryCode\": \"60\",
+   \"phoneNumber\": \"176473298\"
+}"
+```
+
+**_REQUEST_**
+
+<strong>Request Parameters:</strong>
+
+| Parameter                 | Type    | Required | Description                                        | Example                                        |
+| ------------------------- | ------- | -------- | -------------------------------------------------- | ---------------------------------------------- |
+| <code>currencyType</code> | String  | Yes      | Currently `MYR` only                               | MYR                                            |
+| <code>point</code>        | Integer | Yes      | Loyalty point given to customers.                  | 100                                            |
+| <code>type</code>         | String  | Yes      | "ID" or "PHONENUMBER"                              | Use phone number or ID to give loyalty points. |
+| <code>memberId</code>     | String  | No       | Member ID if type "ID" being provided.             | "2777058682717858418"                          |
+| <code>countryCode</code>  | String  | No       | Country code if type "PHONENUMBER" being provided. | "60"                                           |
+| <code>phoneNumber</code>  | String  | No       | Phone number if type "PHONENUMBER" being provided. | "172826990"                                    |
+
+> Example Respond
+
+```json
+{
+  "code": "SUCCESS"
+}
+```
+
+**_RESPONSE_**
+
+<strong>Response Parameters: </strong>
+
+| Parameter         | Type   |                                                                           Description                                                                            | Example   |
+| ----------------- | ------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------- |
+| <code>code</code> | String | Successfully call this endpoint. If fail, will return error code object (Refer [Appendix 1: Error Codes](https://doc.revenuemonster.my/#appendix-1-error-codes)) | "SUCCESS" |
+
+<h3>Body</h3>
+
+<aside> 
+<strong>
+{  <br/>
+   "currencyType": "MYR",<br/>
+   "amount": 100,<br/>
+   "type": "ID",<br/>
+   "memberId": "2777058682717858418"<br/>
+}
+</strong>
+</aside>
+
 <!-- Calculate Spending Reward  -->
 
 ##Calculate Spending Reward
@@ -103,10 +172,11 @@ curl --location --request GET "{{open_base_path}}/v3/loyalty/spending-reward/cal
 
 **Request Parameters:**
 
-| Parameter     | Type | Description | Example |
-| ------------- | ---- | ----------- | ------- |
-| `currencyType` | String  | Currenty `MYR` only     | MYR   |
-| `amount` | int  | Amount Sales     | 300     |
+| Parameter      | Type   | Description          | Example |
+| -------------- | ------ | -------------------- | ------- |
+| `currencyType` | String | Currently `MYR` only | MYR     |
+| `amount`       | int    | Amount Sales         | 300     |
+
 > Example Respond
 
 ```json
@@ -129,6 +199,6 @@ curl --location --request GET "{{open_base_path}}/v3/loyalty/spending-reward/cal
 
 <strong>Point Object (`item`)</strong> <br/>
 
-| Parameter     | Type | Description                       | Example |
-| ------------- | ---- | --------------------------------- | ------- |
-| `Point`       | int  | Loyalty point given to customers. | 300     |
+| Parameter | Type | Description                       | Example |
+| --------- | ---- | --------------------------------- | ------- |
+| `Point`   | int  | Loyalty point given to customers. | 300     |
