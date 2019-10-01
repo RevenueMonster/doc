@@ -7805,10 +7805,28 @@ signType=sha256&amp;timestamp=1527407052</code></p>
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
-   </span><span class="se">\"</span><span class="s2">point</span><span class="se">\"</span><span class="s2">: 100,
+    </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR"</span><span class="err">\</span><span class="p">,</span><span class="w">
+   </span><span class="err">\</span><span class="s2">"point</span><span class="se">\"</span><span class="s2">: 100,
    </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">PHONENUMBER</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">countryCode</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">60</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">phoneNumber</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">176473298</span><span class="se">\"</span><span class="s2">
+}"</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Request (QRCODE)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/loyalty/reward"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
+
+   </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR</span><span class="se">\"</span><span class="s2">,
+   </span><span class="se">\"</span><span class="s2">point</span><span class="se">\"</span><span class="s2">: 100,
+   </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">QRCODE</span><span class="se">\"</span><span class="s2">,
+
 }"</span><span class="w">
 </span></code></pre>
 <p><strong><em>REQUEST</em></strong></p>
@@ -7825,6 +7843,13 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Currently <code>MYR</code> only</td>
+<td>MYR</td>
+</tr>
+<tr>
 <td><code>point</code></td>
 <td>Integer</td>
 <td>Yes</td>
@@ -7835,8 +7860,8 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>&quot;ID&quot; or &quot;PHONENUMBER&quot;</td>
-<td>Use phone number or ID to give loyalty points.</td>
+<td>&quot;ID&quot;, &quot;PHONENUMBER&quot; or &quot;QRCODE&quot;</td>
+<td>Use phone number , ID or QR Code to give loyalty points.</td>
 </tr>
 <tr>
 <td><code>memberId</code></td>
@@ -7865,6 +7890,16 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Respond (QRCDOE)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"qrCodeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-rm-api.ap.ngrok.io/qr/4118165203679668885/loyalty/d3008719d04cab91c53eb0b5d8cc4ee6"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7955,6 +7990,22 @@ signType=sha256&amp;timestamp=1527407052</code></p>
    </span><span class="se">\"</span><span class="s2">phoneNumber</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">176473298</span><span class="se">\"</span><span class="s2">
 }"</span><span class="w">
 </span></code></pre>
+<blockquote>
+<p>Example Request (QRCODE)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"{{open_base_path}}/v3/loyalty/reward"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer {{clientToken}}"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
+   </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR</span><span class="se">\"</span><span class="s2">,
+   </span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">: 100,
+   </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">QRCODE</span><span class="se">\"</span><span class="s2">,
+
+}"</span><span class="w">
+</span></code></pre>
 <p><strong><em>REQUEST</em></strong></p>
 
 <p><strong>Request Parameters:</strong></p>
@@ -7986,8 +8037,8 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>&quot;ID&quot; or &quot;PHONENUMBER&quot;</td>
-<td>Use phone number or ID to give loyalty points.</td>
+<td>&quot;ID&quot; ,&quot;PHONENUMBER&quot; or &quot;QRCODE&quot;</td>
+<td>Use phone number , ID or QR Code to give loyalty points.</td>
 </tr>
 <tr>
 <td><code>memberId</code></td>
@@ -8016,6 +8067,16 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p>Example Respond</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example Respond (QRCDOE)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"qrCodeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-rm-api.ap.ngrok.io/qr/4118165203679668885/loyalty/d3008719d04cab91c53eb0b5d8cc4ee6"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8151,6 +8212,8 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <td>300</td>
 </tr>
 </tbody></table>
+
+<p>Currency notation (currently only support MYR)</p>
 <h1 id='loyalty-members'>Loyalty Members</h1><h2 id='get-loyalty-members'>Get Loyalty Members</h2>
 <p><strong>Method <span style="color:Green" , bold ><code>Get</code></span></strong></p>
 
