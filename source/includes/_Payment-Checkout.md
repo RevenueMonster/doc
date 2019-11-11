@@ -1,4 +1,4 @@
-#Payment-Checkout
+#Payment-Web/App Checkout
 
 Scenarios:
 
@@ -19,6 +19,8 @@ To make payment with a unified payment checkout page.
 <code>https://sb-open.revenuemonster.my/v3/payment/online</code>
 
 To create a unified payment checkout page for your website and Mobile
+
+- Demo web payment: [Click Here](https://sb-api.revenuemonster.my/demo/payment/online)
 
 **_REQUEST_**
 
@@ -76,7 +78,7 @@ curl --location --request POST "{{open_base_path}}/v3/payment/online" \
 
 | Parameter         | Type   | Required | Description                                                                                                                                                     | Example          |
 | ----------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| <code>type</code> | String | Yes      | "WEB_PAYMENT" (Currenty for Web payment only support <strong>"WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY",<br/>"ALIPAY_CN","GRADPAY_MY"</strong>) | "WEB_PAYMENT"    |
+| <code>type</code> | String | Yes      | "WEB_PAYMENT" (Currenty for Web payment only support <strong>"WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY",<br/>"ALIPAY_CN","GRABPAY_MY"</strong>) | "WEB_PAYMENT"    |
 | <code>type</code> | String | Yes      | "MOBILE_PAYMENT" (Currenty for Mobile payment only support <strong><br/>"WECHATPAY_MY","BOOST_MY"</strong>)                                                     | "MOBILE_PAYMENT" |
 
 > Example Respond
