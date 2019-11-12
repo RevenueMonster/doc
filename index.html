@@ -289,7 +289,7 @@
               </ul>
           </li>
           <li>
-            <a href="#payment-checkout" class="toc-h1 toc-link" data-title="Payment-Checkout">Payment-Checkout</a>
+            <a href="#payment-web-app-checkout" class="toc-h1 toc-link" data-title="Payment-Web/App Checkout">Payment-Web/App Checkout</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-transaction-web-or-mobile-payment" class="toc-h2 toc-link" data-title="Create Transaction Web or Mobile Payment">Create Transaction Web or Mobile Payment</a>
@@ -514,22 +514,29 @@ Mobile Browser</p>
 <li>If merchant has not entered Webhook URL and/or Client Public Key in Merchant Portal, system will throw error as below: )</li>
 </ul>
 <h1 id='quick-start-amp-sdk'>Quick Start &amp; SDK</h1>
-<p>*Note: The following steps document the RESTful API. For language specific SDK(s), please refer to the <a href="https://doc.revenuemonster.my/#0f854ba3-9051-4747-83d7-c532392e07f0">SDK section</a>. need to change URL</p>
+<p>*Note: The following steps document the RESTful API. For language specific SDK(s), please refer to the <a href="https://doc.revenuemonster.my/#sdk-beta">SDK section</a>. need to change URL</p>
 
-<p>-<strong>Step 1: Create Developer Application</strong></p>
+<ul>
+<li><strong>Step 1: Create Developer Application</strong></li>
+</ul>
 
-<p><a href="https://doc.revenuemonster.my/#c68f6785-4ee4-4088-8f60-dc49a695611f">Create a developer application</a> &lt;!---need to change URL---&gt;
-in RM merchant portal for your developer project. The application settings help you to manage API credentials, provide callback endpoints and with debugging utilties.</p>
+<p><a href="https://doc.revenuemonster.my/#create-developer-application">Create a developer application</a> in RM merchant portal for your developer project. The application settings help you to manage API credentials, provide callback endpoints and with debugging utilties.</p>
 
-<p>-<strong>Step 2: Authentication</strong></p>
+<ul>
+<li><strong>Step 2: Authentication</strong></li>
+</ul>
 
-<p>Once you have your API credentials, follow our <a href="https://doc.revenuemonster.my/#create-developer-application">Authentication</a> &lt;!--need to change URL--&gt; process to exchange access token and refresh token for subsequent API calls.</p>
+<p>Once you have your API credentials, follow our <a href="https://doc.revenuemonster.my/#create-developer-application">Authentication</a> process to exchange access token and refresh token for subsequent API calls.</p>
 
-<p>-<strong>Step 3: Signature (Payment endpoints only)</strong></p>
+<ul>
+<li><strong>Step 3: Signature (Payment endpoints only)</strong></li>
+</ul>
 
-<p>Payment operations require higher security with <a href="https://doc.revenuemonster.my/#signature-algorithm">Signature</a>, &lt;!-- need to change URL --&gt; all payment endpoints require the requests to be signed.</p>
+<p>Payment operations require higher security with <a href="https://doc.revenuemonster.my/#signature-algorithm">Signature</a>, all payment endpoints require the requests to be signed.</p>
 
-<p>-<strong>Step 4: Call API</strong></p>
+<ul>
+<li><strong>Step 4: Call API</strong></li>
+</ul>
 
 <p>Use access token to call RESTful API endpoints. (Signature is optional for non-payment endpoints.)</p>
 <h1 id='create-developer-application'>Create Developer Application</h1>
@@ -4235,8 +4242,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>No</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
-<td style="text-align: center">[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td style="text-align: center">[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot; ]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -4485,8 +4492,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -4878,8 +4885,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -5114,8 +5121,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot; ]</td>
 </tr>
 <tr>
 <td><code>expiry</code></td>
@@ -5374,8 +5381,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
-<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;]</td>
+<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;]</td>
 </tr>
 <tr>
 <td><code>error</code></td>
@@ -5534,7 +5541,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td>1</td>
 </tr>
 </tbody></table>
-<h1 id='payment-checkout'>Payment-Checkout</h1>
+<h1 id='payment-web-app-checkout'>Payment-Web/App Checkout</h1>
 <p>Scenarios:</p>
 
 <ol>
@@ -5559,6 +5566,10 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <p><code>https://sb-open.revenuemonster.my/v3/payment/online</code></p>
 
 <p>To create a unified payment checkout page for your website and Mobile</p>
+
+<ul>
+<li>Demo web payment: <a href="https://sb-api.revenuemonster.my/demo/payment/online">Click Here</a></li>
+</ul>
 
 <p><strong><em>REQUEST</em></strong></p>
 
@@ -5720,7 +5731,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>&quot;WEB_PAYMENT&quot; (Currenty for Web payment only support <strong>&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRADPAY_MY&quot;</strong>)</td>
+<td>&quot;WEB_PAYMENT&quot; (Currenty for Web payment only support <strong>&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;</strong>)</td>
 <td>&quot;WEB_PAYMENT&quot;</td>
 </tr>
 <tr>
