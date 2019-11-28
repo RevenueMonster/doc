@@ -1963,7 +1963,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -1977,6 +1977,12 @@ Parameter | Type | Required | Description | Example
 <td>String</td>
 <td>Status returned from WeChat server</td>
 <td>&quot;SUCCESS&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
 </tr>
 <tr>
 <td><code>error</code></td>
@@ -2356,7 +2362,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2370,6 +2376,12 @@ Parameter | Type | Required | Description | Example
 <td>String</td>
 <td>Status returned from WeChat server</td>
 <td>&quot;SUCCESS&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
 </tr>
 <tr>
 <td><code>error</code></td>
@@ -2690,7 +2702,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2704,6 +2716,12 @@ Parameter | Type | Required | Description | Example
 <td>String</td>
 <td>Status returned from WeChat server</td>
 <td>&quot;SUCCESS&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
 </tr>
 <tr>
 <td><code>error</code></td>
@@ -3020,7 +3038,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3034,6 +3052,12 @@ Parameter | Type | Required | Description | Example
 <td>String</td>
 <td>Status returned from WeChat server, &quot;SUCCESS&quot; or &quot;IN_PROCESS&quot; or &quot;FAILED&quot;. &quot;IN_PROCESS&quot; means user scanned and making payment.</td>
 <td>&quot;FAILED&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
 </tr>
 <tr>
 <td><code>createdAt</code></td>
@@ -3131,19 +3155,10 @@ Parameter | Type | Required | Description | Example
 <td>Current status of store</td>
 <td>&quot;ACTIVE&quot;</td>
 </tr>
-<tr>
-<td><code>createdAt</code></td>
-<td>DateTime</td>
-<td>Creation date time of store</td>
-<td>&quot;2018-02-12T08:53:13Z&quot;</td>
-</tr>
-<tr>
-<td><code>updatedAt</code></td>
-<td>DateTime</td>
-<td>Last update date time of store</td>
-<td>&quot;2018-02-12T08:53:13Z&quot;</td>
-</tr>
 </tbody></table>
+
+<p>| <code>createdAt</code> | DateTime | Creation date time of store | &quot;2018-02-12T08:53:13Z&quot; |
+| <code>updatedAt</code> | DateTime | Last update date time of store | &quot;2018-02-12T08:53:13Z&quot; |</p>
 
 <p><strong>Order object (<code>&quot;order&quot;</code>):</strong></p>
 
@@ -3344,7 +3359,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3358,6 +3373,12 @@ Parameter | Type | Required | Description | Example
 <td>String</td>
 <td>Status returned from WeChat server, &quot;SUCCESS&quot; or &quot;IN_PROCESS&quot; or &quot;FAILED&quot;. &quot;IN_PROCESS&quot; means user scanned and making payment.</td>
 <td>&quot;FAILED&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
 </tr>
 <tr>
 <td><code>createdAt</code></td>
@@ -3670,7 +3691,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3684,6 +3705,12 @@ Parameter | Type | Required | Description | Example
 <td>String</td>
 <td>Status returned from WeChat server, &quot;SUCCESS&quot; or &quot;IN_PROCESS&quot; or &quot;FAILED&quot;. &quot;IN_PROCESS&quot; means user scanned and making payment.</td>
 <td>&quot;FAILED&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
 </tr>
 <tr>
 <td><code>createdAt</code></td>
@@ -3990,7 +4017,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
