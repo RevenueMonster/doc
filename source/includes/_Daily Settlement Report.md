@@ -60,7 +60,7 @@ S,0,0.00,0.00,0.00,0.00,0.00,
 | <code>order</code>         | Object   | Order object                                                                                                                   | (Refer to explanation below)               |
 | <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                                                 | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
 | <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                                              | "OPEN_API"                                 |
-| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY".                      | "ALL"                                      |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY" , "GRABPAY".                            | "ALL"                                      |
 | <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                                              | "QUICKPAY"                                 |
 | <code>status</code>        | String   | Status returned from WeChat server, "SUCCESS" or "IN_PROCESS" or "FAILED". "IN_PROCESS" means user scanned and making payment. | "FAILED"                                   |
 | <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                                              | "2018-03-21T06:41:22Z"                     |

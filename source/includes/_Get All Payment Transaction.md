@@ -96,9 +96,10 @@ _Note: No request parameter is required for this endpoint_
 | <code>order</code>         | Object   | Order object                                                                                                                   | (Refer to explanation below)               |
 | <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                                                 | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
 | <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                                              | "OPEN_API"                                 |
-| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY".                      | "ALL"                                      |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY" , "GRABPAY".                            | "ALL"                                      |
 | <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                                              | "QUICKPAY"                                 |
 | <code>status</code>        | String   | Status returned from WeChat server, "SUCCESS" or "IN_PROCESS" or "FAILED". "IN_PROCESS" means user scanned and making payment. | "FAILED"                                   |
+| <code>region</code>        | String   | Region of wallet, "MALAYSIA" or "CHINA"                                                                                        | "MALAYSIA"                                 |
 | <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                                              | "2018-03-21T06:41:22Z"                     |
 | <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                                                           | "2018-03-21T06:41:22Z"                     |
 
@@ -118,8 +119,9 @@ _Note: No request parameter is required for this endpoint_
 | <code>phoneNumber</code>  | String             | Phone number of store                           | "377334080"                               |
 | <code>geoLocation</code>  | Object of [String] | Geo Location (latitude and longtitude) of store | {"Lat": 3.1349857, "Lng": 101.6136659 }   |
 | <code>status</code>       | String             | Current status of store                         | "ACTIVE"                                  |
-| <code>createdAt</code>    | DateTime           | Creation date time of store                     | "2018-02-12T08:53:13Z"                    |
-| <code>updatedAt</code>    | DateTime           | Last update date time of store                  | "2018-02-12T08:53:13Z"                    |
+
+| <code>createdAt</code> | DateTime | Creation date time of store | "2018-02-12T08:53:13Z" |
+| <code>updatedAt</code> | DateTime | Last update date time of store | "2018-02-12T08:53:13Z" |
 
 <strong>Order object (`"order"`):</strong>
 

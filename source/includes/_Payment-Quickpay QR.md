@@ -144,21 +144,22 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/qui
 
 <strong>Transaction object (`"item"`):</strong>
 
-| Parameter                  | Type     | Description                                                                                              | Example                                    |
-| -------------------------- | -------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| <code>store</code>         | Object   | Store object                                                                                             | (Refer to explanation below)               |
-| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                      | ""                                         |
-| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                          | "152161448229438994"                       |
-| <code>order</code>         | Object   | Order object                                                                                             | (Refer to explanation below)               |
-| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                           | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
-| <code>currencyType</code>  | String   | Currency notation (currently only support `MYR`)                                                         | "MYR"                                      |
-| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                        | "OPEN_API"                                 |
-| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY" | ALL                                        |
-| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                        | "QUICKPAY"                                 |
-| <code>status</code>        | String   | Status returned from WeChat server                                                                       | "SUCCESS"                                  |
-| <code>error</code>         | String   | (Refer `Appendix: Error Codes`)                                                                          | {}                                         |
-| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                        | "2018-03-21T06:41:22Z"                     |
-| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                                     | "2018-03-21T06:41:22Z"                     |
+| Parameter                  | Type     | Description                                                                                        | Example                                    |
+| -------------------------- | -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| <code>store</code>         | Object   | Store object                                                                                       | (Refer to explanation below)               |
+| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                | ""                                         |
+| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                    | "152161448229438994"                       |
+| <code>order</code>         | Object   | Order object                                                                                       | (Refer to explanation below)               |
+| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                     | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
+| <code>currencyType</code>  | String   | Currency notation (currently only support `MYR`)                                                   | "MYR"                                      |
+| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                  | "OPEN_API"                                 |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY" , "GRABPAY" | ALL                                        |
+| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                  | "QUICKPAY"                                 |
+| <code>status</code>        | String   | Status returned from WeChat server                                                                 | "SUCCESS"                                  |
+| <code>region</code>        | String   | Region of wallet, "MALAYSIA" or "CHINA"                                                            | "MALAYSIA"                                 |
+| <code>error</code>         | String   | (Refer `Appendix: Error Codes`)                                                                    | {}                                         |
+| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                  | "2018-03-21T06:41:22Z"                     |
+| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                               | "2018-03-21T06:41:22Z"                     |
 
 <strong>Store object (`"store"`):</strong>
 
@@ -300,20 +301,21 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/ref
 
 <strong>Transaction object (`"item"`):</strong>
 
-| Parameter                  | Type     | Description                                                                                              | Example                                    |
-| -------------------------- | -------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| <code>store</code>         | Object   | Store object                                                                                             | (Refer to explanation below)               |
-| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                      | ""                                         |
-| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                          | "152161448229438994"                       |
-| <code>order</code>         | Object   | Order object                                                                                             | (Refer to explanation below)               |
-| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                           | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
-| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                        | "OPEN_API"                                 |
-| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY" | ALL                                        |
-| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                        | "QUICKPAY"                                 |
-| <code>status</code>        | String   | Status returned from WeChat server                                                                       | "SUCCESS"                                  |
-| <code>error</code>         | String   | (Refer `Appendix: Error Codes`)                                                                          | {}                                         |
-| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                        | "2018-03-21T06:41:22Z"                     |
-| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                                     | "2018-03-21T06:41:22Z"                     |
+| Parameter                  | Type     | Description                                                                                        | Example                                    |
+| -------------------------- | -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| <code>store</code>         | Object   | Store object                                                                                       | (Refer to explanation below)               |
+| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                | ""                                         |
+| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                    | "152161448229438994"                       |
+| <code>order</code>         | Object   | Order object                                                                                       | (Refer to explanation below)               |
+| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                     | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
+| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                  | "OPEN_API"                                 |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY" , "GRABPAY" | ALL                                        |
+| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                  | "QUICKPAY"                                 |
+| <code>status</code>        | String   | Status returned from WeChat server                                                                 | "SUCCESS"                                  |
+| <code>region</code>        | String   | Region of wallet, "MALAYSIA" or "CHINA"                                                            | "MALAYSIA"                                 |
+| <code>error</code>         | String   | (Refer `Appendix: Error Codes`)                                                                    | {}                                         |
+| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                  | "2018-03-21T06:41:22Z"                     |
+| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                               | "2018-03-21T06:41:22Z"                     |
 
 <strong>Store object (`"store"`):</strong>
 
@@ -424,20 +426,21 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/rev
 
 <strong>Transaction object (`"item"`):</strong>
 
-| Parameter                  | Type     | Description                                                                                              | Example                                    |
-| -------------------------- | -------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| <code>store</code>         | Object   | Store object                                                                                             | (Refer to explanation below)               |
-| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                      | ""                                         |
-| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                          | "152161448229438994"                       |
-| <code>order</code>         | Object   | Order object                                                                                             | (Refer to explanation below)               |
-| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                           | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
-| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                        | "OPEN_API"                                 |
-| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY" | ALL                                        |
-| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                        | "QUICKPAY"                                 |
-| <code>status</code>        | String   | Status returned from WeChat server                                                                       | "SUCCESS"                                  |
-| <code>error</code>         | String   | (Refer `Appendix: Error Codes`)                                                                          | {}                                         |
-| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                        | "2018-03-21T06:41:22Z"                     |
-| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                                     | "2018-03-21T06:41:22Z"                     |
+| Parameter                  | Type     | Description                                                                                        | Example                                    |
+| -------------------------- | -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| <code>store</code>         | Object   | Store object                                                                                       | (Refer to explanation below)               |
+| <code>referenceId</code>   | String   | Transaction ID (from WeChat server)                                                                | ""                                         |
+| <code>transactionId</code> | String   | Transaction ID (from RM server)                                                                    | "152161448229438994"                       |
+| <code>order</code>         | Object   | Order object                                                                                       | (Refer to explanation below)               |
+| <code>payee</code>         | Object   | Object of userID made payment (payment sender)                                                     | {"userId": "o74f0wjjzv9eKRu1fccrZswVFnOQ"} |
+| <code>platform</code>      | String   | Currently only support "OPEN_API"                                                                  | "OPEN_API"                                 |
+| <code>method</code>        | String   | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY" , "GRABPAY" | ALL                                        |
+| <code>type</code>          | String   | Currently only support "QUICKPAY"                                                                  | "QUICKPAY"                                 |
+| <code>status</code>        | String   | Status returned from WeChat server                                                                 | "SUCCESS"                                  |
+| <code>region</code>        | String   | Region of wallet, "MALAYSIA" or "CHINA"                                                            | "MALAYSIA"                                 |
+| <code>error</code>         | String   | (Refer `Appendix: Error Codes`)                                                                    | {}                                         |
+| <code>createdAt</code>     | DateTime | Creation date time of transaction                                                                  | "2018-03-21T06:41:22Z"                     |
+| <code>updatedAt</code>     | DateTime | Last update date time of transaction                                                               | "2018-03-21T06:41:22Z"                     |
 
 <strong>Store object (`"store"`):</strong>
 
