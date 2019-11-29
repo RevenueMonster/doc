@@ -79,7 +79,15 @@ curl --location --request POST "{{open_base_path}}/v3/payment/online" \
 | Parameter         | Type   | Required | Description                                                                                                                                                     | Example          |
 | ----------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | <code>type</code> | String | Yes      | "WEB_PAYMENT" (Currenty for Web payment only support <strong>"WECHATPAY_MY","WECHATPAY_CN" <br/>,"PRESTO_MY","BOOST_MY",<br/>"ALIPAY_CN","GRABPAY_MY"</strong>) | "WEB_PAYMENT"    |
-| <code>type</code> | String | Yes      | "MOBILE_PAYMENT" (Currenty for Mobile payment only support <strong><br/>"WECHATPAY_MY","BOOST_MY"</strong>)                                                     | "MOBILE_PAYMENT" |
+| <code>type</code> | String | Yes      | "MOBILE_PAYMENT" (Currently for Mobile payment only support <strong><br/>"WECHATPAY_MY","BOOST_MY"</strong>)                                                    | "MOBILE_PAYMENT" |
+
+<strong>`"MOBILE_PAYMENT"`:</strong><br/>
+
+<strong>For`"MOBILE_PAYMENT"` only apply at application.</strong><br/> <br/>
+<strong>SDK for `"MOBILE_PAYMENT"`</strong> :-
+
+- [RM-IOS](https://github.com/RevenueMonster/RM-IOS)
+- [RM-Android](https://github.com/RevenueMonster/RM-Android) <br/><br />
 
 > Example Respond
 
