@@ -21,7 +21,6 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/rew
   --header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
   --header "X-Timestamp: 1528450585" \
   --data "{
-    \"currencyType\": \"MYR"\,
    \"point\": 100,
    \"type\": \"PHONENUMBER\",
    \"countryCode\": \"60\",
@@ -39,8 +38,6 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/rew
   --header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
   --header "X-Timestamp: 1528450585" \
   --data "{
-
-   \"currencyType\": \"MYR\",
    \"point\": 100,
    \"type\": \"QRCODE\",
 
@@ -52,8 +49,7 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/rew
 <strong>Request Parameters:</strong>
 
 | Parameter                 | Type    | Required | Description                                        | Example                                                  |
-| ------------------------- | ------- | -------- | -------------------------------------------------- | -------------------------------------------------------- |
-| <code>currencyType</code> | String  | Yes      | Currently `MYR` only                               | MYR                                                      |
+| ------------------------- | ------- | -------- | -------------------------------------------------- | -------------------------------------------------------- |                                         |
 | <code>point</code>        | Integer | Yes      | Loyalty point given to customers.                  | 100                                                      |
 | <code>type</code>         | String  | Yes      | "ID", "PHONENUMBER" or "QRCODE"                    | Use phone number , ID or QR Code to give loyalty points. |
 | <code>memberId</code>     | String  | No       | Member ID if type "ID" being provided.             | "2777058682717858418"                                    |
