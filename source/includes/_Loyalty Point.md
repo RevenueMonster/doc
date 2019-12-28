@@ -211,7 +211,7 @@ curl --location --request POST "{{open_base_path}}/v3/loyalty/reward" \
 
 <!-- Cancel Spending Loyalty Point -->
 
-##Cancel Spending Loyalty Point
+##Cancel Spending Loyalty Poin
 **Method <span style="color:Orange" , bold >`POST`</span>**<br/>
 
 `https://sb-open.revenuemonster.my/v3/loyalty/spending-reward/cancel`
