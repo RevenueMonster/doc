@@ -29,7 +29,7 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/rew
 }"
 ```
 
-> Example Request (QRCODE)
+> Example Request
 
 ```json
 curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/reward" \
@@ -60,7 +60,7 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/rew
 | <code>countryCode</code>  | String  | No       | Country code if type "PHONENUMBER" being provided. | "60"                                                     |
 | <code>phoneNumber</code>  | String  | No       | Phone number if type "PHONENUMBER" being provided. | "172826990"                                              |
 
-> Example Respond
+> Example Respond (PhoneNumber)
 
 ```json
 {
@@ -165,11 +165,14 @@ curl --location --request POST "{{open_base_path}}/v3/loyalty/reward" \
 | <code>countryCode</code>  | String  | No       | Country code if type "PHONENUMBER" being provided. | "60"                                                     |
 | <code>phoneNumber</code>  | String  | No       | Phone number if type "PHONENUMBER" being provided. | "172826990"                                              |
 
-> Example Respond
+> Example Respond (Phone Number)
 
 ```json
 {
   "code": "SUCCESS"
+  "item": {
+    "id": "d3008719d04cab91c53eb0b5d8cc4ee6"
+  }
 }
 ```
 
@@ -178,7 +181,8 @@ curl --location --request POST "{{open_base_path}}/v3/loyalty/reward" \
 ```json
 {
   "item": {
-    "qrCodeUrl": "https://dev-rm-api.ap.ngrok.io/qr/4118165203679668885/loyalty/d3008719d04cab91c53eb0b5d8cc4ee6"
+    "qrCodeUrl": "https://dev-rm-api.ap.ngrok.io/qr/4118165203679668885/loyalty/d3008719d04cab91c53eb0b5d8cc4ee6",
+    "id": "d3008719d04cab91c53eb0b5d8cc4ee6"
   },
   "code": "SUCCESS"
 }
@@ -204,6 +208,54 @@ curl --location --request POST "{{open_base_path}}/v3/loyalty/reward" \
 }
 </strong>
 </aside>
+
+<!-- Cancel Spending Loyalty Point -->
+
+##Cancel Spending Loyalty Point
+**Method <span style="color:Orange" , bold >`POST`</span>**<br/>
+
+`https://sb-open.revenuemonster.my/v3/loyalty/spending-reward/cancel`
+
+> Example Request
+
+```json
+curl --location --request POST "{{open_base_path}}/v3/loyalty/spending-reward/cancel" \
+--header "Content-Type: application/json"\
+--header "Authorization: Bearer {{clientToken}}" \
+--header "X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing==" \
+--header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
+--header "X-Timestamp: 1528450585"\
+--data-raw "{
+  "id":"dee13d3470f2dd43466c252cfc67f967"
+
+}"
+```
+
+**To cancel loyalty points by id**
+
+**_REQUEST_**
+
+**Request Parameters:**
+
+| Parameter | Type   | Required | Description                                    | Example                            |
+| --------- | ------ | -------- | ---------------------------------------------- | ---------------------------------- |
+| `id`      | String | Yes      | Get the **id** from spending loyalty point api | "dee13d3470f2dd43466c252cfc67f967" |
+
+> Example Respond
+
+```json
+{
+  "code": "SUCCESS"
+}
+```
+
+**_RESPONSE_**
+
+<strong>Response Parameters: </strong>
+
+| Parameter         | Type   |                                                                           Description                                                                            | Example   |
+| ----------------- | ------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | --------- |
+| <code>code</code> | String | Successfully call this endpoint. If fail, will return error code object (Refer [Appendix 1: Error Codes](https://doc.revenuemonster.my/#appendix-1-error-codes)) | "SUCCESS" |
 
 <!-- Calculate Spending Reward  -->
 
