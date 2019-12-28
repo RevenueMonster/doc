@@ -348,6 +348,9 @@
                     <a href="#give-spending-loyalty-point" class="toc-h2 toc-link" data-title="Give Spending Loyalty Point">Give Spending Loyalty Point</a>
                   </li>
                   <li>
+                    <a href="#cancel-spending-loyalty-point" class="toc-h2 toc-link" data-title="Cancel Spending Loyalty Point">Cancel Spending Loyalty Point</a>
+                  </li>
+                  <li>
                     <a href="#calculate-spending-reward" class="toc-h2 toc-link" data-title="Calculate Spending Reward">Calculate Spending Reward</a>
                   </li>
               </ul>
@@ -5426,8 +5429,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Currently only support &quot;QUICKPAY&quot;</td>
-<td>&quot;QUICKPAY&quot;</td>
+<td>Can support &quot;QUICK_PAY&quot; , &quot;QR_PAY&quot;</td>
+<td>&quot;QUICK_PAY&quot; or &quot;QR_PAY&quot;</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -7853,14 +7856,15 @@ signType=sha256&amp;timestamp=1527407052</code></p>
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
-   </span><span class="se">\"</span><span class="s2">point</span><span class="se">\"</span><span class="s2">: 100,
+    </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR"</span><span class="err">\</span><span class="p">,</span><span class="w">
+   </span><span class="err">\</span><span class="s2">"point</span><span class="se">\"</span><span class="s2">: 100,
    </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">PHONENUMBER</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">countryCode</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">60</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">phoneNumber</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">176473298</span><span class="se">\"</span><span class="s2">
 }"</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Example Request (QRCODE)</p>
+<p>Example Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/loyalty/reward"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -7869,6 +7873,8 @@ signType=sha256&amp;timestamp=1527407052</code></p>
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
+
+   </span><span class="se">\"</span><span class="s2">currencyType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MYR</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">point</span><span class="se">\"</span><span class="s2">: 100,
    </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">QRCODE</span><span class="se">\"</span><span class="s2">,
 
@@ -7887,6 +7893,13 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <th>Example</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Currently <code>MYR</code> only</td>
+<td>MYR</td>
+</tr>
 <tr>
 <td><code>point</code></td>
 <td>Integer</td>
@@ -7925,7 +7938,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tbody></table>
 
 <blockquote>
-<p>Example Respond</p>
+<p>Example Respond (PhoneNumber)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
@@ -8102,10 +8115,13 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tbody></table>
 
 <blockquote>
-<p>Example Respond</p>
+<p>Example Respond (Phone Number)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3008719d04cab91c53eb0b5d8cc4ee6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -8113,7 +8129,8 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"qrCodeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-rm-api.ap.ngrok.io/qr/4118165203679668885/loyalty/d3008719d04cab91c53eb0b5d8cc4ee6"</span><span class="w">
+    </span><span class="s2">"qrCodeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dev-rm-api.ap.ngrok.io/qr/4118165203679668885/loyalty/d3008719d04cab91c53eb0b5d8cc4ee6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3008719d04cab91c53eb0b5d8cc4ee6"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8150,6 +8167,77 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 }
 </strong>
 </aside>
+
+<!-- Cancel Spending Loyalty Point -->
+<h2 id='cancel-spending-loyalty-point'>Cancel Spending Loyalty Point</h2>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong><br/></p>
+
+<p><code>https://sb-open.revenuemonster.my/v3/loyalty/spending-reward/cancel</code></p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"{{open_base_path}}/v3/loyalty/spending-reward/cancel"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer {{clientToken}}"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="err">\</span><span class="w">
+</span><span class="err">--data-raw</span><span class="w"> </span><span class="s2">"{
+  "</span><span class="err">id</span><span class="s2">":"</span><span class="err">dee</span><span class="mi">13</span><span class="err">d</span><span class="mi">3470</span><span class="err">f</span><span class="mi">2</span><span class="err">dd</span><span class="mi">43466</span><span class="err">c</span><span class="mi">252</span><span class="err">cfc</span><span class="mi">67</span><span class="err">f</span><span class="mi">967</span><span class="s2">"
+
+}"</span><span class="w">
+</span></code></pre>
+<p><strong>To cancel loyalty points by id</strong></p>
+
+<p><strong><em>REQUEST</em></strong></p>
+
+<p><strong>Request Parameters:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Get the <strong>id</strong> from spending loyalty point api</td>
+<td>&quot;dee13d3470f2dd43466c252cfc67f967&quot;</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><em>RESPONSE</em></strong></p>
+
+<p><strong>Response Parameters: </strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th style="text-align: center">Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>code</code></td>
+<td>String</td>
+<td style="text-align: center">Successfully call this endpoint. If fail, will return error code object (Refer <a href="https://doc.revenuemonster.my/#appendix-1-error-codes">Appendix 1: Error Codes</a>)</td>
+<td>&quot;SUCCESS&quot;</td>
+</tr>
+</tbody></table>
 
 <!-- Calculate Spending Reward  -->
 <h2 id='calculate-spending-reward'>Calculate Spending Reward</h2>
