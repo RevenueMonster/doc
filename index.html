@@ -348,7 +348,7 @@
                     <a href="#give-spending-loyalty-point" class="toc-h2 toc-link" data-title="Give Spending Loyalty Point">Give Spending Loyalty Point</a>
                   </li>
                   <li>
-                    <a href="#cancel-spending-loyalty-point" class="toc-h2 toc-link" data-title="Cancel Spending Loyalty Point">Cancel Spending Loyalty Point</a>
+                    <a href="#cancel-spending-loyalty-poin" class="toc-h2 toc-link" data-title="Cancel Spending Loyalty Poin">Cancel Spending Loyalty Poin</a>
                   </li>
                   <li>
                     <a href="#calculate-spending-reward" class="toc-h2 toc-link" data-title="Calculate Spending Reward">Calculate Spending Reward</a>
@@ -5625,8 +5625,8 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>Yes</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY&quot;, &quot;WECHATPAY CN&quot;, &quot;Presto&quot;, &quot;Boost&quot;,&quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;,(&quot;TNG_MY&quot; <strong>For Sandbox Only</strong>).</td>
-<td>[&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,&quot;TNG_MY&quot;]</td>
+<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY&quot;, &quot;WECHATPAY CN&quot;, &quot;Presto&quot;, &quot;Boost&quot;,&quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;,&quot;TNG_MY&quot;,&quot;RAZER_MY&quot;.</td>
+<td>[&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,&quot;TNG_MY&quot; , &quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;,&quot;RAZER_MY&quot;]</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -5761,14 +5761,14 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>&quot;WEB_PAYMENT&quot; (Currenty for Web payment only support <strong>&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;</strong>)</td>
+<td>&quot;WEB_PAYMENT&quot; (Currenty for Web payment only support <strong>&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;,&quot;TNG_MY&quot;,&quot;RAZER_MY&quot;</strong>)</td>
 <td>&quot;WEB_PAYMENT&quot;</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>&quot;MOBILE_PAYMENT&quot; (Currently for Mobile payment only support <strong><br/>&quot;WECHATPAY_MY&quot;,&quot;BOOST_MY&quot;</strong>)</td>
+<td>&quot;MOBILE_PAYMENT&quot; (Currently for Mobile payment only support <strong>&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;,&quot;TNG_MY&quot;</strong>)</td>
 <td>&quot;MOBILE_PAYMENT&quot;</td>
 </tr>
 </tbody></table>
@@ -8169,7 +8169,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </aside>
 
 <!-- Cancel Spending Loyalty Point -->
-<h2 id='cancel-spending-loyalty-point'>Cancel Spending Loyalty Point</h2>
+<h2 id='cancel-spending-loyalty-poin'>Cancel Spending Loyalty Poin</h2>
 <p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong><br/></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/loyalty/spending-reward/cancel</code></p>
