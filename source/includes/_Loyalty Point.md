@@ -159,7 +159,7 @@ curl --location --request POST "{{open_base_path}}/v3/loyalty/reward" \
 | Parameter                 | Type    | Required | Description                                        | Example                                                  |
 | ------------------------- | ------- | -------- | -------------------------------------------------- | -------------------------------------------------------- |
 | <code>currencyType</code> | String  | Yes      | Currently `MYR` only                               | MYR                                                      |
-| <code>point</code>        | Integer | Yes      | Loyalty point given to customers.                  | 100                                                      |
+| <code>amount</code>       | Integer | Yes      | Loyalty point given to customers.                  | 100                                                      |
 | <code>type</code>         | String  | Yes      | "ID" ,"PHONENUMBER" or "QRCODE"                    | Use phone number , ID or QR Code to give loyalty points. |
 | <code>memberId</code>     | String  | No       | Member ID if type "ID" being provided.             | "2777058682717858418"                                    |
 | <code>countryCode</code>  | String  | No       | Country code if type "PHONENUMBER" being provided. | "60"                                                     |
