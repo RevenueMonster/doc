@@ -146,10 +146,10 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/tra
 
 <strong>Response Parameters:</strong>
 
-| Parameter          | Type   | Description                                                                                               | Example                      |
-| ------------------ | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| <code>items</code> | Object | Transaction object                                                                                        | (Refer to explanation below) |
-| <code>code</code>  | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+| Parameter         | Type   | Description                                                                                               | Example                      |
+| ----------------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>item</code> | Object | Transaction object                                                                                        | (Refer to explanation below) |
+| <code>code</code> | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
 
 <strong>Transaction object (`"item"`):</strong>
 

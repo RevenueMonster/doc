@@ -215,12 +215,12 @@ curl --location --request GET "https://sb-open.revenuemonster.my/v3/store/109461
 }
 ```
 
-| Parameter          | Type     | Description                                                                                               | Example                      |
-| ------------------ | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| <code>items</code> | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
-| <code>code</code>  | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+| Parameter         | Type     | Description                                                                                               | Example                      |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>item</code> | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
+| <code>code</code> | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
 
-<strong>Array of store object (`"items"`):</strong>
+<strong>Array of store object (`"item"`):</strong>
 
 | Parameter                 | Type               | Description                                     | Example                                                      |
 | ------------------------- | ------------------ | ----------------------------------------------- | ------------------------------------------------------------ |
@@ -293,10 +293,10 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/store" \
 
 <strong>Request Parameters:</strong>
 
-| Parameter          | Type     | Description                                                                                               | Example                      |
-| ------------------ | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| <code>items</code> | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
-| <code>code</code>  | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+| Parameter         | Type     | Description                                                                                               | Example                      |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>item</code> | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
+| <code>code</code> | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
 
 > Example Respond
 
@@ -325,7 +325,7 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/store" \
 }
 ```
 
-<strong>Array of store object (`"items"`):</strong>
+<strong>Array of store object (`"item"`):</strong>
 
 | Parameter                 | Type              | Description                                                 | Example                                             |
 | ------------------------- | ----------------- | ----------------------------------------------------------- | --------------------------------------------------- |
@@ -428,12 +428,12 @@ Eg. Plain Text Parameters:<br>
 
 <strong>Request Parameters:</strong>
 
-| Parameter          | Type     | Description                                                                                               | Example                      |
-| ------------------ | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| <code>items</code> | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
-| <code>code</code>  | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+| Parameter         | Type     | Description                                                                                               | Example                      |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>item</code> | Object[] | Array of store object                                                                                     | (Refer to explanation below) |
+| <code>code</code> | String   | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
 
-<strong>Array of store object (`"items"`):</strong>
+<strong>Array of store object (`"item"`):</strong>
 
 | Parameter                 | Type              | Description                                                 | Example                                             |
 | ------------------------- | ----------------- | ----------------------------------------------------------- | --------------------------------------------------- |

@@ -105,10 +105,10 @@ curl --location --request POST "{{open_base_path}}/v3/payment/online" \
 
 <strong>Response Parameters:</strong>
 
-| Parameter          | Type   | Description                                                                                               | Example                      |
-| ------------------ | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| <code>items</code> | Object | item object                                                                                               | (Refer to explanation below) |
-| <code>code</code>  | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+| Parameter               | Type   | Description                                                                                               | Example                      |
+| ----------------------- | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <code>item</code>       | Object | item object                                                                                               | (Refer to explanation below) |
+| <code>checkoutId</code> | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
 
 <strong>`"item"` Object:</strong>
 
