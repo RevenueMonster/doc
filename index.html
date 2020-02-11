@@ -348,7 +348,7 @@
                     <a href="#give-spending-loyalty-point" class="toc-h2 toc-link" data-title="Give Spending Loyalty Point">Give Spending Loyalty Point</a>
                   </li>
                   <li>
-                    <a href="#cancel-spending-loyalty-poin" class="toc-h2 toc-link" data-title="Cancel Spending Loyalty Poin">Cancel Spending Loyalty Poin</a>
+                    <a href="#cancel-spending-loyalty-point" class="toc-h2 toc-link" data-title="Cancel Spending Loyalty Point">Cancel Spending Loyalty Point</a>
                   </li>
                   <li>
                     <a href="#calculate-spending-reward" class="toc-h2 toc-link" data-title="Calculate Spending Reward">Calculate Spending Reward</a>
@@ -622,13 +622,13 @@ Mobile Browser</p>
 Refresh token is used to get new access token when:</p>
 
 <ul>
-<li>Access token is expired (2 hours)</li>
+<li>Access token is expired (<strong>29 day</strong>)</li>
 <li>Access token is compromised/hacked/stolen/destroyed</li>
 </ul>
 
 <p>In case you lost refresh token or do not want to deal with refresh token, you may opt to get new access token/refresh token using client credentials again. But this is not a suggested practice. <em>(You don&#39;t want your clientid/clientscrect always exposed in network traffic. That is why you shall use refresh token.)</em></p>
 
-<p>Recommended practice is to run a scheduled task to get the refresh token refreshed before 2 years expiry. And store it using singleton design pattern for all subsequent requests to get access token. <em>(For example, static variable in most OOP languages like C# or JAVA)</em>. Another fail-safe mechanism is that if a invalid access token error has occur, use clientid/clientsecrect again to get new access token and refresh token and store the access token/refresh token for future use.</p>
+<p>Recommended practice is to run a scheduled task to get the refresh token refreshed before <strong>24 years</strong> expiry. And store it using singleton design pattern for all subsequent requests to get access token. <em>(For example, static variable in most OOP languages like C# or JAVA)</em>. Another fail-safe mechanism is that if a invalid access token error has occur, use clientid/clientsecrect again to get new access token and refresh token and store the access token/refresh token for future use.</p>
 <h2 id='client-credentials'>Client Credentials</h2>
 <p><strong>Method : <span style="color:Orange" , bold >POST</span></strong></p>
 
@@ -656,7 +656,7 @@ Refresh token is used to get new access token when:</p>
 </ol>
 
 <blockquote>
-<p>Example Response </p>
+<p>Example Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiYXBpX2NsaWVudEBFaGNLQzA5QmRYUm9RMnhwWlc1MEVJbmVpOW5mbE9DN0ZRIl0sImV4cCI6MTU1NjQxNjA4MSwiaWF0IjoxNTUzODI0MDgxLCJpc3MiOiJodHRwczovL3NiLW9hdXRoLnJldmVudWVtb25zdGVyLm15IiwianRpIjoiRWh3S0VFOUJkWFJvUVdOalpYTnpWRzlyWlc0UW92Mk1pOUxZa3NnViIsIm5iZiI6MTU1MzgyNDA4MSwic3ViIjoiRWhRS0NFMWxjbU5vWVc1MEVKWFZ6ZDN3cmFxVE9SSVFDZ1JWYzJWeUVJeUpxSXp2eU1QVmNRIn0.NpnDCdRfjlzJpLMU_cHY4jmyXMW63wpyh99vsu3CIt1jyaQlD34icxfh5MTMytJ7Irtp--K9uy8BuRlt5PM7ufqBVCFOEfC8uXs89DJFx1z2qB2r4QwGreQ7GmG2qQhTPkRtz4al-kCgifUkPQkf1GYS7Ly8VNXGTNMtWT4Ko4juEs8sT-D7ya2zgs81RTxZw8pFmwp78cCZviTZ5zGuVYjZ73EQu_N0GAMaj0D18HdiIRzaSRZh-rIN3z6Lfy_wpvtGNYRpMasSBYiIKOLcExtU8tPiRET39awBFaT7qPKslse7NXSdNNqqwDYIC0-WZKn7rzmIXbtVQRllQn0ing"</span><span class="p">,</span><span class="w">
@@ -665,7 +665,6 @@ Refresh token is used to get new access token when:</p>
   </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PScHXFQHCaAOPrPLNtzktDyRWzrjNhgMLcqZsVRBuGfcvrjDjaMQZSFIHXOGwmnGOSWyrfPncvivwCloQCEToDBGmZhRMufFTDzKpZOzEWsZMDvxYrvDARhrHIaDDkWA"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"refreshTokenExpiresIn"</span><span class="p">:</span><span class="w"> </span><span class="mi">243113245</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
 </span></code></pre>
 <p>-<strong>Step 1:</strong></p>
 
@@ -701,7 +700,7 @@ Refresh token is used to get new access token when:</p>
 <p>Encode the parameters from Step 1 in Base 64 format.</p>
 
 <p>Structure: <br />
-<code>clientId</code>:<code>clientSecret</code> </p>
+<code>clientId</code>:<code>clientSecret</code></p>
 
 <p>Eg: <br />
 Before Base64 encoding: <br />
@@ -720,7 +719,7 @@ Authorization: Basic MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2p
 <p>More info refer: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication">https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication</a></p>
 
 <ul>
-<li>Body : </li>
+<li>Body :</li>
 </ul>
 
 <p><strong>Request Parameters:</strong></p>
@@ -781,15 +780,13 @@ Authorization: Basic MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2p
 
 <p><strong>HEADERS</strong></p>
 
-<p><strong>Content-Type</strong>  &nbsp; &nbsp; application/json <br /></p>
+<p><strong>Content-Type</strong> &nbsp; &nbsp; application/json <br /></p>
 
-<p><strong>AuthorizationBasic</strong>    &nbsp; <br />  OTExMjU1NzcyODk3Njg0NjYyMjpUQVBPaWZ2UHl1T3FhYkVZV0hwQ3JSaU1EZE1UTWdGeg==</p>
+<p><strong>AuthorizationBasic</strong> &nbsp; <br /> OTExMjU1NzcyODk3Njg0NjYyMjpUQVBPaWZ2UHl1T3FhYkVZV0hwQ3JSaU1EZE1UTWdGeg==</p>
 
 <p><strong>BODY</strong> <br /></p>
 
-<p><code>{
-  &quot;grantType&quot;: &quot;client_credentials&quot;
-}</code></p>
+<p><code>{ &quot;grantType&quot;: &quot;client_credentials&quot; }</code></p>
 
 <!--===================--->
 
@@ -883,15 +880,15 @@ This is for the scenario which a partner wants to request permission to develop 
 </tbody></table>
 
 <p>Example Request URL :
- <br />
- <a href="https://sb-oauth.revenuemonster.my/authorize?responseType=code&clientId=3675930941412424316& redirectUri=https://www.google.com&scope=manage_payment&state=123456">
- https://sb-oauth.revenuemonster.my/authorize?responseType=code&amp;clientId=3675930941412424316&amp;redirectUri=
- https://www.google.com&amp;scope=manage_payment&amp;
- state=123456</a></p>
+<br />
+<a href="https://sb-oauth.revenuemonster.my/authorize?responseType=code&clientId=3675930941412424316& redirectUri=https://www.google.com&scope=manage_payment&state=123456">
+https://sb-oauth.revenuemonster.my/authorize?responseType=code&amp;clientId=3675930941412424316&amp;redirectUri=
+https://www.google.com&amp;scope=manage_payment&amp;
+state=123456</a></p>
 
 <p><img src="images/authRespond.png" alt="image" /></p>
 
-<p>Example Response URL : 
+<p>Example Response URL :
 <br />
 <a href="https://www.google.com/?code=iEWqJsA5KVEsWF11xTphDIx8vbUqomsiW2vT4KClOFaVqiGh517dDCfgPlHlqZUeP5atf0SnwiMO8P2X06md8Muv4nEWRW9nro6a5ef0M1jD7k1EFOh9fPV7Jvoe7wIRoVY6JYCSzHuWItQ3Un9J137smxcdSkZ8GKs14vDmREtwFsn8a0SSKBvgfjXEJGrWnCZaCOpEhXPDNzIfo71n0p8p38d9mUyNqxYpQ8UzlPpfAKEr0fiGIFTf6RakxUp&state=123456">https://www.google.com/?code=iEWqJsA5KVEsWF11xTphDIx8vbUqomsiW2vT4KClOFaVqiGh517
 dDCfgPlHlqZUeP5atf0SnwiMO8P2X06md8Muv4nEWRW9nro6a5ef0M1jD7k1EFOh9f
@@ -907,11 +904,11 @@ Tf6RakxUp&amp;state=123456</a></p>
 - Thereafter, user may use this code to generate access token and hence proceed to call other endpoints.<br /><br />
 
 - This code is valid for <b>ONE-TIME</b> only. Once used <b>(either successful or failed)</b>, you are required to request a new authorization code using the steps before.
- </aside>
- 
+
+  </aside>
 
 <p><strong>Get an access token from RM Authorization Server</strong>
- <br /></p>
+  <br /></p>
 
 <ul>
 <li>Step 1: <br /></li>
@@ -959,7 +956,7 @@ Tf6RakxUp&amp;state=123456</a></p>
 Encode the parameters from Step 1 in <strong>Base 64</strong> format.</li>
 </ul>
 
-<p>Structure: <br> 
+<p>Structure: <br>
 <code>clientId</code>:<code>clientSecret</code> <br></p>
 
 <p>Before encoding using Base64 :<br>
@@ -969,11 +966,8 @@ Encode the parameters from Step 1 in <strong>Base 64</strong> format.</li>
 <code>MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2pHbk5KVmdpbg==</code></p>
 
 <ul>
-<li>Step 3:<br>
-
-<ul>
-<li>Put the Base64 encoded <code>clientId</code> and <code>clientSecret</code> in Headers:</li>
-</ul></li>
+<li><p>Step 3:<br></p></li>
+<li><p>Put the Base64 encoded <code>clientId</code> and <code>clientSecret</code> in Headers:</p></li>
 </ul>
 
 <blockquote>
@@ -1077,7 +1071,7 @@ Authorization: Basic MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2p
 
 <p><code>https://sb-oauth.revenuemonster.my/v1/token</code></p>
 
-<p>Access token will be expired as mentioned in response parameter (currently default expiry is set to 2 hours). Developers can regenerate new access token by using refresh token rather than using clientid/clientserect. </p>
+<p>Access token will be expired as mentioned in response parameter (currently default expiry is set to 2 hours). Developers can regenerate new access token by using refresh token rather than using clientid/clientserect.</p>
 
 <ul>
 <li>Step 1:<br />
@@ -1114,7 +1108,7 @@ Authorization: Basic MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2p
 Encode the parameters from Step 1 in Base 64 format.</li>
 </ul>
 
-<p>Structure: <br> 
+<p>Structure: <br>
 <code>clientId</code>:<code>clientSecret</code> <br></p>
 
 <p>Before encoding using Base64 :<br>
@@ -1184,11 +1178,11 @@ Authorization: Basic MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2p
 <p>Example Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiYXBpX2NsaWVudEBFaGNLQzA5QmRYUm9RMnhwWlc1MEVJbmVpOW5mbE9DN0ZRIl0sImV4cCI6MjM0NDQyOTc0OSwiaWF0IjoxNTU2MDI5NzQ5LCJpc3MiOiJodHRwczovL3NiLW9hdXRoLnJldmVudWVtb25zdGVyLm15IiwianRpIjoiRWh3S0VFOUJkWFJvUVdOalpYTnpWRzlyWlc0UXJ1dkxrSUthaU13ViIsIm5iZiI6MTU1NjAyOTc0OSwic3ViIjoiRWhRS0NFMWxjbU5vWVc1MEVKWFZ6ZDN3cmFxVE9SSVFDZ1JWYzJWeUVJeUpxSXp2eU1QVmNRIn0.PL3u_qTOw1c51HWNJsgTVDQBIZssLMRT2Nuo95_qyHHRTOhYz_LPtFdnICabU8P77lBOtZR5rMTuw3jzFFUopu3mCfT6ULzLtbBMVtlwXRdAZAw-kecYIhG5AmkT7H7Iwskvpitkqp1G31xb6PPOEhNTiO3iUY_Q-o3lsjn8uAWdDn7oXdWSmTMCI-1Mo0eYpWIQxsMI6HdQKXzhn1NELE1zvedyUhb6syw3oIocL7yll2eMg_LcYMdTOh26Ae614an8m7zSxgSBydwMHC0gjf7mzYEgqUzJ0M7zg_-vHy67u5UrysXQXDx-1MVHXaetzh3RriCR0R0_qESnIge3SQ"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiresIn"</span><span class="p">:</span><span class="w"> </span><span class="mi">788399999</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XtBwKribhoPsoEbhHnLNJSjkSuskqsRIpTnvVxmOTyQhenqlgGQisbtbpcjcapmhPEaHrJZVbPGvkvaTwWozamuCBUfvWdWQzHJSnjpuurEACugOZssEpUffUSDoSxLz"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refreshTokenExpiresIn"</span><span class="p">:</span><span class="w"> </span><span class="mi">1576799999</span><span class="w">
+  </span><span class="s2">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiYXBpX2NsaWVudEBFaGNLQzA5QmRYUm9RMnhwWlc1MEVJbmVpOW5mbE9DN0ZRIl0sImV4cCI6MjM0NDQyOTc0OSwiaWF0IjoxNTU2MDI5NzQ5LCJpc3MiOiJodHRwczovL3NiLW9hdXRoLnJldmVudWVtb25zdGVyLm15IiwianRpIjoiRWh3S0VFOUJkWFJvUVdOalpYTnpWRzlyWlc0UXJ1dkxrSUthaU13ViIsIm5iZiI6MTU1NjAyOTc0OSwic3ViIjoiRWhRS0NFMWxjbU5vWVc1MEVKWFZ6ZDN3cmFxVE9SSVFDZ1JWYzJWeUVJeUpxSXp2eU1QVmNRIn0.PL3u_qTOw1c51HWNJsgTVDQBIZssLMRT2Nuo95_qyHHRTOhYz_LPtFdnICabU8P77lBOtZR5rMTuw3jzFFUopu3mCfT6ULzLtbBMVtlwXRdAZAw-kecYIhG5AmkT7H7Iwskvpitkqp1G31xb6PPOEhNTiO3iUY_Q-o3lsjn8uAWdDn7oXdWSmTMCI-1Mo0eYpWIQxsMI6HdQKXzhn1NELE1zvedyUhb6syw3oIocL7yll2eMg_LcYMdTOh26Ae614an8m7zSxgSBydwMHC0gjf7mzYEgqUzJ0M7zg_-vHy67u5UrysXQXDx-1MVHXaetzh3RriCR0R0_qESnIge3SQ"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expiresIn"</span><span class="p">:</span><span class="w"> </span><span class="mi">788399999</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refreshToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XtBwKribhoPsoEbhHnLNJSjkSuskqsRIpTnvVxmOTyQhenqlgGQisbtbpcjcapmhPEaHrJZVbPGvkvaTwWozamuCBUfvWdWQzHJSnjpuurEACugOZssEpUffUSDoSxLz"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refreshTokenExpiresIn"</span><span class="p">:</span><span class="w"> </span><span class="mi">1576799999</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response Parameters:</strong></p>
@@ -1233,7 +1227,7 @@ Authorization: Basic MzY3NTkzMDk0MTQxMjQyNDMxNjp3bW43RlVhdVhIZGtvWWE5MTgya0NNa2p
 
 <!--===================--->
 
-<!--##Revoke Token 
+<!--##Revoke Token
 
 **Method : <span style="color:Orange" , bold >POST</span>**
 
@@ -1259,7 +1253,7 @@ Parameter | Type | Required | Description | Example
 Step 2:<br>
 Encode the parameters from Step 1 in Base 64 format.
 
-Structure: <br> 
+Structure: <br>
 `clientId`:`clientSecret` <br>
 Eg:<br>
 Before Base64 encoding:<br>
@@ -1898,7 +1892,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Transaction object</td>
 <td>(Refer to explanation below)</td>
@@ -2303,7 +2297,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Transaction object</td>
 <td>(Refer to explanation below)</td>
@@ -2612,7 +2606,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Transaction object</td>
 <td>(Refer to explanation below)</td>
@@ -3250,7 +3244,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Transaction object</td>
 <td>(Refer to explanation below)</td>
@@ -3582,7 +3576,7 @@ Parameter | Type | Required | Description | Example
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Transaction object</td>
 <td>(Refer to explanation below)</td>
@@ -4460,7 +4454,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Transaction object</td>
 <td>(Refer to explanation below)</td>
@@ -5807,13 +5801,13 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>item object</td>
 <td>(Refer to explanation below)</td>
 </tr>
 <tr>
-<td><code>code</code></td>
+<td><code>checkoutId</code></td>
 <td>String</td>
 <td>Successfully call this endpoint. If fail, will return error code object (Refer <code>Appendix 1: Error Codes</code>)</td>
 <td>&quot;SUCCESS&quot;</td>
@@ -6944,7 +6938,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object[]</td>
 <td>Array of store object</td>
 <td>(Refer to explanation below)</td>
@@ -6957,7 +6951,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </tbody></table>
 
-<p><strong>Array of store object (<code>&quot;items&quot;</code>):</strong></p>
+<p><strong>Array of store object (<code>&quot;item&quot;</code>):</strong></p>
 
 <table><thead>
 <tr>
@@ -7189,7 +7183,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object[]</td>
 <td>Array of store object</td>
 <td>(Refer to explanation below)</td>
@@ -7228,7 +7222,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><strong>Array of store object (<code>&quot;items&quot;</code>):</strong></p>
+<p><strong>Array of store object (<code>&quot;item&quot;</code>):</strong></p>
 
 <table><thead>
 <tr>
@@ -7489,7 +7483,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object[]</td>
 <td>Array of store object</td>
 <td>(Refer to explanation below)</td>
@@ -7502,7 +7496,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </tbody></table>
 
-<p><strong>Array of store object (<code>&quot;items&quot;</code>):</strong></p>
+<p><strong>Array of store object (<code>&quot;item&quot;</code>):</strong></p>
 
 <table><thead>
 <tr>
@@ -7678,7 +7672,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 <p><code>https://sb-open.revenuemonster.my/v3/user</code></p>
 
 <blockquote>
-<p>Example Request </p>
+<p>Example Request</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">GET</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/user"</span><span class="w"> </span><span class="err">\</span><span class="w">
   </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
@@ -7713,7 +7707,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object[]</td>
 <td>Array of user object</td>
 <td>(Refer to explanation below)</td>
@@ -7739,9 +7733,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yussuf@revenuemonster.my"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"avatarUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://storage.googleapis.com/rm-dev-asset/img/avatar.png"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"storeId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"6883264812332703106"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"storeId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"6883264812332703106"</span><span class="p">],</span><span class="w">
     </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-14T09:26:23Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-15T03:29:56Z"</span><span class="w">
@@ -7749,7 +7741,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><strong>Array of store object (<code>&quot;items&quot;</code>):</strong></p>
+<p><strong>Array of store object (<code>&quot;item&quot;</code>):</strong></p>
 
 <table><thead>
 <tr>
@@ -8169,7 +8161,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </aside>
 
 <!-- Cancel Spending Loyalty Point -->
-<h2 id='cancel-spending-loyalty-poin'>Cancel Spending Loyalty Poin</h2>
+<h2 id='cancel-spending-loyalty-point'>Cancel Spending Loyalty Point</h2>
 <p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong><br/></p>
 
 <p><code>https://sb-open.revenuemonster.my/v3/loyalty/spending-reward/cancel</code></p>
@@ -8956,7 +8948,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td style="text-align: center">Voucher object</td>
 <td>(Refer to explanation below)</td>
@@ -9122,7 +9114,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Voucher object</td>
 <td>(Refer to explanation below)</td>
@@ -9434,7 +9426,7 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>items</code></td>
+<td><code>item</code></td>
 <td>Object</td>
 <td>Voucher object</td>
 <td>(Refer to explanation below)</td>
@@ -10395,7 +10387,7 @@ X-Timestamp | 1528450585|
 </tr>
 </tbody></table>
 
-<p><strong>Voucher object (<code>&quot;item&quot;</code>):</strong></p>
+<p><strong>Voucher object (<code>&quot;items&quot;</code>):</strong></p>
 
 <table><thead>
 <tr>
