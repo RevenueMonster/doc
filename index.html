@@ -252,6 +252,9 @@
                     <a href="#quick-pay" class="toc-h2 toc-link" data-title="Quick Pay">Quick Pay</a>
                   </li>
                   <li>
+                    <a href="#quick-pay-terminal-pos-integration" class="toc-h2 toc-link" data-title="Quick Pay Terminal (Pos Integration)">Quick Pay Terminal (Pos Integration)</a>
+                  </li>
+                  <li>
                     <a href="#refund" class="toc-h2 toc-link" data-title="Refund">Refund</a>
                   </li>
                   <li>
@@ -1871,6 +1874,13 @@ Parameter | Type | Required | Description | Example
 <td>&quot;&quot;</td>
 </tr>
 <tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Currency notation (currently only support MYR)</td>
+<td>&quot;MYR&quot;</td>
+</tr>
+<tr>
 <td><code>amount</code></td>
 <td>Uint</td>
 <td>Yes</td>
@@ -1960,7 +1970,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2130,6 +2140,312 @@ Parameter | Type | Required | Description | Example
 <td>Uint</td>
 <td>Amount of order in cent (min RM 0.10 or amount: 10)</td>
 <td>100</td>
+</tr>
+</tbody></table>
+
+<!--============--->
+
+<!--POST Quick Pay Terminal (Pos Integration)--->
+
+<!--============--->
+<h2 id='quick-pay-terminal-pos-integration'>Quick Pay Terminal (Pos Integration)</h2>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
+
+<p><code>https://sb-open.revenuemonster.my/v3/payment/terminal/quickpay</code></p>
+
+<p>To connect Pos System and terminal</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/payment/terminal/quickpay"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiYXBpX2NsaWVudEBFaGNLQzA5QmRYUm9RMnhwWlc1MEVNV1Z4NF9UbE5MZEZRIl0sImV4cCI6MTU4NjMzNzc1OCwiaWF0IjoxNTgzNzQ1NzU4LCJpc3MiOiJodHRwczovL3NiLW9hdXRoLnJldmVudWVtb25zdGVyLm15IiwianRpIjoiRWh3S0VFOUJkWFJvUVdOalpYTnpWRzlyWlc0UXlKSG9qb2VNcHYwViIsIm5iZiI6MTU4Mzc0NTc1OCwic3ViIjoiRWhRS0NFMWxjbU5vWVc1MEVKWFZ6ZDN3cmFxVE9SSVFDZ1JWYzJWeUVJeUpxSXp2eU1QVmNRIn0.FfBkCb7fjCKJdcy_DS06dKgEtcAvukPio0HyDRtH2UovhZsLFSqD_8oo21u094XSor_mqFg4hqXmLaHjX-h92Wz3kHl7OwiKQb16x8Rnl5OdyPHtMqIZqP8ab8Ch0RHEZ33VchK1zBTnG6Xosrb1B44tWqJ0_kdTtbRZN4rG821C8i4sb6sx8GaxgluJ5q7CEifMTBFJam_Jub9LfAfukq8YyIl0Bykp7B3A_su2QoELL9L_ElJdV9FuwFPHcKr9bxLvVSrEdyrFg7IBm_tJHxSl8gTh3j4b6lWZrBCfMSLraXaYRNzz1ddbVnwYD4aRuSyRmQeMYTUj0cInktnKUA"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 GohuT2QTUXJV3MZh2OoEE9qW9wcfakOU9iVLmkTjM12NQuV6IcWMRQDz9NdxAOVIrh5MssfYCLDlafb2illXxgQMpmZkZ38NT6NQsMeMfGbHBS1Kc+BUtU7o1TMLUzk55J1tA6f0Z95oEuBlCeLm6VsgCG30wFm5YmgssJ0weIwMcW355r2sFl7QcKOuRqynoGtmmr/aGfOk1HjiFLoFzSd38O7rRjwGrekYwuYUD1N/Wp5GFXRjtaaPkzAERPbXEmnh/taLME8VeAhky6dAVGZE6gHKnP5WvvVjUE+KLtj3D32YIHzxhzEW9x3JEObqgvm5Q2oRZNxoh6/MvqwkVA=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: bfdgdjgtjhmnbmmjmdfdghghffj"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1546850694"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--data-raw</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"terminalId"</span><span class="p">:</span><span class="s2">"1582107209454501456"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"cameraType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRONT"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"receiptType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E-WALLET"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"order"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"123443333304"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"additonalData"</span><span class="p">:</span><span class="s2">"API Test"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><em>REQUEST</em></strong></p>
+
+<p><strong>Request Parameters:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th style="text-align: center">Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>transactionId</code></td>
+<td>String</td>
+<td style="text-align: center">Yes</td>
+<td>Transaction ID generated from Revenue Monster.</td>
+<td>&quot;1582107209454501456&quot;</td>
+</tr>
+<tr>
+<td><code>cameraType</code></td>
+<td>String</td>
+<td style="text-align: center">Yes</td>
+<td>Display terminal Camera</td>
+<td>&quot;FRONT&quot;</td>
+</tr>
+<tr>
+<td><code>receiptType</code></td>
+<td>Uint</td>
+<td style="text-align: center">Yes</td>
+<td>1 : Print Merchant Copy and Customer copy <br/> <br/> 2 : Print Customer copy</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td style="text-align: center">Yes</td>
+<td>Receipt E-wallet or Credit Card</td>
+<td>&quot;E-WALLET&quot;</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>String</td>
+<td style="text-align: center">Yes</td>
+<td>(Refer <code>order</code> )</td>
+<td>{}</td>
+</tr>
+</tbody></table>
+
+<p><strong>Order object (<code>&quot;order&quot;</code>):</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>amount</code></td>
+<td>Uint</td>
+<td>Yes</td>
+<td>Amount of order in cent (min RM 0.10 or amount: 10)</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Currency notation (currently only support MYR)</td>
+<td>&quot;MYR&quot;</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Order ID (from Merchant), max: 24</td>
+<td>&quot;123443333304&quot;</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Order title, max: 32</td>
+<td>&quot;title&quot;</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Order details, max: 600</td>
+<td>&quot;desc&quot;</td>
+</tr>
+<tr>
+<td><code>additionalData</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>For merchant&#39;s remark, max 128</td>
+<td>&quot;API Test&quot;</td>
+</tr>
+</tbody></table>
+
+<p><strong><em>RESPONSE</em></strong></p>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"balanceAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-13T07:08:56Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"additionalData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000008"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-XXXX-XXXX-3121"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"201919250001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALE"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TERMINAL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000000791320002737201919250001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MALAYSIA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-25T04:35:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200213070856100322408442"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK_CARD"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-13T07:08:56Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameters: </strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>balanceAmount</code></td>
+<td>Uint</td>
+<td>Amount of order in cent</td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>DateTime</td>
+<td>Creation date time of store</td>
+<td>&quot;2020-02-13T07:08:56Z&quot;</td>
+</tr>
+<tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Currency notation (currently only support <code>MYR</code>)</td>
+<td>&quot;MYR&quot;</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>String</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td>&quot;CARD&quot;</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>String</td>
+<td>(Refer <code>order</code> )</td>
+<td>{}</td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td>String</td>
+<td>Only &quot;TERMINAL&quot;</td>
+<td>&quot;TERMINAL&quot;</td>
+</tr>
+<tr>
+<td><code>referenceId</code></td>
+<td>String</td>
+<td>Transaction ID (from server)</td>
+<td>&quot;00000000000791320002737201919250001&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet</td>
+<td>&quot;MALAYSIA&quot;</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String</td>
+<td>Status returned from WeChat server</td>
+<td>&quot;SUCCESS&quot;</td>
+</tr>
+<tr>
+<td><code>transactionAt</code></td>
+<td>DateTime</td>
+<td>Transaction date time of store</td>
+<td>&quot;2020-10-25T04:35:22Z&quot;</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td>DateTime</td>
+<td>Transaction ID generated from Revenue Monster.</td>
+<td>&quot;200213070856100322408442&quot;</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>&quot;QUICKPAY&quot; or &quot;BANK_CARD&quot;</td>
+<td>&quot;BANK_CARD&quot;</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>DateTime</td>
+<td>Last update date time of store</td>
+<td>&quot;2020-02-13T07:08:56Z&quot;</td>
+</tr>
+</tbody></table>
+
+<p><strong>Order object (<code>&quot;order&quot;</code>):</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>amount</code></td>
+<td>Uint</td>
+<td>Yes</td>
+<td>Amount of order in cent (min RM 0.10 or amount: 10)</td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Order ID (from Merchant), max: 24</td>
+<td>&quot;201919250001&quot;</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Order title, max: 32</td>
+<td>&quot;SALE&quot;</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Order details, max: 600</td>
+<td>&quot;XXXX-XXXX-XXXX-3121&quot;</td>
+</tr>
+<tr>
+<td><code>additionalData</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>For merchant&#39;s remark, max 128</td>
+<td>&quot;000008&quot;</td>
 </tr>
 </tbody></table>
 
@@ -2359,7 +2675,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2699,7 +3015,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -3035,7 +3351,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3356,7 +3672,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3688,7 +4004,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;.</td>
+<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
