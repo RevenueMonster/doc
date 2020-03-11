@@ -30,6 +30,7 @@ includes:
   - Tool
   - Appendix 1 Error Codes
   - SDK (Beta)
+  - Method
   - WeChat OA (Beta)
   - Social Media
 

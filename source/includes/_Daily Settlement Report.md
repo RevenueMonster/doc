@@ -1,24 +1,26 @@
-##Daily Settlement Report  
+#Daily Settlement Report
+##Get Payment Reconciliation
 **Method <span style="color:Orange" , bold >`Post`</span>**
 
-`https://sb-open.revenuemonster.my/v3/payment/settlement/csv`
+`https://sb-open.revenuemonster.my/v3/payment/reconciliation`
 
-To query for payment transaction using ID.
+To Get Daily Payment report
 
 > Example Request
 
 ```json
-curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/settlement/csv" \
-  --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw" \
-  --header "X-Signature: sha256 OsjlEWZLKx0IXgC5PUk6sM+ZZdrS/ELBNdEGj+okOhVAwo/i+GK91CwEmIbLko+p0Vbs8Ph+iBQG/3DyS7kHug==" \
-  --header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
-  --header "X-Timestamp: 1527407052" \
-  --data "{
-    \"date\": \"2018-08-05\",
-    \"method\": \"WECHATPAY\",
-    \"region\": \"MALAYSIA\",
-    \"sequence\": 1
+curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/reconciliation" \
+--header "Content-Type: application/json"\
+--header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw" \
+--header "X-Signature: sha256 OsjlEWZLKx0IXgC5PUk6sM+ZZdrS/ELBNdEGj+okOhVAwo/i+GK91CwEmIbLko+p0Vbs8Ph+iBQG/3DyS7kHug=="\
+--header "X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN" \
+--header "X-Timestamp: 1527407052" \
+--data-raw "{
+	"transactionType": "PAYMENT",
+    "date": "2019-12-31",
+    "method": [],
+    "region": [],
+    "cursor": ""
 }"
 ```
 
@@ -26,19 +28,59 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/set
 
 <strong>Request Parameters:</strong>
 
-| Parameter             | Type   | Required | Description                                                                                               | Example      |
-| --------------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------- | ------------ |
-| <code>sequence</code> | UInt   | Yes      | Sequence of the report                                                                                    | 1            |
-| <code>date</code>     | String | Yes      | Date of the report                                                                                        | "2018-08-05" |
-| <code>method</code>   | String | Yes      | Currently only support "WECHATPAY" , "PRESTO" , "BOOST" , "TNG" , "MAYBANK" , "ALIPAY_CN" , "GRABPAY_MY". | "ALL"        |
-| <code>region</code>   | String | Yes      | Region of wallet, "MALAYSIA" or "CHINA"                                                                   | "MALAYSIA"   |
+| Parameter                    | Type   | Required | Description                                | Example      |
+| ---------------------------- | ------ | -------- | ------------------------------------------ | ------------ |
+| <code>transactionType</code> | String | Yes      | "PAYMENT" or "REFUND"                      | "PAYMENT"    |
+| <code>date</code>            | String | Yes      | Date of the report                         | "2019-12-31" |
+| <code>method</code>          | String | Yes      | [RM currently supported method](#quickpay) | []           |
+| <code>region</code>          | String | Yes      | Region of wallet, "MALAYSIA" or "CHINA"    | []           |
+| <code>cursor</code>          | String | Yes      | Optional, if pagination exists             | ""           |
 
 > Example Respond
 
 ```json
-H,4118165203679668885,REVENUE MONSTER,2018-08-05,1
-T,0,0.00,0.00,0.00,0.00,0.00,
-S,0,0.00,0.00,0.00,0.00,0.00,
+{
+  "items": [
+    {
+      "transactionAt": "2019-12-31T07:00:10Z",
+      "merchantId": "4118165203679668885",
+      "merchantName": "Revenue Monster Sdn Bhd",
+      "storeId": "4949529109748431621",
+      "storeName": "Kim's Food Corner",
+      "region": "MALAYSIA",
+      "method": "TNG",
+      "transactionType": "PAYMENT",
+      "type": "QUICK_PAY",
+      "transactionId": "191231070009010323431829",
+      "orderId": "1577775608765190100M6010",
+      "currencyType": "MYR",
+      "grossAmount": "0.10",
+      "mdr": "0.70",
+      "serviceFee": "-0.00",
+      "settlementAmount": "0.10"
+    },
+    {
+      "transactionAt": "2019-12-31T07:42:55Z",
+      "merchantId": "4118165203679668885",
+      "merchantName": "Revenue Monster Sdn Bhd",
+      "storeId": "4949529109748431621",
+      "storeName": "Kim's Food Corner",
+      "region": "MALAYSIA",
+      "method": "TNG",
+      "transactionType": "PAYMENT",
+      "type": "QUICK_PAY",
+      "transactionId": "191231074255010324053928",
+      "orderId": "1577778173933190100M6010",
+      "currencyType": "MYR",
+      "grossAmount": "1.00",
+      "mdr": "0.70",
+      "serviceFee": "-0.01",
+      "settlementAmount": "0.99"
+    }
+  ],
+  "code": "SUCCESS",
+  "meta": {}
+}
 ```
 
 **_RESPONSE_**
@@ -49,8 +91,28 @@ S,0,0.00,0.00,0.00,0.00,0.00,
 | ------------------ | ------ | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
 | <code>items</code> | Object | Transaction object                                                                                        | (Refer to explanation below) |
 | <code>code</code>  | String | Successfully call this endpoint. If fail, will return error code object (Refer `Appendix 1: Error Codes`) | "SUCCESS"                    |
+| <code>meta</code>  | Object | Database object                                                                                           | {}                           |
 
 <strong>Transaction object (`"item"`):</strong>
+
+| Parameter                     | Type     | Description                                                                    | Example                    |
+| ----------------------------- | -------- | ------------------------------------------------------------------------------ | -------------------------- |
+| <code>transactionAt</code>    | DateTime | Transaction date time of transaction                                           | "2019-12-31T07:00:10Z"     |
+| <code>merchantId</code>       | String   | (Can view From RM Portal)                                                      | "4118165203679668885"      |
+| <code>merchantName</code>     | String   | (Can view From RM Portal)                                                      | "Revenue Monster Sdn Bhd"  |
+| <code>storeId</code>          | String   | Store ID                                                                       | "4949529109748431621"      |
+| <code>storeName</code>        | String   | Store Name                                                                     | "Kim's Food Corner"        |
+| <code>region</code>           | String   | Region of wallet, "MALAYSIA" or "CHINA"                                        | "MALAYSIA"                 |
+| <code>method</code>           | String   | tyuioigiigqhih                                                                 | "TNG"                      |
+| <code>transactionType</code>  | String   | "PAYMENT" or "REFUND"                                                          | "PAYMENT"                  |
+| <code>type</code>             | String   | "QUICK_PAY" , "QR_PAY","Web_Payment" , "Mobile_Payment" , "Mobile_Web_Payment" | "QUICK_PAY"                |
+| <code>transactionId</code>    | String   | Transaction ID (from RM server)                                                | "191231070009010323431829" |
+| <code>orderId</code>          | String   | Order ID (from Merchant), max: 24                                              | "1577775608765190100M6010" |
+| <code>currencyType</code>     | String   | Currency notation (currently only support `MYR`)                               | "MYR"                      |
+| <code>grossAmount</code>      | Double   | Gross Amount QR pay                                                            | "0.10"                     |
+| <code>mdr</code>              | Double   | MDR (from RM server)                                                           | "0.70"                     |
+| <code>serviceFee</code>       | Double   | Service Fee (from RM server)                                                   | "-0.00"                    |
+| <code>settlementAmount</code> | Double   | Settlement Amount                                                              | "0.10"                     |
 
 | Parameter                  | Type     | Description                                                                                                                    | Example                                    |
 | -------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
