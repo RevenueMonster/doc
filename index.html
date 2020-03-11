@@ -269,8 +269,13 @@
                   <li>
                     <a href="#get-payment-transaction-by-order-id" class="toc-h2 toc-link" data-title="Get Payment Transaction By Order ID">Get Payment Transaction By Order ID</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#daily-settlement-report" class="toc-h1 toc-link" data-title="Daily Settlement Report">Daily Settlement Report</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#daily-settlement-report" class="toc-h2 toc-link" data-title="Daily Settlement Report">Daily Settlement Report</a>
+                    <a href="#get-payment-reconciliation" class="toc-h2 toc-link" data-title="Get Payment Reconciliation">Get Payment Reconciliation</a>
                   </li>
               </ul>
           </li>
@@ -436,6 +441,20 @@
           </li>
           <li>
             <a href="#sdk-beta" class="toc-h1 toc-link" data-title="SDK Beta">SDK Beta</a>
+          </li>
+          <li>
+            <a href="#payment-method-detail" class="toc-h1 toc-link" data-title="Payment Method Detail">Payment Method Detail</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#quickpay" class="toc-h2 toc-link" data-title="QuickPay">QuickPay</a>
+                  </li>
+                  <li>
+                    <a href="#transaction-qr" class="toc-h2 toc-link" data-title="Transaction QR">Transaction QR</a>
+                  </li>
+                  <li>
+                    <a href="#web-payment-amp-mobile-payement-amp-mobile-web-payment" class="toc-h2 toc-link" data-title="Web Payment &amp; Mobile Payement &amp; Mobile Web Payment">Web Payment &amp; Mobile Payement &amp; Mobile Web Payment</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#wechat-oa-beta" class="toc-h1 toc-link" data-title="WeChat OA (Beta)">WeChat OA (Beta)</a>
@@ -1970,7 +1989,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -2342,7 +2361,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>&quot;CARD&quot;</td>
 </tr>
 <tr>
@@ -2675,7 +2694,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -3015,7 +3034,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>ALL</td>
 </tr>
 <tr>
@@ -3351,7 +3370,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -3672,7 +3691,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -4004,7 +4023,7 @@ Parameter | Type | Required | Description | Example
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY&quot; , &quot;GRABPAY&quot;,&quot;CARD&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
 <td>&quot;ALL&quot;</td>
 </tr>
 <tr>
@@ -4182,27 +4201,28 @@ Parameter | Type | Required | Description | Example
 <td>100</td>
 </tr>
 </tbody></table>
-<h2 id='daily-settlement-report'>Daily Settlement Report</h2>
+<h1 id='daily-settlement-report'>Daily Settlement Report</h1><h2 id='get-payment-reconciliation'>Get Payment Reconciliation</h2>
 <p><strong>Method <span style="color:Orange" , bold ><code>Post</code></span></strong></p>
 
-<p><code>https://sb-open.revenuemonster.my/v3/payment/settlement/csv</code></p>
+<p><code>https://sb-open.revenuemonster.my/v3/payment/reconciliation</code></p>
 
-<p>To query for payment transaction using ID.</p>
+<p>To Get Daily Payment report</p>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/payment/settlement/csv"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 OsjlEWZLKx0IXgC5PUk6sM+ZZdrS/ELBNdEGj+okOhVAwo/i+GK91CwEmIbLko+p0Vbs8Ph+iBQG/3DyS7kHug=="</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1527407052"</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="err">--data</span><span class="w"> </span><span class="s2">"{
-    </span><span class="se">\"</span><span class="s2">date</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">2018-08-05</span><span class="se">\"</span><span class="s2">,
-    </span><span class="se">\"</span><span class="s2">method</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">WECHATPAY</span><span class="se">\"</span><span class="s2">,
-    </span><span class="se">\"</span><span class="s2">region</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MALAYSIA</span><span class="se">\"</span><span class="s2">,
-    </span><span class="se">\"</span><span class="s2">sequence</span><span class="se">\"</span><span class="s2">: 1
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/payment/reconciliation"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiKiJdLCJleHAiOjE1MjE2MjkyNTYsImlhdCI6MTUyMTYyMjA1NywiaXNzIjoiaHR0cHM6Ly9zYi1vYXV0aC5yZXZlbnVlbW9uc3Rlci5teSIsImp0aSI6IkVod0tFRTlCZFhSb1FXTmpaWE56Vkc5clpXNFF5cmYza3EzTDY4QnoiLCJuYmYiOjE1MjE2MjIwNTcsInN1YiI6IkVoUUtDRTFsY21Ob1lXNTBFSlhWemQzd3JhcVRPUklRQ2dSVmMyVnlFSXlKcUl6dnlNUFZjUSJ9.dJknY9MZHLNrKx1p7gZxS0_oA3uXLWplDU1r1dpwxIbmdB6yw4tQBTXKlWArDfKLlBDn6v22_gT5Px7sdCMj7e5M9eRoJoMnoPnslgYpmJJ5kjqAbKU7dUxKb1OzFLrvmtSK9r-FRLVtMFHioWYpwgSvSPBgZ6lAYkUyDzH7aKadFYtQcBuJR0hlq2CXtP0mzbHOeu2q6giONf3E5-XqS8lLRtuHPAbJ7_YFwo0Oe2zc6h05IOocmx_NvBVPfDBnuygTU063h70Q987MYeGDV_Os4N6N_I4b-GoHprEPtmntB1RJPrFrY28hvvoUfDHXHZVXT1GlrsozrkWV4EjbTw"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 OsjlEWZLKx0IXgC5PUk6sM+ZZdrS/ELBNdEGj+okOhVAwo/i+GK91CwEmIbLko+p0Vbs8Ph+iBQG/3DyS7kHug=="</span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1527407052"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--data-raw</span><span class="w"> </span><span class="s2">"{
+    "</span><span class="err">transactionType</span><span class="s2">": "</span><span class="err">PAYMENT</span><span class="s2">",
+    "</span><span class="err">date</span><span class="s2">": "</span><span class="mi">2019-12-31</span><span class="s2">",
+    "</span><span class="err">method</span><span class="s2">": [],
+    "</span><span class="err">region</span><span class="s2">": [],
+    "</span><span class="err">cursor</span><span class="s2">": ""
 }"</span><span class="w">
 </span></code></pre>
 <p><strong><em>REQUEST</em></strong></p>
@@ -4219,41 +4239,87 @@ Parameter | Type | Required | Description | Example
 </tr>
 </thead><tbody>
 <tr>
-<td><code>sequence</code></td>
-<td>UInt</td>
+<td><code>transactionType</code></td>
+<td>String</td>
 <td>Yes</td>
-<td>Sequence of the report</td>
-<td>1</td>
+<td>&quot;PAYMENT&quot; or &quot;REFUND&quot;</td>
+<td>&quot;PAYMENT&quot;</td>
 </tr>
 <tr>
 <td><code>date</code></td>
 <td>String</td>
 <td>Yes</td>
 <td>Date of the report</td>
-<td>&quot;2018-08-05&quot;</td>
+<td>&quot;2019-12-31&quot;</td>
 </tr>
 <tr>
 <td><code>method</code></td>
 <td>String</td>
 <td>Yes</td>
-<td>Currently only support &quot;WECHATPAY&quot; , &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;TNG&quot; , &quot;MAYBANK&quot; , &quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
-<td>&quot;ALL&quot;</td>
+<td><a href="#quickpay">RM currently supported method</a></td>
+<td>[]</td>
 </tr>
 <tr>
 <td><code>region</code></td>
 <td>String</td>
 <td>Yes</td>
 <td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
-<td>&quot;MALAYSIA&quot;</td>
+<td>[]</td>
+</tr>
+<tr>
+<td><code>cursor</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Optional, if pagination exists</td>
+<td>&quot;&quot;</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Example Respond</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="err">H</span><span class="p">,</span><span class="mi">4118165203679668885</span><span class="p">,</span><span class="err">REVENUE</span><span class="w"> </span><span class="err">MONSTER</span><span class="p">,</span><span class="mi">2018-08-05</span><span class="p">,</span><span class="mi">1</span><span class="w">
-</span><span class="err">T</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="w">
-</span><span class="err">S</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"transactionAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31T07:00:10Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4118165203679668885"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revenue Monster Sdn Bhd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4949529109748431621"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kim's Food Corner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MALAYSIA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TNG"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUICK_PAY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191231070009010323431829"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1577775608765190100M6010"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"grossAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mdr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.70"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"settlementAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"transactionAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-31T07:42:55Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4118165203679668885"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"merchantName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revenue Monster Sdn Bhd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4949529109748431621"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"storeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kim's Food Corner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MALAYSIA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TNG"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUICK_PAY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191231074255010324053928"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1577778173933190100M6010"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currencyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MYR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"grossAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mdr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.70"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serviceFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"settlementAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong><em>RESPONSE</em></strong></p>
 
@@ -4279,9 +4345,121 @@ Parameter | Type | Required | Description | Example
 <td>Successfully call this endpoint. If fail, will return error code object (Refer <code>Appendix 1: Error Codes</code>)</td>
 <td>&quot;SUCCESS&quot;</td>
 </tr>
+<tr>
+<td><code>meta</code></td>
+<td>Object</td>
+<td>Database object</td>
+<td>{}</td>
+</tr>
 </tbody></table>
 
 <p><strong>Transaction object (<code>&quot;item&quot;</code>):</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>transactionAt</code></td>
+<td>DateTime</td>
+<td>Transaction date time of transaction</td>
+<td>&quot;2019-12-31T07:00:10Z&quot;</td>
+</tr>
+<tr>
+<td><code>merchantId</code></td>
+<td>String</td>
+<td>(Can view From RM Portal)</td>
+<td>&quot;4118165203679668885&quot;</td>
+</tr>
+<tr>
+<td><code>merchantName</code></td>
+<td>String</td>
+<td>(Can view From RM Portal)</td>
+<td>&quot;Revenue Monster Sdn Bhd&quot;</td>
+</tr>
+<tr>
+<td><code>storeId</code></td>
+<td>String</td>
+<td>Store ID</td>
+<td>&quot;4949529109748431621&quot;</td>
+</tr>
+<tr>
+<td><code>storeName</code></td>
+<td>String</td>
+<td>Store Name</td>
+<td>&quot;Kim&#39;s Food Corner&quot;</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>String</td>
+<td>Region of wallet, &quot;MALAYSIA&quot; or &quot;CHINA&quot;</td>
+<td>&quot;MALAYSIA&quot;</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>String</td>
+<td>tyuioigiigqhih</td>
+<td>&quot;TNG&quot;</td>
+</tr>
+<tr>
+<td><code>transactionType</code></td>
+<td>String</td>
+<td>&quot;PAYMENT&quot; or &quot;REFUND&quot;</td>
+<td>&quot;PAYMENT&quot;</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>&quot;QUICK_PAY&quot; , &quot;QR_PAY&quot;,&quot;Web_Payment&quot; , &quot;Mobile_Payment&quot; , &quot;Mobile_Web_Payment&quot;</td>
+<td>&quot;QUICK_PAY&quot;</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td>String</td>
+<td>Transaction ID (from RM server)</td>
+<td>&quot;191231070009010323431829&quot;</td>
+</tr>
+<tr>
+<td><code>orderId</code></td>
+<td>String</td>
+<td>Order ID (from Merchant), max: 24</td>
+<td>&quot;1577775608765190100M6010&quot;</td>
+</tr>
+<tr>
+<td><code>currencyType</code></td>
+<td>String</td>
+<td>Currency notation (currently only support <code>MYR</code>)</td>
+<td>&quot;MYR&quot;</td>
+</tr>
+<tr>
+<td><code>grossAmount</code></td>
+<td>Double</td>
+<td>Gross Amount QR pay</td>
+<td>&quot;0.10&quot;</td>
+</tr>
+<tr>
+<td><code>mdr</code></td>
+<td>Double</td>
+<td>MDR (from RM server)</td>
+<td>&quot;0.70&quot;</td>
+</tr>
+<tr>
+<td><code>serviceFee</code></td>
+<td>Double</td>
+<td>Service Fee (from RM server)</td>
+<td>&quot;-0.00&quot;</td>
+</tr>
+<tr>
+<td><code>settlementAmount</code></td>
+<td>Double</td>
+<td>Settlement Amount</td>
+<td>&quot;0.10&quot;</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
@@ -4582,7 +4760,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>No</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td><a href="#transaction-qr">RM currently supported method</a></td>
 <td style="text-align: center">[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot; ]</td>
 </tr>
 <tr>
@@ -4832,7 +5010,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td><a href="#transaction-qr">RM currently supported method</a></td>
 <td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;]</td>
 </tr>
 <tr>
@@ -5225,7 +5403,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td><a href="#transaction-qr">RM currently supported method</a></td>
 <td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;]</td>
 </tr>
 <tr>
@@ -5461,7 +5639,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>[]String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td><a href="#transaction-qr">RM currently supported method</a></td>
 <td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot; ]</td>
 </tr>
 <tr>
@@ -5721,7 +5899,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Wallet provider for payment, supports &quot;WECHATPAY&quot;, &quot;PRESTO&quot; , &quot;BOOST&quot; , &quot;ALIPAY_CN&quot;</td>
+<td><a href="#transaction-qr">RM currently supported method</a></td>
 <td>[&quot;WECHATPAY&quot;,&quot;WECHATPAY_MY&quot;, <br/> &quot;WECHATPAY_CN&quot;,&quot;PRESTO_MY&quot;,<br/>&quot;BOOST_MY&quot;,<br/>&quot;ALIPAY_CN&quot;]</td>
 </tr>
 <tr>
@@ -5935,7 +6113,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <td><code>method</code></td>
 <td>[]String</td>
 <td>Yes</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY&quot;, &quot;WECHATPAY CN&quot;, &quot;Presto&quot;, &quot;Boost&quot;,&quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;,&quot;TNG_MY&quot;,&quot;RAZER_MY&quot;.</td>
+<td><a href="#web-payment-amp-mobile-payement-amp-mobile-web-payment">RM currently supported method</a></td>
 <td>[&quot;WECHATPAY_MY&quot;,&quot;WECHATPAY_CN&quot; <br/>,&quot;PRESTO_MY&quot;,&quot;BOOST_MY&quot;,&quot;TNG_MY&quot; , &quot;ALIPAY_CN&quot;,&quot;GRABPAY_MY&quot;,&quot;RAZER_MY&quot;]</td>
 </tr>
 <tr>
@@ -6245,7 +6423,7 @@ Example of QR Code URL: https://dev-rm-api.ap.ngrok.io/payment/unified?code=a669
 <tr>
 <td><code>method</code></td>
 <td>String</td>
-<td>Wallet provider for payment, currently supports &quot;WECHATPAY MY &quot;,&quot;WECHATPAY CN&quot;,&quot;Presto&quot;, &quot;Boost&quot;,&quot;ALIPAY_CN&quot; , &quot;GRABPAY_MY&quot;.</td>
+<td><a href="#web-payment-amp-mobile-payement-amp-mobile-web-payment">RM currently supported method</a></td>
 <td>[&quot;WECHATPAY_MY&quot;]</td>
 </tr>
 </tbody></table>
@@ -13180,6 +13358,43 @@ FYoXnrBAfH6awPTwVtECQC2LIuer+rYpCb8hYsWFksYQOV2rWrwQTXgDhmdRra7L</span><span cla
 <li>NodeJS <a href="https://github.com/RevenueMonster/RM-API-SDK-Nodejs">SDK &amp; doc</a></li>
 <li>PHP <a href="https://github.com/RevenueMonster/RM-API-SDK-PHP">SDK &amp; doc</a></li>
 <li>Python <a href="https://github.com/RevenueMonster/RM-API-SDK-Python">SDK &amp; doc</a></li>
+</ul>
+<h1 id='payment-method-detail'>Payment Method Detail</h1><h2 id='quickpay'>QuickPay</h2>
+<p>The following Method is Revenue Monster supported</p>
+
+<ul>
+<li>WECHATPAY</li>
+<li>BOOST</li>
+<li>PRESTO</li>
+<li>TNG</li>
+<li>ALIPAY_CN</li>
+<li>GRABPAY</li>
+<li>MAYBANK</li>
+<li>RAZERPAY</li>
+<li>SHOPEEPAY</li>
+</ul>
+<h2 id='transaction-qr'>Transaction QR</h2>
+<p>The following Method is Revenue Monster supported</p>
+
+<ul>
+<li>WECHATPAY</li>
+<li>BOOST</li>
+<li>PRESTO</li>
+<li>ALIPAY_CN</li>
+</ul>
+<h2 id='web-payment-amp-mobile-payement-amp-mobile-web-payment'>Web Payment &amp; Mobile Payement &amp; Mobile Web Payment</h2>
+<p>The following Method is Revenue Monster supported</p>
+
+<ul>
+<li>WECHATPAY</li>
+<li>BOOST</li>
+<li>PRESTO</li>
+<li>TNG</li>
+<li>ALIPAY_CN</li>
+<li>GRABPAY</li>
+<li>MAYBANK</li>
+<li>RAZERPAY</li>
+<li>SHOPEEPAY</li>
 </ul>
 <h1 id='wechat-oa-beta'>WeChat OA (Beta)</h1><h2 id='get-send-merchant-wechatpage-template-message'>Get Send Merchant WeChatPage Template Message</h2>
 <p><strong>Method <span style="color:Green" , bold ><code>GET</code></span></strong></p>
