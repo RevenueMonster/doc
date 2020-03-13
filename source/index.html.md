@@ -25,6 +25,7 @@ includes:
   - User
   - Loyalty Point
   - Loyalty Members
+  - Chop Stamp
   - Voucher
   - Push Notification
   - Tool
