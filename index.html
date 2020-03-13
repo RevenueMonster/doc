@@ -384,6 +384,14 @@
               </ul>
           </li>
           <li>
+            <a href="#chop-stamp" class="toc-h1 toc-link" data-title="Chop Stamp">Chop Stamp</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#give-chop-stamp" class="toc-h2 toc-link" data-title="Give Chop Stamp">Give Chop Stamp</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#voucher" class="toc-h1 toc-link" data-title="Voucher">Voucher</a>
               <ul class="toc-list-h2">
                   <li>
@@ -9374,6 +9382,148 @@ signType=sha256&amp;timestamp=1527407052</code></p>
 }
 </strong>
 </aside>
+<h1 id='chop-stamp'>Chop Stamp</h1><h2 id='give-chop-stamp'>Give Chop Stamp</h2>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
+
+<p><code>https://sb-open.revenuemonster.my/v3/loyalty/chop-stamp/card/scan</code></p>
+
+<p>To redeem the Chop Stamp</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/loyalty/chop-stamp/card/scan"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiYXBpX2NsaWVudEBFaGNLQzA5QmRYUm9RMnhwWlc1MEVNV1Z4NF9UbE5MZEZRIl0sImV4cCI6MTU4NjMzNzc1OCwiaWF0IjoxNTgzNzQ1NzU4LCJpc3MiOiJodHRwczovL3NiLW9hdXRoLnJldmVudWVtb25zdGVyLm15IiwianRpIjoiRWh3S0VFOUJkWFJvUVdOalpYTnpWRzlyWlc0UXlKSG9qb2VNcHYwViIsIm5iZiI6MTU4Mzc0NTc1OCwic3ViIjoiRWhRS0NFMWxjbU5vWVc1MEVKWFZ6ZDN3cmFxVE9SSVFDZ1JWYzJWeUVJeUpxSXp2eU1QVmNRIn0.FfBkCb7fjCKJdcy_DS06dKgEtcAvukPio0HyDRtH2UovhZsLFSqD_8oo21u094XSor_mqFg4hqXmLaHjX-h92Wz3kHl7OwiKQb16x8Rnl5OdyPHtMqIZqP8ab8Ch0RHEZ33VchK1zBTnG6Xosrb1B44tWqJ0_kdTtbRZN4rG821C8i4sb6sx8GaxgluJ5q7CEifMTBFJam_Jub9LfAfukq8YyIl0Bykp7B3A_su2QoELL9L_ElJdV9FuwFPHcKr9bxLvVSrEdyrFg7IBm_tJHxSl8gTh3j4b6lWZrBCfMSLraXaYRNzz1ddbVnwYD4aRuSyRmQeMYTUj0cInktnKUA"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--data-raw</span><span class="w"> </span><span class="s2">"{
+    </span><span class="se">\"</span><span class="s2">code</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU:d439a47d-3cd3-48bc-aae7-1effda5c7e1b</span><span class="se">\"</span><span class="s2">
+}"</span><span class="w">
+</span></code></pre>
+<p><strong><em>REQUEST</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>code</code></td>
+<td>String</td>
+<td>QR code link</td>
+<td>EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU:d439a47d-3cd3-48bc-aae7-1effda5c7e1b</td>
+</tr>
+</tbody></table>
+
+<p><img src="images/chop.png" alt="images" /></p>
+
+<p><strong><em>RESPONSE</em></strong></p>
+
+<p><strong>Response Parameters:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>item</code></td>
+<td>Object</td>
+<td>Transaction object</td>
+<td>(Refer to explanation below)</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>String</td>
+<td>Successfully call this endpoint. If fail, will return error code object (Refer <code>Appendix 1: Error Codes</code>)</td>
+<td>&quot;SUCCESS&quot;</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1583401221690518310"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"noOfChoppedStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isCompleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"startAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-02T13:49:08Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-02T13:49:08Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-05T09:40:21Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-05T09:40:21Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Transaction object (<code>&quot;item&quot;</code>):</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Chop Stamp ID</td>
+<td>&quot;1583401221690518310&quot;</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>String</td>
+<td>Chop Stamp Key</td>
+<td>&quot;EhQKCE1lcmNoYW50EJXVzd3wraqTORIgChRMb3lhbHR5Q2hvcFN0YW1wQ2FyZBCm1qHe2eDX_BU&quot;</td>
+</tr>
+<tr>
+<td><code>noOfChoppedStamp</code></td>
+<td>Uint</td>
+<td>Number of redeem</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>isCompleted</code></td>
+<td>Bool</td>
+<td>True or False</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>startAt</code></td>
+<td>DateTime</td>
+<td>Time Start</td>
+<td>&quot;2020-03-02T13:49:08Z&quot;</td>
+</tr>
+<tr>
+<td><code>endAt</code></td>
+<td>DateTime</td>
+<td>Time End</td>
+<td>&quot;2021-04-02T13:49:08Z&quot;</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>DateTime</td>
+<td>Creation date time</td>
+<td>&quot;2020-03-05T09:40:21Z&quot;</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td>DateTime</td>
+<td>Last update date time</td>
+<td>&quot;2020-03-05T09:40:21Z&quot;</td>
+</tr>
+</tbody></table>
 <h1 id='voucher'>Voucher</h1>
 <p>To manage vouchers for the merchant.</p>
 
