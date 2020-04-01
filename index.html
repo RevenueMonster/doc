@@ -412,6 +412,14 @@
               </ul>
           </li>
           <li>
+            <a href="#gourmert-card" class="toc-h1 toc-link" data-title="Gourmert Card">Gourmert Card</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#give-gourment-card" class="toc-h2 toc-link" data-title="Give Gourment Card">Give Gourment Card</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#push-notification" class="toc-h1 toc-link" data-title="Push Notification">Push Notification</a>
               <ul class="toc-list-h2">
                   <li>
@@ -11216,6 +11224,272 @@ X-Timestamp | 1528450585|
 }
 </strong>
 </aside>
+<h1 id='gourmert-card'>Gourmert Card</h1><h2 id='give-gourment-card'>Give Gourment Card</h2>
+<p><strong>Method <span style="color:Orange" , bold ><code>POST</code></span></strong></p>
+
+<p><code>https://sb-open.revenuemonster.my/v3/membership/verify</code></p>
+
+<p>Collect information using memeber card ID</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w"> </span><span class="err">--location</span><span class="w"> </span><span class="err">--request</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="s2">"https://sb-open.revenuemonster.my/v3/loyalty/chop-stamp/card/scan"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwMTgtMDMtMTMiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOlsiYXBpX2NsaWVudEBFaGNLQzA5QmRYUm9RMnhwWlc1MEVNV1Z4NF9UbE5MZEZRIl0sImV4cCI6MTU4NjMzNzc1OCwiaWF0IjoxNTgzNzQ1NzU4LCJpc3MiOiJodHRwczovL3NiLW9hdXRoLnJldmVudWVtb25zdGVyLm15IiwianRpIjoiRWh3S0VFOUJkWFJvUVdOalpYTnpWRzlyWlc0UXlKSG9qb2VNcHYwViIsIm5iZiI6MTU4Mzc0NTc1OCwic3ViIjoiRWhRS0NFMWxjbU5vWVc1MEVKWFZ6ZDN3cmFxVE9SSVFDZ1JWYzJWeUVJeUpxSXp2eU1QVmNRIn0.FfBkCb7fjCKJdcy_DS06dKgEtcAvukPio0HyDRtH2UovhZsLFSqD_8oo21u094XSor_mqFg4hqXmLaHjX-h92Wz3kHl7OwiKQb16x8Rnl5OdyPHtMqIZqP8ab8Ch0RHEZ33VchK1zBTnG6Xosrb1B44tWqJ0_kdTtbRZN4rG821C8i4sb6sx8GaxgluJ5q7CEifMTBFJam_Jub9LfAfukq8YyIl0Bykp7B3A_su2QoELL9L_ElJdV9FuwFPHcKr9bxLvVSrEdyrFg7IBm_tJHxSl8gTh3j4b6lWZrBCfMSLraXaYRNzz1ddbVnwYD4aRuSyRmQeMYTUj0cInktnKUA"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Signature: sha256 Sty3LNcKA8+WlMHtAgIY+y1xbwnzKsN0UdyKaW+yYIgcTkBAtF7G5Lx251qQITURJ4wiXPDODxhs1nFVmBBing=="</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Nonce-Str: VYNknZohxwicZMaWbNdBKUrnrxDtaRhN"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--header</span><span class="w"> </span><span class="s2">"X-Timestamp: 1528450585"</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span><span class="err">--data-raw</span><span class="w"> </span><span class="s2">"{
+</span><span class="se">\"</span><span class="s2">memberCardId</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">28158443195878043074</span><span class="se">\"</span><span class="s2">
+ </span><span class="se">\"</span><span class="s2">storeId</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">4949529109748431621</span><span class="se">\"</span><span class="s2">,
+}"</span><span class="w">
+</span></code></pre>
+<p><strong><em>REQUEST</em></strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>memberCardId</code></td>
+<td>String</td>
+<td>From Ali Pay member card id</td>
+<td>28158443195878043074</td>
+</tr>
+<tr>
+<td><code>storeId</code></td>
+<td>String</td>
+<td>Store ID</td>
+<td>&quot;4949529109748431621&quot;</td>
+</tr>
+</tbody></table>
+
+<p><strong><em>RESPONSE</em></strong></p>
+
+<p><strong>Response Parameters:</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>item</code></td>
+<td>Object</td>
+<td>Transaction object</td>
+<td>(Refer to explanation below)</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>String</td>
+<td>Successfully call this endpoint. If fail, will return error code object (Refer <code>Appendix 1: Error Codes</code>)</td>
+<td>&quot;SUCCESS&quot;</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Respond</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28158443195878043074"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1584431832399399267"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1576632501406219093"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"memberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1584431797984173748"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiredAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-16T07:59:18Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-17T07:59:18Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-17T07:59:18Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1576632501406219093"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"九折美食卡"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lifetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lifetimeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RMB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISCOUNT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discountValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimumSpentAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALIPAY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"templateId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20191218000000002154347000300178"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/image-1579510518825819467-1579510518.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/icon-1579505367845553007-1579505367.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-18T01:28:24Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-18T01:28:24Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Transaction object (<code>&quot;item&quot;</code>):</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Gourmert Card ID</td>
+<td>&quot;28158443195878043074&quot;</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td>String</td>
+<td>Transaction ID</td>
+<td>&quot;1584431832399399267&quot;</td>
+</tr>
+<tr>
+<td><code>cardId</code></td>
+<td>String</td>
+<td>Card ID</td>
+<td>&quot;1576632501406219093&quot;</td>
+</tr>
+<tr>
+<td><code>memberId</code></td>
+<td>String</td>
+<td>Member ID</td>
+<td>&quot;1584431797984173748&quot;</td>
+</tr>
+<tr>
+<td><code>expiredAt</code></td>
+<td>DateTime</td>
+<td>Expired date time</td>
+<td>&quot;2020-05-16T07:59:18Z&quot;</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>DateTime</td>
+<td>Creation date time</td>
+<td>&quot;2020-03-17T07:59:18Z&quot;</td>
+</tr>
+<tr>
+<td><code>updateAt</code></td>
+<td>DateTime</td>
+<td>Last update date time</td>
+<td>&quot;2020-03-05T09:40:21Z&quot;</td>
+</tr>
+</tbody></table>
+
+<p><strong> Card object (<code>&quot;card&quot;</code>):</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>Card ID</td>
+<td>&quot;1576632501406219093&quot;</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Card Name</td>
+<td>&quot;九折美食卡&quot;</td>
+</tr>
+<tr>
+<td><code>lifetime</code></td>
+<td>Uint</td>
+<td>Life Time</td>
+<td>60</td>
+</tr>
+<tr>
+<td><code>lifetimeType</code></td>
+<td>String</td>
+<td>Life Time Type</td>
+<td>&quot;DAY&quot;</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>Uint</td>
+<td>Amount</td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>String</td>
+<td>Currency type</td>
+<td>&quot;RMB&quot;</td>
+</tr>
+<tr>
+<td><code>discountType</code></td>
+<td>String</td>
+<td>Discount type</td>
+<td>&quot;DISCOUNT&quot;</td>
+</tr>
+<tr>
+<td><code>discountValue</code></td>
+<td>String</td>
+<td>Discount Value</td>
+<td>&quot;1000&quot;</td>
+</tr>
+<tr>
+<td><code>minimumSpentAmount</code></td>
+<td>Uint</td>
+<td>Minimum Spent Amount</td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>wallet</code></td>
+<td>String</td>
+<td>Wallet : Alipay</td>
+<td>&quot;ALIPAY&quot;</td>
+</tr>
+<tr>
+<td><code>templateId</code></td>
+<td>String</td>
+<td>Template ID</td>
+<td>&quot;20191218000000002154347000300178&quot;</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String</td>
+<td>Status</td>
+<td>&quot;ACTIVE&quot;</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>String</td>
+<td>Image</td>
+<td>&quot;https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/image-1579510518825819467-1579510518.png&quot;</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>String</td>
+<td>Icon</td>
+<td>&quot;https://rm-sandbox-membership-public.oss-ap-southeast-3.aliyuncs.com/gourmet/card/icon-1579505367845553007-1579505367.png&quot;</td>
+</tr>
+<tr>
+<td><code>createAt</code></td>
+<td>DateTime</td>
+<td>Create date time</td>
+<td>&quot;2019-12-18T01:28:24Z&quot;</td>
+</tr>
+<tr>
+<td><code>updateAt</code></td>
+<td>DateTime</td>
+<td>Update date time</td>
+<td>&quot;2019-12-18T01:28:24Z&quot;</td>
+</tr>
+</tbody></table>
 <h1 id='push-notification'>Push Notification</h1>
 <!--================---->
 
