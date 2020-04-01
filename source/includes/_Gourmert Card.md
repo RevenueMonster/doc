@@ -73,7 +73,7 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/loyalty/cho
 }
 ```
 
-<strong>Transaction object (`"item"`):</strong>
+<strong>Item object (`"item"`):</strong>
 
 | Parameter                  | Type     | Description           | Example                |
 | -------------------------- | -------- | --------------------- | ---------------------- |

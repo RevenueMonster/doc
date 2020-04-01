@@ -55,6 +55,10 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/qui
       \"detail\":\"desc\",
       \"additonalData\":\"API Test\"
    },
+  \"extraInfo\": {
+    \"type\": \"MEMBERSHIP\",
+    \"reference\": \"28158443195878043074\"
+      },
    \"ipAddress\":\"175.143.101.229\",
    \"storeId\":\"10946114768247530\"
 }"
@@ -68,6 +72,7 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/qui
 | ----------------------- | ------ | -------- | ------------------------------------------------------ | ---------------------------- |
 | <code>authCode</code>   | String | Yes      | Auth code of QR code/barcode being scanned. Length: 18 | "134850717797247290"         |
 | <code>order</code>      | Object | Yes      | Object of order                                        | (Refer to explanation below) |
+| <code>extraInfo</code>  | Object | No       | Object of extra Info                                   | (Refer to explanation below) |
 | <code>ipAddress</code>  | String | Yes      | IP address of terminal/application for payment         | "8.8.8.8"                    |
 | <code>terminalId</code> | String | No       | ID of terminal for payment                             | "19382734937293"             |
 | <code>storeId</code>    | String | Yes      | ID of the store                                        | "6170506694335521334"        |
@@ -133,6 +138,15 @@ curl --location --request POST "https://sb-open.revenuemonster.my/v3/payment/qui
 | <code>additionalData</code> | String | Yes      | For merchant's remark, max 128                      | ""                             |
 | <code>currencyType</code>   | String | Yes      | Currency notation (currently only support MYR)      | "MYR"                          |
 | <code>amount</code>         | Uint   | Yes      | Amount of order in cent (min RM 0.10 or amount: 10) | 100                            |
+
+<strong>ExtraInfo object (`"extraInfo"`)</strong><br/>
+
+Only for Gourmert Card Merchant
+
+| Parameter              | Type   | Required | Description    | Example                |
+| ---------------------- | ------ | -------- | -------------- | ---------------------- |
+| <code>type</code>      | String | Yes      | Membership     | "MEMBERSHIP"           |
+| <code>reference</code> | String | Yes      | Member Card ID | "28158443195878043074" |
 
 **_RESPONSE_**
 
