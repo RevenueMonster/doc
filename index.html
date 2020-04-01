@@ -1765,6 +1765,10 @@ Parameter | Type | Required | Description | Example
       </span><span class="se">\"</span><span class="s2">detail</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">desc</span><span class="se">\"</span><span class="s2">,
       </span><span class="se">\"</span><span class="s2">additonalData</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">API Test</span><span class="se">\"</span><span class="s2">
    },
+  </span><span class="se">\"</span><span class="s2">extraInfo</span><span class="se">\"</span><span class="s2">: {
+    </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">MEMBERSHIP</span><span class="se">\"</span><span class="s2">,
+    </span><span class="se">\"</span><span class="s2">reference</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">28158443195878043074</span><span class="se">\"</span><span class="s2">
+      },
    </span><span class="se">\"</span><span class="s2">ipAddress</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">175.143.101.229</span><span class="se">\"</span><span class="s2">,
    </span><span class="se">\"</span><span class="s2">storeId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">10946114768247530</span><span class="se">\"</span><span class="s2">
 }"</span><span class="w">
@@ -1794,6 +1798,13 @@ Parameter | Type | Required | Description | Example
 <td>Object</td>
 <td>Yes</td>
 <td>Object of order</td>
+<td>(Refer to explanation below)</td>
+</tr>
+<tr>
+<td><code>extraInfo</code></td>
+<td>Object</td>
+<td>No</td>
+<td>Object of extra Info</td>
 <td>(Refer to explanation below)</td>
 </tr>
 <tr>
@@ -1921,6 +1932,35 @@ Parameter | Type | Required | Description | Example
 <td>Yes</td>
 <td>Amount of order in cent (min RM 0.10 or amount: 10)</td>
 <td>100</td>
+</tr>
+</tbody></table>
+
+<p><strong>ExtraInfo object (<code>&quot;extraInfo&quot;</code>)</strong><br/></p>
+
+<p>Only for Gourmert Card Merchant</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Membership</td>
+<td>&quot;MEMBERSHIP&quot;</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Member Card ID</td>
+<td>&quot;28158443195878043074&quot;</td>
 </tr>
 </tbody></table>
 
@@ -11329,7 +11369,7 @@ X-Timestamp | 1528450585|
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><strong>Transaction object (<code>&quot;item&quot;</code>):</strong></p>
+<p><strong>Item object (<code>&quot;item&quot;</code>):</strong></p>
 
 <table><thead>
 <tr>
