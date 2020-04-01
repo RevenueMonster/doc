@@ -27,6 +27,7 @@ includes:
   - Loyalty Members
   - Chop Stamp
   - Voucher
+  - Gourmert Card
   - Push Notification
   - Tool
   - Appendix 1 Error Codes
