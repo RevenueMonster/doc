@@ -1,6 +1,6 @@
 #Gourmert Card
 
-##Give Gourment Card
+##Verify or Check Gourment Card
 **Method <span style="color:Orange" , bold >`POST`</span>**
 
 `https://sb-open.revenuemonster.my/v3/membership/verify`
