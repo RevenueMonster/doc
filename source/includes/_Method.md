@@ -36,3 +36,4 @@ The following Method is Revenue Monster supported
 - MAYBANK
 - RAZERPAY
 - SHOPEEPAY
+- GOBIZ_MY
